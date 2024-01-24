@@ -7,18 +7,100 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020509CD2B31DF1C00B1D0F3 /* CoffeePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509CC2B31DF1C00B1D0F3 /* CoffeePreview.swift */; };
+		020509D32B323D8E00B1D0F3 /* CoffeePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509D22B323D8E00B1D0F3 /* CoffeePreviewViewModel.swift */; };
+		020509D62B3244DE00B1D0F3 /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509D52B3244DE00B1D0F3 /* TagLayout.swift */; };
+		020509D92B32593000B1D0F3 /* PriceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509D82B32593000B1D0F3 /* PriceFormatter.swift */; };
+		020509DC2B32E51D00B1D0F3 /* CoffeeAccessoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509DB2B32E51D00B1D0F3 /* CoffeeAccessoryType.swift */; };
+		020509E22B32E64400B1D0F3 /* CoffeeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509E12B32E64400B1D0F3 /* CoffeeDto.swift */; };
 		0231F2A32B30C849003BBF55 /* CoffeeAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0231F2A22B30C849003BBF55 /* CoffeeAppApp.swift */; };
-		0231F2A52B30C849003BBF55 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0231F2A42B30C849003BBF55 /* ContentView.swift */; };
+		0231F2A52B30C849003BBF55 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0231F2A42B30C849003BBF55 /* MainView.swift */; };
 		0231F2A72B30C84B003BBF55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0231F2A62B30C84B003BBF55 /* Assets.xcassets */; };
 		0231F2AA2B30C84B003BBF55 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0231F2A92B30C84B003BBF55 /* Preview Assets.xcassets */; };
+		0232910C2B5EEE24004A2B26 /* CoffeeAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0232910B2B5EEE24004A2B26 /* CoffeeAccessory.swift */; };
+		023291112B5EF024004A2B26 /* OrderCoffeeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023291102B5EF024004A2B26 /* OrderCoffeeButton.swift */; };
+		023291132B5EF0CB004A2B26 /* CoffeeAccessoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023291122B5EF0CB004A2B26 /* CoffeeAccessoriesList.swift */; };
+		023291152B5EF182004A2B26 /* CoffeeAccessoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023291142B5EF182004A2B26 /* CoffeeAccessoryButton.swift */; };
+		023291172B5EF1E2004A2B26 /* AddProductPlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023291162B5EF1E2004A2B26 /* AddProductPlusButton.swift */; };
+		023291192B5EF45B004A2B26 /* SelectedCoffeeAccessoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023291182B5EF45B004A2B26 /* SelectedCoffeeAccessoryButton.swift */; };
+		0232911B2B5F0CB9004A2B26 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0232911A2B5F0CB9004A2B26 /* Menu.swift */; };
+		0232911E2B5F13D1004A2B26 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0232911D2B5F13D1004A2B26 /* HapticManager.swift */; };
+		0233E2952B5C1CE200595272 /* QRCodeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0233E2942B5C1CE200595272 /* QRCodeImageView.swift */; };
+		024430C52B3996800024D729 /* CoffeeAccessoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024430C42B3996800024D729 /* CoffeeAccessoryProtocol.swift */; };
+		027468272B30CC1100664A7F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468262B30CC1100664A7F /* SplashView.swift */; };
+		027468292B30CC2F00664A7F /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468282B30CC2F00664A7F /* SplashViewModel.swift */; };
+		0274682D2B30CC4500664A7F /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274682C2B30CC4500664A7F /* BaseViewModel.swift */; };
+		027468302B30CD7100664A7F /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274682F2B30CD7100664A7F /* Route.swift */; };
+		027468352B30CEBF00664A7F /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468342B30CEBF00664A7F /* MainViewModel.swift */; };
+		0274683A2B30CF1800664A7F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468392B30CF1800664A7F /* ProfileViewModel.swift */; };
+		0274683C2B30CF2B00664A7F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274683B2B30CF2B00664A7F /* SettingsView.swift */; };
+		027468412B30CF6700664A7F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468402B30CF6700664A7F /* HomeView.swift */; };
+		027468432B30CF7400664A7F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468422B30CF7400664A7F /* HomeViewModel.swift */; };
+		027468472B30D30500664A7F /* VoucherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468462B30D30500664A7F /* VoucherCell.swift */; };
+		0274684A2B30D87900664A7F /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468492B30D87900664A7F /* DateFormatter.swift */; };
+		0274684D2B30E10B00664A7F /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274684C2B30E10B00664A7F /* VisualEffectView.swift */; };
+		027468532B30E49E00664A7F /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468522B30E49E00664A7F /* QRCodeView.swift */; };
+		0274685C2B30EFAD00664A7F /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274685B2B30EFAD00664A7F /* UIDevice+Extension.swift */; };
+		027468602B30FA0A00664A7F /* TrackableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274685F2B30FA0A00664A7F /* TrackableScrollView.swift */; };
+		027468632B31032B00664A7F /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468622B31032B00664A7F /* QRCodeGenerator.swift */; };
+		027468652B31094E00664A7F /* CoffeesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468642B31094E00664A7F /* CoffeesListView.swift */; };
+		0274686A2B319AD700664A7F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468692B319AD700664A7F /* LoginView.swift */; };
+		0274686C2B319ADE00664A7F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274686B2B319ADE00664A7F /* LoginViewModel.swift */; };
+		02B610B42B5FE15100844CC3 /* CoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610B32B5FE15100844CC3 /* CoverFlowView.swift */; };
+		02B610B72B5FE94A00844CC3 /* CoffeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610B62B5FE94A00844CC3 /* CoffeeCell.swift */; };
+		02B610BA2B5FEDA200844CC3 /* CustomPagingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610B92B5FEDA200844CC3 /* CustomPagingIndicator.swift */; };
+		02B610BF2B600F9200844CC3 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610BE2B600F9200844CC3 /* OnboardingViewModel.swift */; };
+		02B610C12B600FB000844CC3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610C02B600FB000844CC3 /* OnboardingView.swift */; };
+		02B610C42B600FC600844CC3 /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610C32B600FC600844CC3 /* OnboardingPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		020509CC2B31DF1C00B1D0F3 /* CoffeePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeePreview.swift; sourceTree = "<group>"; };
+		020509D22B323D8E00B1D0F3 /* CoffeePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeePreviewViewModel.swift; sourceTree = "<group>"; };
+		020509D52B3244DE00B1D0F3 /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
+		020509D82B32593000B1D0F3 /* PriceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFormatter.swift; sourceTree = "<group>"; };
+		020509DB2B32E51D00B1D0F3 /* CoffeeAccessoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeAccessoryType.swift; sourceTree = "<group>"; };
+		020509E12B32E64400B1D0F3 /* CoffeeDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeDto.swift; sourceTree = "<group>"; };
 		0231F29F2B30C849003BBF55 /* CoffeeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0231F2A22B30C849003BBF55 /* CoffeeAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeAppApp.swift; sourceTree = "<group>"; };
-		0231F2A42B30C849003BBF55 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0231F2A42B30C849003BBF55 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0231F2A62B30C84B003BBF55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0231F2A92B30C84B003BBF55 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0232910B2B5EEE24004A2B26 /* CoffeeAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeAccessory.swift; sourceTree = "<group>"; };
+		023291102B5EF024004A2B26 /* OrderCoffeeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCoffeeButton.swift; sourceTree = "<group>"; };
+		023291122B5EF0CB004A2B26 /* CoffeeAccessoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeAccessoriesList.swift; sourceTree = "<group>"; };
+		023291142B5EF182004A2B26 /* CoffeeAccessoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeAccessoryButton.swift; sourceTree = "<group>"; };
+		023291162B5EF1E2004A2B26 /* AddProductPlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductPlusButton.swift; sourceTree = "<group>"; };
+		023291182B5EF45B004A2B26 /* SelectedCoffeeAccessoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCoffeeAccessoryButton.swift; sourceTree = "<group>"; };
+		0232911A2B5F0CB9004A2B26 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		0232911D2B5F13D1004A2B26 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		0233E2942B5C1CE200595272 /* QRCodeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeImageView.swift; sourceTree = "<group>"; };
+		024430C42B3996800024D729 /* CoffeeAccessoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeAccessoryProtocol.swift; sourceTree = "<group>"; };
+		027468262B30CC1100664A7F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		027468282B30CC2F00664A7F /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		0274682C2B30CC4500664A7F /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		0274682F2B30CD7100664A7F /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		027468342B30CEBF00664A7F /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		027468392B30CF1800664A7F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		0274683B2B30CF2B00664A7F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		027468402B30CF6700664A7F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		027468422B30CF7400664A7F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		027468462B30D30500664A7F /* VoucherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoucherCell.swift; sourceTree = "<group>"; };
+		027468492B30D87900664A7F /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		0274684C2B30E10B00664A7F /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		027468522B30E49E00664A7F /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
+		0274685B2B30EFAD00664A7F /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		0274685F2B30FA0A00664A7F /* TrackableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableScrollView.swift; sourceTree = "<group>"; };
+		027468622B31032B00664A7F /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
+		027468642B31094E00664A7F /* CoffeesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeesListView.swift; sourceTree = "<group>"; };
+		027468692B319AD700664A7F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		0274686B2B319ADE00664A7F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		02B610B32B5FE15100844CC3 /* CoverFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverFlowView.swift; sourceTree = "<group>"; };
+		02B610B62B5FE94A00844CC3 /* CoffeeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeCell.swift; sourceTree = "<group>"; };
+		02B610B92B5FEDA200844CC3 /* CustomPagingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPagingIndicator.swift; sourceTree = "<group>"; };
+		02B610BE2B600F9200844CC3 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		02B610C02B600FB000844CC3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		02B610C32B600FC600844CC3 /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +114,91 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		020509C82B31DF0100B1D0F3 /* CoffeePreview */ = {
+			isa = PBXGroup;
+			children = (
+				020509D12B323D8600B1D0F3 /* ViewModel */,
+				020509CB2B31DF1300B1D0F3 /* View */,
+			);
+			path = CoffeePreview;
+			sourceTree = "<group>";
+		};
+		020509C92B31DF0700B1D0F3 /* CoffeesList */ = {
+			isa = PBXGroup;
+			children = (
+				020509CA2B31DF0C00B1D0F3 /* View */,
+			);
+			path = CoffeesList;
+			sourceTree = "<group>";
+		};
+		020509CA2B31DF0C00B1D0F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				02B610B52B5FE94200844CC3 /* Subviews */,
+				027468642B31094E00664A7F /* CoffeesListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		020509CB2B31DF1300B1D0F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0232910D2B5EF00E004A2B26 /* Subviews */,
+				020509CC2B31DF1C00B1D0F3 /* CoffeePreview.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		020509D12B323D8600B1D0F3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				020509D22B323D8E00B1D0F3 /* CoffeePreviewViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		020509D42B3244D900B1D0F3 /* TagLayout */ = {
+			isa = PBXGroup;
+			children = (
+				020509D52B3244DE00B1D0F3 /* TagLayout.swift */,
+			);
+			path = TagLayout;
+			sourceTree = "<group>";
+		};
+		020509D72B32592900B1D0F3 /* PriceFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				020509D82B32593000B1D0F3 /* PriceFormatter.swift */,
+			);
+			path = PriceFormatter;
+			sourceTree = "<group>";
+		};
+		020509DA2B32E51500B1D0F3 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				020509DB2B32E51D00B1D0F3 /* CoffeeAccessoryType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		020509DF2B32E63900B1D0F3 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				020509E02B32E63C00B1D0F3 /* Models */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		020509E02B32E63C00B1D0F3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				020509E12B32E64400B1D0F3 /* CoffeeDto.swift */,
+				0232910B2B5EEE24004A2B26 /* CoffeeAccessory.swift */,
+				0232911A2B5F0CB9004A2B26 /* Menu.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		0231F2962B30C849003BBF55 = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +218,11 @@
 		0231F2A12B30C849003BBF55 /* CoffeeApp */ = {
 			isa = PBXGroup;
 			children = (
+				020509DF2B32E63900B1D0F3 /* Networking */,
+				0274682E2B30CD6D00664A7F /* Navigation */,
+				0274682A2B30CC3D00664A7F /* Utilis */,
+				027468222B30CC0300664A7F /* Presentation */,
 				0231F2A22B30C849003BBF55 /* CoffeeAppApp.swift */,
-				0231F2A42B30C849003BBF55 /* ContentView.swift */,
 				0231F2A62B30C84B003BBF55 /* Assets.xcassets */,
 				0231F2A82B30C84B003BBF55 /* Preview Content */,
 			);
@@ -65,6 +235,359 @@
 				0231F2A92B30C84B003BBF55 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0232910D2B5EF00E004A2B26 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				023291102B5EF024004A2B26 /* OrderCoffeeButton.swift */,
+				023291122B5EF0CB004A2B26 /* CoffeeAccessoriesList.swift */,
+				023291142B5EF182004A2B26 /* CoffeeAccessoryButton.swift */,
+				023291162B5EF1E2004A2B26 /* AddProductPlusButton.swift */,
+				023291182B5EF45B004A2B26 /* SelectedCoffeeAccessoryButton.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		0232911C2B5F13CC004A2B26 /* Haptic */ = {
+			isa = PBXGroup;
+			children = (
+				0232911D2B5F13D1004A2B26 /* HapticManager.swift */,
+			);
+			path = Haptic;
+			sourceTree = "<group>";
+		};
+		0233E2932B5C1CD700595272 /* QRCodeImage */ = {
+			isa = PBXGroup;
+			children = (
+				0233E2942B5C1CE200595272 /* QRCodeImageView.swift */,
+			);
+			path = QRCodeImage;
+			sourceTree = "<group>";
+		};
+		024430C32B3996340024D729 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				024430C42B3996800024D729 /* CoffeeAccessoryProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		027468222B30CC0300664A7F /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				02B610BB2B600F8300844CC3 /* Onboarding */,
+				020509C92B31DF0700B1D0F3 /* CoffeesList */,
+				020509C82B31DF0100B1D0F3 /* CoffeePreview */,
+				027468662B319A9A00664A7F /* Login */,
+				027468502B30E49700664A7F /* QRCode */,
+				0274683D2B30CF5C00664A7F /* Home */,
+				027468362B30CF0F00664A7F /* Settings */,
+				027468312B30CEB200664A7F /* Main */,
+				027468232B30CC0600664A7F /* Splash */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		027468232B30CC0600664A7F /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				027468252B30CC0B00664A7F /* ViewModel */,
+				027468242B30CC0900664A7F /* View */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		027468242B30CC0900664A7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				027468262B30CC1100664A7F /* SplashView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		027468252B30CC0B00664A7F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				027468282B30CC2F00664A7F /* SplashViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0274682A2B30CC3D00664A7F /* Utilis */ = {
+			isa = PBXGroup;
+			children = (
+				0232911C2B5F13CC004A2B26 /* Haptic */,
+				024430C32B3996340024D729 /* Protocols */,
+				020509DA2B32E51500B1D0F3 /* Enums */,
+				020509D72B32592900B1D0F3 /* PriceFormatter */,
+				020509D42B3244D900B1D0F3 /* TagLayout */,
+				027468612B31031F00664A7F /* QRCodeGenerator */,
+				0274685D2B30F9F300664A7F /* CustomUI */,
+				027468572B30EF9400664A7F /* Extensions */,
+				027468482B30D87200664A7F /* DateFormatter */,
+				0274682B2B30CC3F00664A7F /* BaseViewModel */,
+			);
+			path = Utilis;
+			sourceTree = "<group>";
+		};
+		0274682B2B30CC3F00664A7F /* BaseViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0274682C2B30CC4500664A7F /* BaseViewModel.swift */,
+			);
+			path = BaseViewModel;
+			sourceTree = "<group>";
+		};
+		0274682E2B30CD6D00664A7F /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				0274682F2B30CD7100664A7F /* Route.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		027468312B30CEB200664A7F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				027468332B30CEB500664A7F /* ViewModel */,
+				027468322B30CEB300664A7F /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		027468322B30CEB300664A7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0231F2A42B30C849003BBF55 /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		027468332B30CEB500664A7F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				027468342B30CEBF00664A7F /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		027468362B30CF0F00664A7F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				027468382B30CF1200664A7F /* ViewModel */,
+				027468372B30CF1000664A7F /* View */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		027468372B30CF1000664A7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0274683B2B30CF2B00664A7F /* SettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		027468382B30CF1200664A7F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				027468392B30CF1800664A7F /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0274683D2B30CF5C00664A7F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0274683F2B30CF5F00664A7F /* ViewModel */,
+				0274683E2B30CF5D00664A7F /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0274683E2B30CF5D00664A7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				027468442B30D2F900664A7F /* Subviews */,
+				027468402B30CF6700664A7F /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0274683F2B30CF5F00664A7F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				027468422B30CF7400664A7F /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		027468442B30D2F900664A7F /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				027468452B30D2FA00664A7F /* VoucherCell */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		027468452B30D2FA00664A7F /* VoucherCell */ = {
+			isa = PBXGroup;
+			children = (
+				027468462B30D30500664A7F /* VoucherCell.swift */,
+			);
+			path = VoucherCell;
+			sourceTree = "<group>";
+		};
+		027468482B30D87200664A7F /* DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				027468492B30D87900664A7F /* DateFormatter.swift */,
+			);
+			path = DateFormatter;
+			sourceTree = "<group>";
+		};
+		0274684B2B30E10400664A7F /* VisualEffectView */ = {
+			isa = PBXGroup;
+			children = (
+				0274684C2B30E10B00664A7F /* VisualEffectView.swift */,
+			);
+			path = VisualEffectView;
+			sourceTree = "<group>";
+		};
+		027468502B30E49700664A7F /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				027468512B30E49900664A7F /* View */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
+		027468512B30E49900664A7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				027468522B30E49E00664A7F /* QRCodeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		027468572B30EF9400664A7F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0274685B2B30EFAD00664A7F /* UIDevice+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0274685D2B30F9F300664A7F /* CustomUI */ = {
+			isa = PBXGroup;
+			children = (
+				02B610B82B5FED9A00844CC3 /* CustomPagingIndicator */,
+				02B610B22B5FE14A00844CC3 /* CoverFlowView */,
+				0233E2932B5C1CD700595272 /* QRCodeImage */,
+				0274685E2B30F9F900664A7F /* TrackableScrollView */,
+				0274684B2B30E10400664A7F /* VisualEffectView */,
+			);
+			path = CustomUI;
+			sourceTree = "<group>";
+		};
+		0274685E2B30F9F900664A7F /* TrackableScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				0274685F2B30FA0A00664A7F /* TrackableScrollView.swift */,
+			);
+			path = TrackableScrollView;
+			sourceTree = "<group>";
+		};
+		027468612B31031F00664A7F /* QRCodeGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				027468622B31032B00664A7F /* QRCodeGenerator.swift */,
+			);
+			path = QRCodeGenerator;
+			sourceTree = "<group>";
+		};
+		027468662B319A9A00664A7F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				027468682B319AC500664A7F /* ViewModel */,
+				027468672B319AC300664A7F /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		027468672B319AC300664A7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				027468692B319AD700664A7F /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		027468682B319AC500664A7F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0274686B2B319ADE00664A7F /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		02B610B22B5FE14A00844CC3 /* CoverFlowView */ = {
+			isa = PBXGroup;
+			children = (
+				02B610B32B5FE15100844CC3 /* CoverFlowView.swift */,
+			);
+			path = CoverFlowView;
+			sourceTree = "<group>";
+		};
+		02B610B52B5FE94200844CC3 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				02B610B62B5FE94A00844CC3 /* CoffeeCell.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		02B610B82B5FED9A00844CC3 /* CustomPagingIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				02B610B92B5FEDA200844CC3 /* CustomPagingIndicator.swift */,
+			);
+			path = CustomPagingIndicator;
+			sourceTree = "<group>";
+		};
+		02B610BB2B600F8300844CC3 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				02B610BD2B600F8A00844CC3 /* ViewModel */,
+				02B610BC2B600F8700844CC3 /* View */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		02B610BC2B600F8700844CC3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				02B610C22B600FBC00844CC3 /* Subviews */,
+				02B610C02B600FB000844CC3 /* OnboardingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		02B610BD2B600F8A00844CC3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				02B610BE2B600F9200844CC3 /* OnboardingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		02B610C22B600FBC00844CC3 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				02B610C32B600FC600844CC3 /* OnboardingPageView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +660,49 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0231F2A52B30C849003BBF55 /* ContentView.swift in Sources */,
+				027468352B30CEBF00664A7F /* MainViewModel.swift in Sources */,
+				027468432B30CF7400664A7F /* HomeViewModel.swift in Sources */,
+				0274683C2B30CF2B00664A7F /* SettingsView.swift in Sources */,
+				0231F2A52B30C849003BBF55 /* MainView.swift in Sources */,
+				020509DC2B32E51D00B1D0F3 /* CoffeeAccessoryType.swift in Sources */,
+				0232911E2B5F13D1004A2B26 /* HapticManager.swift in Sources */,
+				020509D62B3244DE00B1D0F3 /* TagLayout.swift in Sources */,
+				0232911B2B5F0CB9004A2B26 /* Menu.swift in Sources */,
+				023291152B5EF182004A2B26 /* CoffeeAccessoryButton.swift in Sources */,
+				02B610BA2B5FEDA200844CC3 /* CustomPagingIndicator.swift in Sources */,
+				027468602B30FA0A00664A7F /* TrackableScrollView.swift in Sources */,
+				0274684A2B30D87900664A7F /* DateFormatter.swift in Sources */,
+				020509CD2B31DF1C00B1D0F3 /* CoffeePreview.swift in Sources */,
+				020509E22B32E64400B1D0F3 /* CoffeeDto.swift in Sources */,
+				027468412B30CF6700664A7F /* HomeView.swift in Sources */,
+				027468632B31032B00664A7F /* QRCodeGenerator.swift in Sources */,
+				023291112B5EF024004A2B26 /* OrderCoffeeButton.swift in Sources */,
+				0274682D2B30CC4500664A7F /* BaseViewModel.swift in Sources */,
+				02B610B72B5FE94A00844CC3 /* CoffeeCell.swift in Sources */,
+				023291172B5EF1E2004A2B26 /* AddProductPlusButton.swift in Sources */,
+				023291132B5EF0CB004A2B26 /* CoffeeAccessoriesList.swift in Sources */,
 				0231F2A32B30C849003BBF55 /* CoffeeAppApp.swift in Sources */,
+				027468302B30CD7100664A7F /* Route.swift in Sources */,
+				0274685C2B30EFAD00664A7F /* UIDevice+Extension.swift in Sources */,
+				02B610BF2B600F9200844CC3 /* OnboardingViewModel.swift in Sources */,
+				0233E2952B5C1CE200595272 /* QRCodeImageView.swift in Sources */,
+				024430C52B3996800024D729 /* CoffeeAccessoryProtocol.swift in Sources */,
+				02B610C12B600FB000844CC3 /* OnboardingView.swift in Sources */,
+				023291192B5EF45B004A2B26 /* SelectedCoffeeAccessoryButton.swift in Sources */,
+				02B610C42B600FC600844CC3 /* OnboardingPageView.swift in Sources */,
+				0274684D2B30E10B00664A7F /* VisualEffectView.swift in Sources */,
+				027468272B30CC1100664A7F /* SplashView.swift in Sources */,
+				027468472B30D30500664A7F /* VoucherCell.swift in Sources */,
+				02B610B42B5FE15100844CC3 /* CoverFlowView.swift in Sources */,
+				027468652B31094E00664A7F /* CoffeesListView.swift in Sources */,
+				0232910C2B5EEE24004A2B26 /* CoffeeAccessory.swift in Sources */,
+				027468532B30E49E00664A7F /* QRCodeView.swift in Sources */,
+				0274683A2B30CF1800664A7F /* ProfileViewModel.swift in Sources */,
+				0274686A2B319AD700664A7F /* LoginView.swift in Sources */,
+				027468292B30CC2F00664A7F /* SplashViewModel.swift in Sources */,
+				020509D92B32593000B1D0F3 /* PriceFormatter.swift in Sources */,
+				020509D32B323D8E00B1D0F3 /* CoffeePreviewViewModel.swift in Sources */,
+				0274686C2B319ADE00664A7F /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,8 +842,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,8 +871,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
