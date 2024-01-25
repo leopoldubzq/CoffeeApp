@@ -104,6 +104,12 @@
 		02D9BAEB2B62A8D2009FF2FC /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02D9BAEA2B62A8D2009FF2FC /* FirebaseAnalyticsSwift */; };
 		02D9BAED2B62A8D2009FF2FC /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 02D9BAEC2B62A8D2009FF2FC /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		02D9BAEF2B62A8D2009FF2FC /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 02D9BAEE2B62A8D2009FF2FC /* FirebaseAppCheck */; };
+		02D9BAF22B62AD71009FF2FC /* LoginWithGoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D9BAF12B62AD71009FF2FC /* LoginWithGoogleButton.swift */; };
+		02D9BAF32B62AD71009FF2FC /* LoginWithGoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D9BAF12B62AD71009FF2FC /* LoginWithGoogleButton.swift */; };
+		02D9BAF62B62AD85009FF2FC /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D9BAF52B62AD85009FF2FC /* Typealiases.swift */; };
+		02D9BAF72B62AD85009FF2FC /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D9BAF52B62AD85009FF2FC /* Typealiases.swift */; };
+		02D9BAFA2B62AE20009FF2FC /* LoginWithEmailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D9BAF92B62AE20009FF2FC /* LoginWithEmailButton.swift */; };
+		02D9BAFB2B62AE20009FF2FC /* LoginWithEmailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D9BAF92B62AE20009FF2FC /* LoginWithEmailButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -159,6 +165,9 @@
 		02D9BAAF2B62A1E9009FF2FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02D9BAB22B62A1E9009FF2FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		02D9BAE22B62A618009FF2FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		02D9BAF12B62AD71009FF2FC /* LoginWithGoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithGoogleButton.swift; sourceTree = "<group>"; };
+		02D9BAF52B62AD85009FF2FC /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
+		02D9BAF92B62AE20009FF2FC /* LoginWithEmailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithEmailButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,6 +399,7 @@
 		0274682A2B30CC3D00664A7F /* Utilis */ = {
 			isa = PBXGroup;
 			children = (
+				02D9BAF42B62AD7D009FF2FC /* Typealiases */,
 				0232911C2B5F13CC004A2B26 /* Haptic */,
 				024430C32B3996340024D729 /* Protocols */,
 				020509DA2B32E51500B1D0F3 /* Enums */,
@@ -592,6 +602,7 @@
 		027468672B319AC300664A7F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				02D9BAF82B62AE19009FF2FC /* Subviews */,
 				027468692B319AD700664A7F /* LoginView.swift */,
 			);
 			path = View;
@@ -688,6 +699,23 @@
 				02D9BAE22B62A618009FF2FC /* GoogleService-Info.plist */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		02D9BAF42B62AD7D009FF2FC /* Typealiases */ = {
+			isa = PBXGroup;
+			children = (
+				02D9BAF52B62AD85009FF2FC /* Typealiases.swift */,
+			);
+			path = Typealiases;
+			sourceTree = "<group>";
+		};
+		02D9BAF82B62AE19009FF2FC /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				02D9BAF12B62AD71009FF2FC /* LoginWithGoogleButton.swift */,
+				02D9BAF92B62AE20009FF2FC /* LoginWithEmailButton.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -807,6 +835,7 @@
 				0231F2A52B30C849003BBF55 /* MainView.swift in Sources */,
 				020509DC2B32E51D00B1D0F3 /* CoffeeAccessoryType.swift in Sources */,
 				0232911E2B5F13D1004A2B26 /* HapticManager.swift in Sources */,
+				02D9BAFA2B62AE20009FF2FC /* LoginWithEmailButton.swift in Sources */,
 				020509D62B3244DE00B1D0F3 /* TagLayout.swift in Sources */,
 				0232911B2B5F0CB9004A2B26 /* Menu.swift in Sources */,
 				023291152B5EF182004A2B26 /* CoffeeAccessoryButton.swift in Sources */,
@@ -825,6 +854,7 @@
 				0231F2A32B30C849003BBF55 /* CoffeeAppApp.swift in Sources */,
 				027468302B30CD7100664A7F /* Route.swift in Sources */,
 				0274685C2B30EFAD00664A7F /* UIDevice+Extension.swift in Sources */,
+				02D9BAF22B62AD71009FF2FC /* LoginWithGoogleButton.swift in Sources */,
 				02B610BF2B600F9200844CC3 /* OnboardingViewModel.swift in Sources */,
 				0233E2952B5C1CE200595272 /* QRCodeImageView.swift in Sources */,
 				024430C52B3996800024D729 /* CoffeeAccessoryProtocol.swift in Sources */,
@@ -832,6 +862,7 @@
 				023291192B5EF45B004A2B26 /* SelectedCoffeeAccessoryButton.swift in Sources */,
 				02B610C42B600FC600844CC3 /* OnboardingPageView.swift in Sources */,
 				0274684D2B30E10B00664A7F /* VisualEffectView.swift in Sources */,
+				02D9BAF62B62AD85009FF2FC /* Typealiases.swift in Sources */,
 				027468272B30CC1100664A7F /* SplashView.swift in Sources */,
 				027468472B30D30500664A7F /* VoucherCell.swift in Sources */,
 				02B610B42B5FE15100844CC3 /* CoverFlowView.swift in Sources */,
@@ -877,6 +908,8 @@
 				02D9BACB2B62A29A009FF2FC /* OrderCoffeeButton.swift in Sources */,
 				02D9BAB92B62A239009FF2FC /* CoffeeAccessoryType.swift in Sources */,
 				02D9BAC52B62A276009FF2FC /* OnboardingViewModel.swift in Sources */,
+				02D9BAF72B62AD85009FF2FC /* Typealiases.swift in Sources */,
+				02D9BAFB2B62AE20009FF2FC /* LoginWithEmailButton.swift in Sources */,
 				02D9BAC72B62A27D009FF2FC /* OnboardingView.swift in Sources */,
 				02D9BADD2B62A2F6009FF2FC /* Route.swift in Sources */,
 				02D9BABC2B62A248009FF2FC /* QRCodeGenerator.swift in Sources */,
@@ -887,6 +920,7 @@
 				02D9BABF2B62A259009FF2FC /* QRCodeImageView.swift in Sources */,
 				02D9BAD32B62A2BD009FF2FC /* QRCodeView.swift in Sources */,
 				02D9BAC82B62A28A009FF2FC /* CoffeeCell.swift in Sources */,
+				02D9BAF32B62AD71009FF2FC /* LoginWithGoogleButton.swift in Sources */,
 				02D9BAD82B62A2CF009FF2FC /* ProfileViewModel.swift in Sources */,
 				02D9BABA2B62A23F009FF2FC /* PriceFormatter.swift in Sources */,
 				02D9BAE02B62A302009FF2FC /* Menu.swift in Sources */,

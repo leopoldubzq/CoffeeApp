@@ -10,6 +10,7 @@ struct HomeView: View {
     @Namespace private var qrCodeStringNamespace
     @State private var scrollOffsetY: CGFloat = 0
     @State private var voucherToActivate: Voucher?
+    @State private var coffeeShopPickerExpanded: Bool = false
     @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
@@ -26,9 +27,15 @@ struct HomeView: View {
                             LoginTopSectionView()
                         }
                         VStack(spacing: 8) {
+                            HStack {
+                                CoffeeShopPickerButton()
+                                Spacer()
+                                    .frame(maxWidth: .infinity)
+                            }
                             Text("Godziny otwarcia")
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .foregroundStyle(.secondary)
+                                .font(.callout)
+                                .foregroundStyle(.accent)
                             Group {
                                 Text("pn-pt: ")
                                 + Text("9:00 - 19:00")
@@ -192,6 +199,27 @@ struct HomeView: View {
             }
             .padding()
         }
+    }
+    
+    @ViewBuilder
+    private func CoffeeShopPickerButton() -> some View {
+        Button {
+            withAnimation(.snappy(duration: 0.35, extraBounce: 0.08)) {
+                coffeeShopPickerExpanded.toggle()
+            }
+        } label: {
+            HStack {
+                Text("CostaCoffee")
+                    .font(.callout)
+                Image(systemName: "chevron.down")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 12, height: 12)
+                    .rotationEffect(.degrees(coffeeShopPickerExpanded ? 180 : 0))
+                Spacer()
+            }
+        }
+        .foregroundStyle(.secondary)
     }
 }
 
