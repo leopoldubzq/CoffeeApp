@@ -9,6 +9,11 @@ final class HomeViewModel: BaseViewModel {
         setupActiveVouchersArray()
     }
     
+    func fetchData() {
+        guard isLoggedIn else { return }
+        print("Fetch data")
+    }
+    
     private func setupActiveVouchersArray() {
         if isLoggedIn {
             activeVouchers = Voucher.mocks
@@ -16,4 +21,6 @@ final class HomeViewModel: BaseViewModel {
             activeVouchers = Voucher.mocks.count > 3 ? Array(Voucher.mocks[0...2]) : Voucher.mocks
         }
     }
+    
+    
 }

@@ -6,7 +6,10 @@ struct LoginWithGoogleButton: View {
     var action: VoidCallback
     
     var body: some View {
-        Button { action() } label: {
+        Button {
+            HapticManager.shared.impact(.soft)
+            action()
+        } label: {
             HStack {
                 Image("google_logo")
                     .resizable()
@@ -33,6 +36,6 @@ struct LoginWithGoogleButton: View {
 }
 
 #Preview {
-    LoginView()
+    LoginView(shouldPresentLoginView: .constant(false))
 }
 

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @Binding var shouldPresentLoginView: Bool
     @StateObject private var viewModel = HomeViewModel()
     @State private var route: [Route] = []
     @State private var qrCodeViewIsPresented: Bool = false
@@ -67,6 +68,10 @@ struct HomeView: View {
                 .toolbar(qrCodeViewIsPresented ? .hidden : .visible, for: .tabBar)
                 .onChange(of: qrCodeViewIsPresented) { _, _ in
                     HapticManager.shared.impact(.soft)
+                }
+                .task(id: shouldPresentLoginView) {
+                    viewModel.isLoggedIn = !shouldPresentLoginView
+                    viewModel.fetchData()
                 }
             }
         }

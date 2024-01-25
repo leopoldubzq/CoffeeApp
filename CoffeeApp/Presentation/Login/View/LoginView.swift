@@ -2,6 +2,8 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @Binding var shouldPresentLoginView: Bool
+    
     @State private var imageAnimationTrigger: Bool = false
     @Environment(\.colorScheme) var colorScheme
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -20,11 +22,15 @@ struct LoginView: View {
                     }
                 VStack(spacing: 16) {
                     Spacer()
-                    LoginWithGoogleButton(size: size) {}
-                    LoginWithEmailButton(size: size) {}
+                    LoginWithGoogleButton(size: size) {
+                        shouldPresentLoginView.toggle()
+                    }
+                    LoginWithEmailButton(size: size) {
+                        shouldPresentLoginView.toggle()
+                    }
                 }
                 .safeAreaPadding(.bottom)
-                .padding(.bottom)
+                .padding(.bottom, 32)
                 .frame(maxWidth: .infinity)
                 .overlay {
                     HStack(spacing: 12) {
@@ -54,5 +60,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    LoginView(shouldPresentLoginView: .constant(false))
 }

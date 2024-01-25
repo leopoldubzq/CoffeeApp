@@ -6,7 +6,10 @@ struct LoginWithEmailButton: View {
     var actionCallback: VoidCallback
     
     var body: some View {
-        Button { actionCallback() } label: {
+        Button {
+            HapticManager.shared.impact(.soft)
+            actionCallback()
+        } label: {
             HStack(alignment: .center) {
                 Image(systemName: "envelope")
                     .resizable()
@@ -35,5 +38,5 @@ struct LoginWithEmailButton: View {
 }
 
 #Preview {
-    LoginView()
+    LoginView(shouldPresentLoginView: .constant(false))
 }

@@ -116,6 +116,8 @@ enum SelectedIPadSetting: String {
 
 struct SettingsView: View {
     
+    @Binding var shouldPresentLoginView: Bool
+    @Binding var selectedTab: TabPage
     @State private var route: [String] = []
     @State private var selectedSetting: SelectedIPadSetting = .termsOfUse
     @State private var columnVisibility = NavigationSplitViewVisibility.all
@@ -129,7 +131,7 @@ struct SettingsView: View {
                 case .termsOfUse:
                     Text("Terms of use")
                 case .privacyPolicy:
-                    HomeView()
+                    HomeView(shouldPresentLoginView: .constant(false))
                 default:
                     Text("Settings screen")
                 }
@@ -210,7 +212,12 @@ struct SettingsView: View {
                     }
                     
                     Section {
-                        Button {} label: {
+                        Button {
+                            shouldPresentLoginView.toggle()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                selectedTab = .home
+                            }
+                        } label: {
                             HStack {
                                 Text(Settings.Logout.logout.title)
                                 Spacer()

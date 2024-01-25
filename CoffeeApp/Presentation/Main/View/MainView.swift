@@ -1,43 +1,17 @@
 import SwiftUI
 
-enum TabPage: CaseIterable {
-    case home
-    case menu
-    case settings
-    
-    var title: String {
-        switch self {
-        case .home:
-            return "start"
-        case .menu:
-            return "menu"
-        case .settings:
-            return "ustawienia"
-        }
-    }
-    
-    var imageName: String {
-        switch self {
-        case .home:
-            return "house.fill"
-        case .menu:
-            return "menucard"
-        case .settings:
-            return "gearshape.fill"
-        }
-    }
-}
-
 struct MainView: View {
     
     @State var selectedTab: TabPage = .home
     @State private var imageAnimationTrigger: Bool = false
     @State private var shouldFinishOnboarding: Bool = false
+    @State private var viewModel = MainViewModel()
+    @State private var shouldPresentLoginView: Bool = true
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            HomeView()
+            HomeView(shouldPresentLoginView: $shouldPresentLoginView)
                 .tabItem {
                     Image(systemName: TabPage.home.imageName)
                     Text(TabPage.home.title)
@@ -49,7 +23,8 @@ struct MainView: View {
                     Text(TabPage.menu.title)
                 }
                 .tag(TabPage.menu)
-            SettingsView()
+            SettingsView(shouldPresentLoginView: $shouldPresentLoginView,
+                         selectedTab: $selectedTab)
                 .tabItem {
                     Image(systemName: TabPage.settings.imageName)
                     Text(TabPage.settings.title)
@@ -59,6 +34,9 @@ struct MainView: View {
         .onChange(of: selectedTab) { _, _ in
             HapticManager.shared.impact(.medium)
         }
+        .fullScreenCover(isPresented: $shouldPresentLoginView, content: {
+            LoginView(shouldPresentLoginView: $shouldPresentLoginView)
+        })
 //        .overlay {
 //            if !shouldFinishOnboarding {
 //                ZStack {
