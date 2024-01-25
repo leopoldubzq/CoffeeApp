@@ -189,5 +189,5 @@ struct CoffeesListView: View {
 }
 
 #Preview {
-    MainView()
+    MainView(selectedTab: .menu)
 }

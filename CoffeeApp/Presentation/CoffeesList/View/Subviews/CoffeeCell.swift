@@ -27,7 +27,6 @@ struct CoffeeCell: View {
                 .aspectRatio(contentMode: .fit)
                 .matchedGeometryEffect(id: coffee.imageMatchedGeometryID, in: coffeeImageNamespace)
                 .frame(width: getImageDimensions(), height: getImageDimensions())
-                .background(Color.red)
         }
         .onTapGesture {
             HapticManager.shared.impact(.soft)

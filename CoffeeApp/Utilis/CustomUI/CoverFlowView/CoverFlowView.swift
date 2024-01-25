@@ -66,7 +66,6 @@ struct CoverFlowView<Content: View, Item: RandomAccessCollection>: View where It
         /// Limiting Rotation between 0-90
         let cappedRotation = max(min(rotation, 90), 0)
         let degree = cappedProgress * (cappedRotation * 2)
-        
         return cappedRotation - degree
     }
 }
