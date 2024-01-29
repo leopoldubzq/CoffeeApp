@@ -1,4 +1,6 @@
 import SwiftUI
+import Firebase
+
 enum Settings {
     enum General: String, CaseIterable {
         case orderHistory
@@ -213,6 +215,7 @@ struct SettingsView: View {
                     
                     Section {
                         Button {
+                            try! Auth.auth().signOut()
                             shouldPresentLoginView.toggle()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 selectedTab = .home

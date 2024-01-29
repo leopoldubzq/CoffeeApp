@@ -35,6 +35,7 @@ enum OnboardingPage: CaseIterable {
 struct OnboardingView: View {
     
     @Binding var shouldFinishOnboarding: Bool
+    @AppStorage(AppStorageKeys.hasSeenOnboarding.rawValue) var hasSeenOnboarding: Bool = false
     
     var body: some View {
         GeometryReader { proxy in
@@ -49,9 +50,7 @@ struct OnboardingView: View {
                         .overlay(alignment: .bottomTrailing) {
                             if page == OnboardingPage.allCases.last {
                                 Button {
-                                    withAnimation(.easeInOut(duration: 0.2)) {
-                                        shouldFinishOnboarding.toggle()
-                                    }
+                                    hasSeenOnboarding = true
                                 } label: {
                                     ZStack {
                                         Circle()

@@ -9,6 +9,7 @@ struct MainView: View {
     @State private var viewModel = MainViewModel()
     @State private var shouldPresentLoginView: Bool = false
     @Environment(\.colorScheme) var colorScheme
+    @AppStorage(AppStorageKeys.hasSeenOnboarding.rawValue) var hasSeenOnboarding: Bool = false
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -33,13 +34,20 @@ struct MainView: View {
                 .tag(TabPage.settings)
         }
         .onChange(of: selectedTab) { _, _ in
+            guard Auth.auth().currentUser != nil else { return }
             HapticManager.shared.impact(.medium)
         }
+        .onChange(of: hasSeenOnboarding, { _, newValue in
+            withAnimation(.easeIn(duration: 0.2)) {
+                shouldFinishOnboarding = newValue
+            }
+        })
         .fullScreenCover(isPresented: $shouldPresentLoginView, content: {
             LoginView(shouldPresentLoginView: $shouldPresentLoginView)
         })
         .onAppear {
             shouldPresentLoginView = Auth.auth().currentUser == nil
+            shouldFinishOnboarding = hasSeenOnboarding
         }
         .overlay {
             if !shouldPresentLoginView && !shouldFinishOnboarding {

@@ -126,6 +126,8 @@
 		02D9BB1F2B62D49A009FF2FC /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 02D9BB1E2B62D49A009FF2FC /* FirebaseStorage */; };
 		02F095402B67CDD2002E5B6A /* ChangeAppearanceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0953F2B67CDD2002E5B6A /* ChangeAppearanceButton.swift */; };
 		02F095412B67CDD2002E5B6A /* ChangeAppearanceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0953F2B67CDD2002E5B6A /* ChangeAppearanceButton.swift */; };
+		02F095442B67DCF4002E5B6A /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F095432B67DCF4002E5B6A /* AppStorageKeys.swift */; };
+		02F095452B67DCF4002E5B6A /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F095432B67DCF4002E5B6A /* AppStorageKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -190,6 +192,7 @@
 		02D9BB102B62D282009FF2FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		02D9BB122B62D2A1009FF2FC /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		02F0953F2B67CDD2002E5B6A /* ChangeAppearanceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAppearanceButton.swift; sourceTree = "<group>"; };
+		02F095432B67DCF4002E5B6A /* AppStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,6 +432,7 @@
 		0274682A2B30CC3D00664A7F /* Utilis */ = {
 			isa = PBXGroup;
 			children = (
+				02F095422B67DCE4002E5B6A /* AppStorageKeys */,
 				02D9BB032B62D14D009FF2FC /* ApplicationUtility */,
 				02D9BAF42B62AD7D009FF2FC /* Typealiases */,
 				0232911C2B5F13CC004A2B26 /* Haptic */,
@@ -783,6 +787,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		02F095422B67DCE4002E5B6A /* AppStorageKeys */ = {
+			isa = PBXGroup;
+			children = (
+				02F095432B67DCF4002E5B6A /* AppStorageKeys.swift */,
+			);
+			path = AppStorageKeys;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -902,6 +914,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				027468352B30CEBF00664A7F /* MainViewModel.swift in Sources */,
+				02F095442B67DCF4002E5B6A /* AppStorageKeys.swift in Sources */,
 				027468432B30CF7400664A7F /* HomeViewModel.swift in Sources */,
 				0274683C2B30CF2B00664A7F /* SettingsView.swift in Sources */,
 				0231F2A52B30C849003BBF55 /* MainView.swift in Sources */,
@@ -1005,6 +1018,7 @@
 				02D9BAE02B62A302009FF2FC /* Menu.swift in Sources */,
 				02D9BB0A2B62D17E009FF2FC /* CAError.swift in Sources */,
 				02D9BB142B62D2A1009FF2FC /* SessionService.swift in Sources */,
+				02F095452B67DCF4002E5B6A /* AppStorageKeys.swift in Sources */,
 				02D9BADE2B62A2FD009FF2FC /* CoffeeDto.swift in Sources */,
 				02D9BABD2B62A24D009FF2FC /* CustomPagingIndicator.swift in Sources */,
 				02D9BAC12B62A260009FF2FC /* VisualEffectView.swift in Sources */,
