@@ -27,6 +27,7 @@ final class SessionService {
         return Future { promise in
             guard let clientID = FirebaseApp.app()?.options.clientID else { return }
             let config = GIDConfiguration(clientID: clientID)
+            GIDSignIn.sharedInstance.configuration = config
             let rootVC = ApplicationUtility.rootViewController
             GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { [weak self] signInResult, error in
                 if let error { promise(.failure(CAError.basicError(error.localizedDescription))) }

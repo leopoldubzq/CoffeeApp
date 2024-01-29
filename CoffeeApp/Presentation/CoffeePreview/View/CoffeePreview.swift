@@ -28,7 +28,7 @@ struct CoffeePreview: View {
                     LazyVStack(spacing: 8, pinnedViews: [.sectionHeaders]) {
                         Section {
                             TagLayout(alignment: .leading) {
-                                ForEach(viewModel.selectedCoffeeAccessories, id: \.self) { accessory in
+                                ForEach(Array(Set(viewModel.selectedCoffeeAccessories)), id: \.self) { accessory in
                                     SelectedCoffeeAccessoryButton(accessory: accessory) {
                                         withAnimation(.snappy(duration: 0.35, extraBounce: 0.1)) {
                                             viewModel.selectedCoffeeAccessories.removeAll(where: { $0.rawValue == accessory.rawValue })
@@ -119,7 +119,7 @@ struct CoffeePreview: View {
     private func CancelButton() -> some View {
         Button {
             HapticManager.shared.impact(.soft)
-            withAnimation(.snappy(duration: 0.35, extraBounce: 0.1)) {
+            withAnimation(.snappy(duration: 0.3)) {
                 coffeePreviewVisible.toggle()
             }
         } label: {

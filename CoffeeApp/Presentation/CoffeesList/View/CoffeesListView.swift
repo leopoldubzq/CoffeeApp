@@ -7,27 +7,27 @@ enum ListAppearanceType {
     var title: String {
         switch self {
         case .horizontal:
-            return "Tryb siatki"
+            return "Pionowo"
         case .vertical:
-            return "Tryb horyzontalnej listy"
+            return "Poziomo"
         }
     }
     
     var imageName: String {
         switch self {
         case .horizontal:
-            return "squareshape.split.2x2"
+            return "square.split.2x2"
         case .vertical:
-            return "list.bullet"
+            return "rectangle.split.3x1"
         }
     }
     
     var imageRotationDegrees: CGFloat {
         switch self {
         case .horizontal:
-            return 0
-        case .vertical:
             return 90
+        case .vertical:
+            return 0
         }
     }
 }
@@ -65,22 +65,22 @@ struct CoffeesListView: View {
                     ScrollView(.horizontal) {
                         HStack(spacing: 16) {
                             ForEach(Menu.allCases, id: \.self) { menuItem in
-                                Button {
+                                
+                                VStack(spacing: 6) {
+                                    Text(menuItem.title)
+                                        .foregroundStyle(Color.init(uiColor: .label))
+                                        .fontWeight(selectedMenuType == menuItem ? .bold : .regular)
+                                    Rectangle()
+                                        .fill(selectedMenuType == menuItem ? .accent : .clear)
+                                        .frame(height: 2)
+                                }
+                                .frame(height: 50)
+                                .onTapGesture {
                                     selectedMenuType = menuItem
                                     withAnimation {
                                         scrollView.scrollTo(menuItem, anchor: .center)
                                     }
-                                } label: {
-                                    VStack(spacing: 6) {
-                                        Text(menuItem.title)
-                                            .foregroundStyle(Color.init(uiColor: .label))
-                                            .fontWeight(selectedMenuType == menuItem ? .bold : .regular)
-                                        Rectangle()
-                                            .fill(selectedMenuType == menuItem ? .accent : .clear)
-                                            .frame(height: 2)
-                                    }
                                 }
-                                .frame(height: 50)
                             }
                         }
                     }
@@ -99,8 +99,6 @@ struct CoffeesListView: View {
                         .foregroundStyle(Color.white)
                         .padding(6)
                         .padding(.horizontal, 2)
-                        .background(Color.accentColor)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
                     Spacer()
                 }
@@ -112,7 +110,7 @@ struct CoffeesListView: View {
                                   spacing: spacing,
                                   rotation: rotation,
                                   items: coffees) { coffee in
-                        CoffeeCell(coffee: coffee, 
+                        CoffeeCell(coffee: coffee,
                                    size: size,
                                    selectedCoffee: $selectedCoffee,
                                    coffeePreviewVisible: $coffeePreviewVisible,
@@ -166,7 +164,7 @@ struct CoffeesListView: View {
     
     private func changeListAppearance() {
         HapticManager.shared.impact(.soft)
-        withAnimation(.snappy(duration: 0.35, extraBounce: 0.1)) {
+        withAnimation(.snappy(duration: 0.3)) {
             listAppearance = listAppearance == .horizontal ? .vertical : .horizontal
         }
     }

@@ -7,7 +7,7 @@ struct OrderCoffeeButton: View {
     
     var body: some View {
         Button {
-            withAnimation(.snappy(duration: 0.4, extraBounce: 0.1)) {
+            withAnimation(.snappy(duration: 0.3)) {
                 coffeePreviewVisible.toggle()
             }
         } label: {

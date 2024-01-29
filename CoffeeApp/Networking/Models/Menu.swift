@@ -4,6 +4,7 @@ enum Menu: CaseIterable {
     case coffees
     case snacks
     case breakfastSets
+    case drinks
     
     var title: String {
         switch self {
@@ -13,6 +14,8 @@ enum Menu: CaseIterable {
             return "Przekąski"
         case .breakfastSets:
             return "Zestawy śniadaniowe"
+        case .drinks:
+            return "Napoje"
         }
     }
 }

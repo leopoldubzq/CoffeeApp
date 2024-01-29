@@ -1,4 +1,5 @@
 import SwiftUI
+import Firebase
 
 struct MainView: View {
     
@@ -6,7 +7,7 @@ struct MainView: View {
     @State private var imageAnimationTrigger: Bool = false
     @State private var shouldFinishOnboarding: Bool = false
     @State private var viewModel = MainViewModel()
-    @State private var shouldPresentLoginView: Bool = true
+    @State private var shouldPresentLoginView: Bool = false
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -37,15 +38,18 @@ struct MainView: View {
         .fullScreenCover(isPresented: $shouldPresentLoginView, content: {
             LoginView(shouldPresentLoginView: $shouldPresentLoginView)
         })
-//        .overlay {
-//            if !shouldFinishOnboarding {
-//                ZStack {
-//                    VisualEffectView(effect: UIBlurEffect(style: colorScheme == .dark ? .dark : .light))
-//                    OnboardingView(shouldFinishOnboarding: $shouldFinishOnboarding)
-//                }
-//                .ignoresSafeArea(.all)
-//            }
-//        }
+        .onAppear {
+            shouldPresentLoginView = Auth.auth().currentUser == nil
+        }
+        .overlay {
+            if !shouldPresentLoginView && !shouldFinishOnboarding {
+                ZStack {
+                    VisualEffectView(effect: UIBlurEffect(style: colorScheme == .dark ? .dark : .light))
+                    OnboardingView(shouldFinishOnboarding: $shouldFinishOnboarding)
+                }
+                .ignoresSafeArea(.all)
+            }
+        }
     }
 }
 

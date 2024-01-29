@@ -3,9 +3,9 @@ import SwiftUI
 struct LoginView: View {
     
     @Binding var shouldPresentLoginView: Bool
-    
     @State private var imageAnimationTrigger: Bool = false
     @Environment(\.colorScheme) var colorScheme
+    @StateObject private var viewModel = LoginViewModel()
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -22,9 +22,7 @@ struct LoginView: View {
                     }
                 VStack(spacing: 16) {
                     Spacer()
-                    LoginWithGoogleButton(size: size) {
-                        shouldPresentLoginView.toggle()
-                    }
+                    LoginWithGoogleButton(size: size) { viewModel.loginWithGoogle() }
                     LoginWithEmailButton(size: size) {
                         shouldPresentLoginView.toggle()
                     }
@@ -52,6 +50,16 @@ struct LoginView: View {
                     .onReceive(timer, perform: { _ in
                         imageAnimationTrigger.toggle()
                     })
+                }
+            }
+            .onChange(of: viewModel.shouldPresentLogin) { _, newValue in
+                shouldPresentLoginView = newValue
+            }
+            .overlay {
+                if viewModel.isLoading {
+                    ProgressView("Wczytywanie danych")
+                        .foregroundStyle(.white)
+                        .offset(y: 80)
                 }
             }
         }

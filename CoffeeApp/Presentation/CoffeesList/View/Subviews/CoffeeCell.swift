@@ -31,12 +31,9 @@ struct CoffeeCell: View {
         .onTapGesture {
             HapticManager.shared.impact(.soft)
             selectedCoffee = coffee
-            withAnimation(.snappy(duration: 0.35, extraBounce: 0.07)) {
+            withAnimation(.snappy(duration: 0.3)) {
                 coffeePreviewVisible.toggle()
             }
-        }
-        .onAppear {
-            print("")
         }
     }
     

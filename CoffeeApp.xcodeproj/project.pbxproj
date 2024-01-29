@@ -124,6 +124,8 @@
 		02D9BB1B2B62D49A009FF2FC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 02D9BB1A2B62D49A009FF2FC /* FirebaseAuth */; };
 		02D9BB1D2B62D49A009FF2FC /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02D9BB1C2B62D49A009FF2FC /* FirebaseFirestoreSwift */; };
 		02D9BB1F2B62D49A009FF2FC /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 02D9BB1E2B62D49A009FF2FC /* FirebaseStorage */; };
+		02F095402B67CDD2002E5B6A /* ChangeAppearanceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0953F2B67CDD2002E5B6A /* ChangeAppearanceButton.swift */; };
+		02F095412B67CDD2002E5B6A /* ChangeAppearanceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0953F2B67CDD2002E5B6A /* ChangeAppearanceButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -187,6 +189,7 @@
 		02D9BB0D2B62D259009FF2FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02D9BB102B62D282009FF2FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		02D9BB122B62D2A1009FF2FC /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
+		02F0953F2B67CDD2002E5B6A /* ChangeAppearanceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAppearanceButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -657,6 +660,7 @@
 			isa = PBXGroup;
 			children = (
 				02B610B62B5FE94A00844CC3 /* CoffeeCell.swift */,
+				02F0953F2B67CDD2002E5B6A /* ChangeAppearanceButton.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -942,6 +946,7 @@
 				0232910C2B5EEE24004A2B26 /* CoffeeAccessory.swift in Sources */,
 				027468532B30E49E00664A7F /* QRCodeView.swift in Sources */,
 				0274683A2B30CF1800664A7F /* ProfileViewModel.swift in Sources */,
+				02F095402B67CDD2002E5B6A /* ChangeAppearanceButton.swift in Sources */,
 				0274686A2B319AD700664A7F /* LoginView.swift in Sources */,
 				027468292B30CC2F00664A7F /* SplashViewModel.swift in Sources */,
 				020509D92B32593000B1D0F3 /* PriceFormatter.swift in Sources */,
@@ -1003,6 +1008,7 @@
 				02D9BADE2B62A2FD009FF2FC /* CoffeeDto.swift in Sources */,
 				02D9BABD2B62A24D009FF2FC /* CustomPagingIndicator.swift in Sources */,
 				02D9BAC12B62A260009FF2FC /* VisualEffectView.swift in Sources */,
+				02F095412B67CDD2002E5B6A /* ChangeAppearanceButton.swift in Sources */,
 				02D9BAAC2B62A1E8009FF2FC /* CoffeeAppAdminApp.swift in Sources */,
 				02D9BACF2B62A2A6009FF2FC /* SelectedCoffeeAccessoryButton.swift in Sources */,
 			);
