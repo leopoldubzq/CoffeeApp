@@ -112,5 +112,5 @@ extension View {
 }
 
 #Preview {
-    CoffeesListView()
+    MenuList()
 }

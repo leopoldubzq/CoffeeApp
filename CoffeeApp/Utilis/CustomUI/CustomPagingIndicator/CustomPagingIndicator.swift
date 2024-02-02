@@ -22,7 +22,7 @@ struct CustomPagingIndicator: View {
             /// ScrollView Bounds
             if let scrollViewWidth = $0.bounds(of: .scrollView(axis: .horizontal))?.width, scrollViewWidth > 0 {
                 let minX = $0.frame(in: .scrollView(axis: .horizontal)).minX
-                let calculatedScrollViewWidth: CGFloat = scrollViewWidth - (cellItemPadding * 2) - cellItemSpacing
+                let calculatedScrollViewWidth: CGFloat = scrollViewWidth - (cellItemPadding * 2) + cellItemSpacing
                 let totalPages = Int(width / calculatedScrollViewWidth)
                 /// Progress
                 let freeProgress = -minX / calculatedScrollViewWidth
@@ -62,5 +62,5 @@ struct CustomPagingIndicator: View {
 }
 
 #Preview {
-    CoffeesListView()
+    MenuList()
 }

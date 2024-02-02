@@ -19,7 +19,7 @@ struct MainView: View {
                     Text(TabPage.home.title)
                 }
                 .tag(TabPage.home)
-            CoffeesListView()
+            MenuList()
                 .tabItem {
                     Image(systemName: TabPage.menu.imageName)
                     Text(TabPage.menu.title)

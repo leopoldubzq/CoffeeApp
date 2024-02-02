@@ -43,7 +43,7 @@
 		0274685C2B30EFAD00664A7F /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274685B2B30EFAD00664A7F /* UIDevice+Extension.swift */; };
 		027468602B30FA0A00664A7F /* TrackableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274685F2B30FA0A00664A7F /* TrackableScrollView.swift */; };
 		027468632B31032B00664A7F /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468622B31032B00664A7F /* QRCodeGenerator.swift */; };
-		027468652B31094E00664A7F /* CoffeesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468642B31094E00664A7F /* CoffeesListView.swift */; };
+		027468652B31094E00664A7F /* MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468642B31094E00664A7F /* MenuList.swift */; };
 		0274686A2B319AD700664A7F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468692B319AD700664A7F /* LoginView.swift */; };
 		0274686C2B319ADE00664A7F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274686B2B319ADE00664A7F /* LoginViewModel.swift */; };
 		02B610B42B5FE15100844CC3 /* CoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610B32B5FE15100844CC3 /* CoverFlowView.swift */; };
@@ -75,7 +75,7 @@
 		02D9BAC62B62A27B009FF2FC /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610C32B600FC600844CC3 /* OnboardingPageView.swift */; };
 		02D9BAC72B62A27D009FF2FC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610C02B600FB000844CC3 /* OnboardingView.swift */; };
 		02D9BAC82B62A28A009FF2FC /* CoffeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610B62B5FE94A00844CC3 /* CoffeeCell.swift */; };
-		02D9BAC92B62A28D009FF2FC /* CoffeesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468642B31094E00664A7F /* CoffeesListView.swift */; };
+		02D9BAC92B62A28D009FF2FC /* MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468642B31094E00664A7F /* MenuList.swift */; };
 		02D9BACA2B62A296009FF2FC /* CoffeePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509D22B323D8E00B1D0F3 /* CoffeePreviewViewModel.swift */; };
 		02D9BACB2B62A29A009FF2FC /* OrderCoffeeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023291102B5EF024004A2B26 /* OrderCoffeeButton.swift */; };
 		02D9BACC2B62A29D009FF2FC /* CoffeeAccessoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023291122B5EF0CB004A2B26 /* CoffeeAccessoriesList.swift */; };
@@ -172,7 +172,7 @@
 		0274685B2B30EFAD00664A7F /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		0274685F2B30FA0A00664A7F /* TrackableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableScrollView.swift; sourceTree = "<group>"; };
 		027468622B31032B00664A7F /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
-		027468642B31094E00664A7F /* CoffeesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeesListView.swift; sourceTree = "<group>"; };
+		027468642B31094E00664A7F /* MenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuList.swift; sourceTree = "<group>"; };
 		027468692B319AD700664A7F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0274686B2B319ADE00664A7F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		02B610B32B5FE15100844CC3 /* CoverFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverFlowView.swift; sourceTree = "<group>"; };
@@ -239,19 +239,19 @@
 			path = CoffeePreview;
 			sourceTree = "<group>";
 		};
-		020509C92B31DF0700B1D0F3 /* CoffeesList */ = {
+		020509C92B31DF0700B1D0F3 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
 				020509CA2B31DF0C00B1D0F3 /* View */,
 			);
-			path = CoffeesList;
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		020509CA2B31DF0C00B1D0F3 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				02B610B52B5FE94200844CC3 /* Subviews */,
-				027468642B31094E00664A7F /* CoffeesListView.swift */,
+				027468642B31094E00664A7F /* MenuList.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -399,7 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				02B610BB2B600F8300844CC3 /* Onboarding */,
-				020509C92B31DF0700B1D0F3 /* CoffeesList */,
+				020509C92B31DF0700B1D0F3 /* Menu */,
 				020509C82B31DF0100B1D0F3 /* CoffeePreview */,
 				027468662B319A9A00664A7F /* Login */,
 				027468502B30E49700664A7F /* QRCode */,
@@ -983,7 +983,7 @@
 				027468272B30CC1100664A7F /* SplashView.swift in Sources */,
 				027468472B30D30500664A7F /* VoucherCell.swift in Sources */,
 				02B610B42B5FE15100844CC3 /* CoverFlowView.swift in Sources */,
-				027468652B31094E00664A7F /* CoffeesListView.swift in Sources */,
+				027468652B31094E00664A7F /* MenuList.swift in Sources */,
 				0232910C2B5EEE24004A2B26 /* CoffeeAccessory.swift in Sources */,
 				027468532B30E49E00664A7F /* QRCodeView.swift in Sources */,
 				0274683A2B30CF1800664A7F /* ProfileViewModel.swift in Sources */,
@@ -1034,7 +1034,7 @@
 				02D9BAC72B62A27D009FF2FC /* OnboardingView.swift in Sources */,
 				02D9BADD2B62A2F6009FF2FC /* Route.swift in Sources */,
 				02D9BABC2B62A248009FF2FC /* QRCodeGenerator.swift in Sources */,
-				02D9BAC92B62A28D009FF2FC /* CoffeesListView.swift in Sources */,
+				02D9BAC92B62A28D009FF2FC /* MenuList.swift in Sources */,
 				02D9BAC32B62A26B009FF2FC /* DateFormatter.swift in Sources */,
 				02D9BADF2B62A300009FF2FC /* CoffeeAccessory.swift in Sources */,
 				02D9BAD52B62A2C5009FF2FC /* VoucherCell.swift in Sources */,

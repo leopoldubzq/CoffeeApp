@@ -49,5 +49,5 @@ struct CoffeeCell: View {
 }
 
 #Preview {
-    CoffeesListView()
+    MenuList()
 }
