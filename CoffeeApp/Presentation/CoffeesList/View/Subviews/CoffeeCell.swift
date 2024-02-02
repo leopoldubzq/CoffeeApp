@@ -7,6 +7,7 @@ struct CoffeeCell: View {
     @Binding var selectedCoffee: CoffeeDto?
     @Binding var coffeePreviewVisible: Bool
     @Binding var listAppearance: ListAppearanceType
+    @Binding var deviceOrientation: UIDeviceOrientation
     var coffeeTitleNamespace: Namespace.ID
     var coffeePriceNamespace: Namespace.ID
     var coffeeImageNamespace: Namespace.ID
@@ -31,7 +32,7 @@ struct CoffeeCell: View {
         .onTapGesture {
             HapticManager.shared.impact(.soft)
             selectedCoffee = coffee
-            withAnimation(.snappy(duration: 0.3)) {
+            withAnimation(.snappy(duration: 0.3, extraBounce: 0.03)) {
                 coffeePreviewVisible.toggle()
             }
         }
@@ -40,9 +41,9 @@ struct CoffeeCell: View {
     private func getImageDimensions() -> CGFloat {
         switch listAppearance {
         case .horizontal:
-            return size.height * 0.35
+            return size.height * (UIDevice.isIPhone ? 0.35 : 0.55)
         case .vertical:
-            return size.height * 0.25
+            return size.height * (deviceOrientation == .landscapeLeft || deviceOrientation == .landscapeRight ? 0.45 : 0.25)
         }
     }
 }

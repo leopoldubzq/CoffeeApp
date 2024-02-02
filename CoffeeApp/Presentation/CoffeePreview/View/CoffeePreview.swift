@@ -66,6 +66,7 @@ struct CoffeePreview: View {
                             OrderedCoffeeHeader()
                         }
                     }
+                    
                 }
                 .scrollBounceBehavior(.basedOnSize)
                 .scrollIndicators(.hidden)
@@ -75,10 +76,10 @@ struct CoffeePreview: View {
                 Spacer()
                 OrderCoffeeButton(coffeePreviewVisible: $coffeePreviewVisible,
                                   safeAreaBottom: proxy.safeAreaInsets.bottom)
+                .padding(.bottom, UIDevice.isIPad ? 100 : 0)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.init(uiColor: .systemBackground))
-            .ignoresSafeArea(edges: [.bottom, .leading, .trailing])
             .onAppear {
                 viewModel.coffeeAccesories = coffee.accessories
             }
@@ -119,7 +120,7 @@ struct CoffeePreview: View {
     private func CancelButton() -> some View {
         Button {
             HapticManager.shared.impact(.soft)
-            withAnimation(.snappy(duration: 0.3)) {
+            withAnimation(.snappy(duration: 0.3, extraBounce: 0.03)) {
                 coffeePreviewVisible.toggle()
             }
         } label: {

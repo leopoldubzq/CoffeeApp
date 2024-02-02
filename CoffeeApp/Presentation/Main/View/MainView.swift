@@ -46,18 +46,18 @@ struct MainView: View {
             LoginView(shouldPresentLoginView: $shouldPresentLoginView)
         })
         .onAppear {
-            shouldPresentLoginView = Auth.auth().currentUser == nil
-            shouldFinishOnboarding = hasSeenOnboarding
+            // shouldPresentLoginView = Auth.auth().currentUser == nil
+            // shouldFinishOnboarding = hasSeenOnboarding
         }
-        .overlay {
-            if !shouldPresentLoginView && !shouldFinishOnboarding {
-                ZStack {
-                    VisualEffectView(effect: UIBlurEffect(style: colorScheme == .dark ? .dark : .light))
-                    OnboardingView(shouldFinishOnboarding: $shouldFinishOnboarding)
-                }
-                .ignoresSafeArea(.all)
-            }
-        }
+//        .overlay {
+//            if !shouldPresentLoginView && !shouldFinishOnboarding {
+//                ZStack {
+//                    VisualEffectView(effect: UIBlurEffect(style: colorScheme == .dark ? .dark : .light))
+//                    OnboardingView(shouldFinishOnboarding: $shouldFinishOnboarding)
+//                }
+//                .ignoresSafeArea(.all)
+//            }
+//        }
     }
 }
 

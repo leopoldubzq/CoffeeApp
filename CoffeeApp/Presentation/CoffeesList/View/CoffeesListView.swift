@@ -46,13 +46,13 @@ struct CoffeesListView: View {
     @State private var coffeePreviewVisible: Bool = false
     @State private var selectedCoffee: CoffeeDto?
     @State private var selectedMenuType: Menu = .coffees
-    @State private var spacing: CGFloat = 0
-    @State private var rotation: CGFloat = 40
+    @State private var spacing: CGFloat = 20
+    @State private var rotation: CGFloat = 15
     @State private var enableReflection: Bool = false
     @State private var listAppearance: ListAppearanceType = .horizontal
     @State private var scrollOffsetY: CGFloat = 0
     @State private var shouldHideAppearanceSection: Bool = false
-    
+    @State private var orientation = UIDeviceOrientation.unknown
     @Namespace private var coffeeImageNamespace
     @Namespace private var coffeeTitleNamespace
     @Namespace private var coffeePriceNamespace
@@ -105,21 +105,56 @@ struct CoffeesListView: View {
                 .padding(.horizontal)
                 if listAppearance == .horizontal {
                     Spacer()
-                    CoverFlowView(itemWidth: getCoffeeItemWidth(size: size),
-                                  enableReflection: false,
-                                  spacing: spacing,
-                                  rotation: rotation,
-                                  items: coffees) { coffee in
-                        CoffeeCell(coffee: coffee,
-                                   size: size,
-                                   selectedCoffee: $selectedCoffee,
-                                   coffeePreviewVisible: $coffeePreviewVisible,
-                                   listAppearance: $listAppearance,
-                                   coffeeTitleNamespace: coffeeTitleNamespace,
-                                   coffeePriceNamespace: coffeePriceNamespace,
-                                   coffeeImageNamespace: coffeeImageNamespace)
+                    
+                    if UIDevice.isIPad {
+                        ScrollView(.horizontal) {
+                            HStack(spacing: 0) {
+                                ForEach(coffees) { coffee in
+                                    CoffeeCell(coffee: coffee,
+                                               size: size,
+                                               selectedCoffee: $selectedCoffee,
+                                               coffeePreviewVisible: $coffeePreviewVisible,
+                                               listAppearance: $listAppearance,
+                                               deviceOrientation: $orientation,
+                                               coffeeTitleNamespace: coffeeTitleNamespace,
+                                               coffeePriceNamespace: coffeePriceNamespace,
+                                               coffeeImageNamespace: coffeeImageNamespace)
+                                    .frame(width: size.width)
+                                    .scrollTransition(transition: { content, phase in
+                                        content
+                                            .blur(radius: phase.isIdentity ? 0 : 3)
+                                            .opacity(phase.isIdentity ? 1 : 0.1)
+                                            .scaleEffect(phase.isIdentity ? 1 : 0.6)
+                                    })
+                                }
+                            }
+                            .frame(height: size.height * 0.83)
+                            .overlay(alignment: .bottom) {
+                                CustomPagingIndicator(activeTint: Color.init(uiColor: .label),
+                                                      inActiveTint: .red,
+                                                      cellItemPadding: 0, cellItemSpacing: 0)
+                            }
+                        }
+                        .scrollIndicators(.hidden)
+                        .scrollTargetBehavior(.paging)
+                    } else {
+                        CoverFlowView(itemWidth: getCoffeeItemWidth(size: size),
+                                      enableReflection: false,
+                                      spacing: spacing,
+                                      rotation: rotation,
+                                      items: coffees) { coffee in
+                            CoffeeCell(coffee: coffee,
+                                       size: size,
+                                       selectedCoffee: $selectedCoffee,
+                                       coffeePreviewVisible: $coffeePreviewVisible,
+                                       listAppearance: $listAppearance,
+                                       deviceOrientation: $orientation,
+                                       coffeeTitleNamespace: coffeeTitleNamespace,
+                                       coffeePriceNamespace: coffeePriceNamespace,
+                                       coffeeImageNamespace: coffeeImageNamespace)
+                        }
+                        .frame(height: size.height * 0.6)
                     }
-                    .frame(height: size.height * 0.6)
                     Spacer(minLength: size.height * 0.17)
                 } else {
                     ScrollView {
@@ -130,6 +165,7 @@ struct CoffeesListView: View {
                                            selectedCoffee: $selectedCoffee,
                                            coffeePreviewVisible: $coffeePreviewVisible,
                                            listAppearance: $listAppearance,
+                                           deviceOrientation: $orientation,
                                            coffeeTitleNamespace: coffeeTitleNamespace,
                                            coffeePriceNamespace: coffeePriceNamespace,
                                            coffeeImageNamespace: coffeeImageNamespace)
@@ -147,6 +183,9 @@ struct CoffeesListView: View {
                     .padding(.top)
                 }
             }
+            .onRotate(perform: { orientation in
+                self.orientation = orientation
+            })
             .overlay {
                 if coffeePreviewVisible, let selectedCoffee {
                     CoffeePreview(coffeePreviewVisible: $coffeePreviewVisible,
@@ -159,12 +198,15 @@ struct CoffeesListView: View {
             .onChange(of: selectedMenuType) { _, _ in
                 HapticManager.shared.impact(.medium)
             }
+            .onAppear {
+                orientation = UIDevice.current.orientation
+            }
         }
     }
     
     private func changeListAppearance() {
         HapticManager.shared.impact(.soft)
-        withAnimation(.snappy(duration: 0.3)) {
+        withAnimation(.snappy(duration: 0.3, extraBounce: 0.05)) {
             listAppearance = listAppearance == .horizontal ? .vertical : .horizontal
         }
     }

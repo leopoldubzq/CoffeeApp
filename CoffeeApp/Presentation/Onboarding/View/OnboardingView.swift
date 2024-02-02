@@ -42,30 +42,27 @@ struct OnboardingView: View {
             ScrollView(.horizontal) {
                 HStack(spacing: 0) {
                     ForEach(OnboardingPage.allCases, id: \.self) { page in
-                        ZStack {
-                            OnboardingPageView(onboardingPage: page)
-                        }
-                        .frame(width: proxy.size.width, height: proxy.size.height)
-                        .ignoresSafeArea(.all)
-                        .overlay(alignment: .bottomTrailing) {
-                            if page == OnboardingPage.allCases.last {
-                                Button {
-                                    hasSeenOnboarding = true
-                                } label: {
-                                    ZStack {
-                                        Circle()
-                                            .fill(Color("Smoked"))
-                                            .frame(width: 44, height: 44)
-                                        Image(systemName: "chevron.right")
+                        OnboardingPageView(onboardingPage: page)
+                            .frame(width: proxy.size.width, height: proxy.size.height)
+                            .overlay(alignment: .bottomTrailing) {
+                                if page == OnboardingPage.allCases.last {
+                                    Button {
+                                        hasSeenOnboarding = true
+                                    } label: {
+                                        ZStack {
+                                            Circle()
+                                                .fill(Color("Smoked"))
+                                                .frame(width: 44, height: 44)
+                                            Image(systemName: "chevron.right")
+                                        }
                                     }
+                                    .foregroundStyle(.white)
+                                    .padding()
+                                    .safeAreaPadding([.bottom])
+                                    .padding(.bottom, -12)
+                                    .padding(.trailing, 8)
                                 }
-                                .foregroundStyle(.white)
-                                .padding()
-                                .safeAreaPadding([.bottom])
-                                .padding(.bottom, -12)
-                                .padding(.trailing, 8)
                             }
-                        }
                     }
                 }
                 .scrollTargetLayout()
@@ -78,8 +75,16 @@ struct OnboardingView: View {
             }
             .scrollIndicators(.hidden)
             .scrollTargetBehavior(.paging)
-            .scrollBounceBehavior(.automatic, axes: [])
-            
+            .overlay(alignment: .topTrailing) {
+                Button {} label: {
+                    Text("Skip")
+                        .foregroundStyle(.white)
+                }
+                .safeAreaPadding(.top, (UIDevice.hasNotch && UIDevice.isIPhone) ? 28 : 0)
+                .padding(32)
+                .font(.headline)
+                .fontWeight(.bold)
+            }
         }
         .ignoresSafeArea(.all)
     }
