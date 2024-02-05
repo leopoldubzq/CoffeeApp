@@ -3,6 +3,7 @@ import SwiftUI
 struct OffsetModifier: ViewModifier {
     
     @Binding var offset: CGFloat
+    @State var startOffset: CGFloat = 0.0
     
     func body(content: Content) -> some View {
         content
@@ -13,7 +14,10 @@ struct OffsetModifier: ViewModifier {
                 }
             )
             .onPreferenceChange(OffsetKey.self, perform: { value in
-                self.offset = value
+                if startOffset == 0 {
+                    startOffset = 0
+                }
+                self.offset = value - startOffset
             })
     }
 }

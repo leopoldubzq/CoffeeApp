@@ -1,3 +1,5 @@
+import Foundation
+
 enum SyrupType {
     case saltCaramel
     case caramel
@@ -71,5 +73,9 @@ enum CoffeeAccessoryType: String, CaseIterable, Codable {
         case .lactoseFreeMilk, .oatMilk, .vanillaMilk:
             return true
         }
+    }
+    
+    var addedAt: Date {
+        return .now
     }
 }

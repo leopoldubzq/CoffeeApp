@@ -7,12 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		020509CD2B31DF1C00B1D0F3 /* CoffeePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509CC2B31DF1C00B1D0F3 /* CoffeePreview.swift */; };
-		020509D32B323D8E00B1D0F3 /* CoffeePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509D22B323D8E00B1D0F3 /* CoffeePreviewViewModel.swift */; };
+		020509CD2B31DF1C00B1D0F3 /* MenuItemPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509CC2B31DF1C00B1D0F3 /* MenuItemPreview.swift */; };
+		020509D32B323D8E00B1D0F3 /* MenuItemPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509D22B323D8E00B1D0F3 /* MenuItemPreviewViewModel.swift */; };
 		020509D62B3244DE00B1D0F3 /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509D52B3244DE00B1D0F3 /* TagLayout.swift */; };
 		020509D92B32593000B1D0F3 /* PriceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509D82B32593000B1D0F3 /* PriceFormatter.swift */; };
 		020509DC2B32E51D00B1D0F3 /* CoffeeAccessoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509DB2B32E51D00B1D0F3 /* CoffeeAccessoryType.swift */; };
 		020509E22B32E64400B1D0F3 /* CoffeeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509E12B32E64400B1D0F3 /* CoffeeDto.swift */; };
+		020543512B6DA71800C3E0CA /* CreateUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020543502B6DA71800C3E0CA /* CreateUserProfileView.swift */; };
+		020543542B6DA91000C3E0CA /* SafeAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020543532B6DA91000C3E0CA /* SafeAreaView.swift */; };
+		020543552B6DA91000C3E0CA /* SafeAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020543532B6DA91000C3E0CA /* SafeAreaView.swift */; };
+		020543592B6FB31600C3E0CA /* ChooseCafeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020543582B6FB31600C3E0CA /* ChooseCafeView.swift */; };
+		0205435A2B6FB31600C3E0CA /* ChooseCafeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020543582B6FB31600C3E0CA /* ChooseCafeView.swift */; };
+		0205435D2B6FB36C00C3E0CA /* ChooseCafeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205435C2B6FB36C00C3E0CA /* ChooseCafeViewModel.swift */; };
+		0205435E2B6FB36C00C3E0CA /* ChooseCafeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205435C2B6FB36C00C3E0CA /* ChooseCafeViewModel.swift */; };
+		020543602B6FBE3B00C3E0CA /* CreateUserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205435F2B6FBE3B00C3E0CA /* CreateUserProfileViewModel.swift */; };
+		020543612B6FBE3B00C3E0CA /* CreateUserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205435F2B6FBE3B00C3E0CA /* CreateUserProfileViewModel.swift */; };
 		0231F2A32B30C849003BBF55 /* CoffeeAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0231F2A22B30C849003BBF55 /* CoffeeAppApp.swift */; };
 		0231F2A52B30C849003BBF55 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0231F2A42B30C849003BBF55 /* MainView.swift */; };
 		0231F2A72B30C84B003BBF55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0231F2A62B30C84B003BBF55 /* Assets.xcassets */; };
@@ -76,13 +85,13 @@
 		02D9BAC72B62A27D009FF2FC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610C02B600FB000844CC3 /* OnboardingView.swift */; };
 		02D9BAC82B62A28A009FF2FC /* CoffeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610B62B5FE94A00844CC3 /* CoffeeCell.swift */; };
 		02D9BAC92B62A28D009FF2FC /* MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468642B31094E00664A7F /* MenuList.swift */; };
-		02D9BACA2B62A296009FF2FC /* CoffeePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509D22B323D8E00B1D0F3 /* CoffeePreviewViewModel.swift */; };
+		02D9BACA2B62A296009FF2FC /* MenuItemPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509D22B323D8E00B1D0F3 /* MenuItemPreviewViewModel.swift */; };
 		02D9BACB2B62A29A009FF2FC /* OrderCoffeeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023291102B5EF024004A2B26 /* OrderCoffeeButton.swift */; };
 		02D9BACC2B62A29D009FF2FC /* CoffeeAccessoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023291122B5EF0CB004A2B26 /* CoffeeAccessoriesList.swift */; };
 		02D9BACD2B62A2A0009FF2FC /* CoffeeAccessoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023291142B5EF182004A2B26 /* CoffeeAccessoryButton.swift */; };
 		02D9BACE2B62A2A4009FF2FC /* AddProductPlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023291162B5EF1E2004A2B26 /* AddProductPlusButton.swift */; };
 		02D9BACF2B62A2A6009FF2FC /* SelectedCoffeeAccessoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023291182B5EF45B004A2B26 /* SelectedCoffeeAccessoryButton.swift */; };
-		02D9BAD02B62A2A9009FF2FC /* CoffeePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509CC2B31DF1C00B1D0F3 /* CoffeePreview.swift */; };
+		02D9BAD02B62A2A9009FF2FC /* MenuItemPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020509CC2B31DF1C00B1D0F3 /* MenuItemPreview.swift */; };
 		02D9BAD12B62A2B4009FF2FC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468692B319AD700664A7F /* LoginView.swift */; };
 		02D9BAD22B62A2B7009FF2FC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274686B2B319ADE00664A7F /* LoginViewModel.swift */; };
 		02D9BAD32B62A2BD009FF2FC /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468522B30E49E00664A7F /* QRCodeView.swift */; };
@@ -119,7 +128,6 @@
 		02D9BB0E2B62D259009FF2FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02D9BB0D2B62D259009FF2FC /* GoogleService-Info.plist */; };
 		02D9BB0F2B62D259009FF2FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02D9BB0D2B62D259009FF2FC /* GoogleService-Info.plist */; };
 		02D9BB132B62D2A1009FF2FC /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D9BB122B62D2A1009FF2FC /* SessionService.swift */; };
-		02D9BB142B62D2A1009FF2FC /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D9BB122B62D2A1009FF2FC /* SessionService.swift */; };
 		02D9BB172B62D302009FF2FC /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 02D9BB162B62D302009FF2FC /* GoogleSignIn */; };
 		02D9BB192B62D302009FF2FC /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02D9BB182B62D302009FF2FC /* GoogleSignInSwift */; };
 		02D9BB1B2B62D49A009FF2FC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 02D9BB1A2B62D49A009FF2FC /* FirebaseAuth */; };
@@ -128,6 +136,14 @@
 		02ECB46B2B6C126A00F71974 /* KeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB46A2B6C126A00F71974 /* KeyWindow.swift */; };
 		02ECB46D2B6C1FC600F71974 /* DeviceRotationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB46C2B6C1FC600F71974 /* DeviceRotationModifier.swift */; };
 		02ECB46E2B6C1FC600F71974 /* DeviceRotationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB46C2B6C1FC600F71974 /* DeviceRotationModifier.swift */; };
+		02ECB4742B6D0B2300F71974 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB4732B6D0B2300F71974 /* UserService.swift */; };
+		02ECB4782B6D0B4A00F71974 /* FirestoreUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB4772B6D0B4A00F71974 /* FirestoreUtility.swift */; };
+		02ECB47B2B6D0D6C00F71974 /* UserDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB47A2B6D0D6C00F71974 /* UserDto.swift */; };
+		02ECB47C2B6D0D6C00F71974 /* UserDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB47A2B6D0D6C00F71974 /* UserDto.swift */; };
+		02ECB47E2B6D0E3700F71974 /* CafeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB47D2B6D0E3600F71974 /* CafeDto.swift */; };
+		02ECB47F2B6D0E3700F71974 /* CafeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB47D2B6D0E3600F71974 /* CafeDto.swift */; };
+		02ECB4812B6D0F4600F71974 /* CLLocation+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB4802B6D0F4600F71974 /* CLLocation+Ext.swift */; };
+		02ECB4822B6D0F4600F71974 /* CLLocation+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB4802B6D0F4600F71974 /* CLLocation+Ext.swift */; };
 		02F095402B67CDD2002E5B6A /* ChangeAppearanceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0953F2B67CDD2002E5B6A /* ChangeAppearanceButton.swift */; };
 		02F095412B67CDD2002E5B6A /* ChangeAppearanceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0953F2B67CDD2002E5B6A /* ChangeAppearanceButton.swift */; };
 		02F095442B67DCF4002E5B6A /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F095432B67DCF4002E5B6A /* AppStorageKeys.swift */; };
@@ -135,12 +151,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		020509CC2B31DF1C00B1D0F3 /* CoffeePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeePreview.swift; sourceTree = "<group>"; };
-		020509D22B323D8E00B1D0F3 /* CoffeePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeePreviewViewModel.swift; sourceTree = "<group>"; };
+		020509CC2B31DF1C00B1D0F3 /* MenuItemPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemPreview.swift; sourceTree = "<group>"; };
+		020509D22B323D8E00B1D0F3 /* MenuItemPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemPreviewViewModel.swift; sourceTree = "<group>"; };
 		020509D52B3244DE00B1D0F3 /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
 		020509D82B32593000B1D0F3 /* PriceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFormatter.swift; sourceTree = "<group>"; };
 		020509DB2B32E51D00B1D0F3 /* CoffeeAccessoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeAccessoryType.swift; sourceTree = "<group>"; };
 		020509E12B32E64400B1D0F3 /* CoffeeDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeDto.swift; sourceTree = "<group>"; };
+		020543502B6DA71800C3E0CA /* CreateUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserProfileView.swift; sourceTree = "<group>"; };
+		020543532B6DA91000C3E0CA /* SafeAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaView.swift; sourceTree = "<group>"; };
+		020543582B6FB31600C3E0CA /* ChooseCafeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCafeView.swift; sourceTree = "<group>"; };
+		0205435C2B6FB36C00C3E0CA /* ChooseCafeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCafeViewModel.swift; sourceTree = "<group>"; };
+		0205435F2B6FBE3B00C3E0CA /* CreateUserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserProfileViewModel.swift; sourceTree = "<group>"; };
 		0231F29F2B30C849003BBF55 /* CoffeeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0231F2A22B30C849003BBF55 /* CoffeeAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeAppApp.swift; sourceTree = "<group>"; };
 		0231F2A42B30C849003BBF55 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -198,6 +219,11 @@
 		02D9BB122B62D2A1009FF2FC /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		02ECB46A2B6C126A00F71974 /* KeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWindow.swift; sourceTree = "<group>"; };
 		02ECB46C2B6C1FC600F71974 /* DeviceRotationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationModifier.swift; sourceTree = "<group>"; };
+		02ECB4732B6D0B2300F71974 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		02ECB4772B6D0B4A00F71974 /* FirestoreUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUtility.swift; sourceTree = "<group>"; };
+		02ECB47A2B6D0D6C00F71974 /* UserDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDto.swift; sourceTree = "<group>"; };
+		02ECB47D2B6D0E3600F71974 /* CafeDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeDto.swift; sourceTree = "<group>"; };
+		02ECB4802B6D0F4600F71974 /* CLLocation+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Ext.swift"; sourceTree = "<group>"; };
 		02F0953F2B67CDD2002E5B6A /* ChangeAppearanceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAppearanceButton.swift; sourceTree = "<group>"; };
 		02F095432B67DCF4002E5B6A /* AppStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -230,13 +256,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		020509C82B31DF0100B1D0F3 /* CoffeePreview */ = {
+		020509C82B31DF0100B1D0F3 /* MenuItem */ = {
 			isa = PBXGroup;
 			children = (
 				020509D12B323D8600B1D0F3 /* ViewModel */,
 				020509CB2B31DF1300B1D0F3 /* View */,
 			);
-			path = CoffeePreview;
+			path = MenuItem;
 			sourceTree = "<group>";
 		};
 		020509C92B31DF0700B1D0F3 /* Menu */ = {
@@ -260,7 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				0232910D2B5EF00E004A2B26 /* Subviews */,
-				020509CC2B31DF1C00B1D0F3 /* CoffeePreview.swift */,
+				020509CC2B31DF1C00B1D0F3 /* MenuItemPreview.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -268,7 +294,7 @@
 		020509D12B323D8600B1D0F3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				020509D22B323D8E00B1D0F3 /* CoffeePreviewViewModel.swift */,
+				020509D22B323D8E00B1D0F3 /* MenuItemPreviewViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -311,10 +337,70 @@
 			isa = PBXGroup;
 			children = (
 				020509E12B32E64400B1D0F3 /* CoffeeDto.swift */,
+				02ECB47A2B6D0D6C00F71974 /* UserDto.swift */,
 				0232910B2B5EEE24004A2B26 /* CoffeeAccessory.swift */,
 				0232911A2B5F0CB9004A2B26 /* Menu.swift */,
+				02ECB47D2B6D0E3600F71974 /* CafeDto.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0205434B2B6DA64300C3E0CA /* CreateUserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				0205434D2B6DA69500C3E0CA /* ViewModel */,
+				0205434C2B6DA69200C3E0CA /* View */,
+			);
+			path = CreateUserProfile;
+			sourceTree = "<group>";
+		};
+		0205434C2B6DA69200C3E0CA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				020543502B6DA71800C3E0CA /* CreateUserProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0205434D2B6DA69500C3E0CA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0205435F2B6FBE3B00C3E0CA /* CreateUserProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		020543522B6DA90800C3E0CA /* SafeAreaView */ = {
+			isa = PBXGroup;
+			children = (
+				020543532B6DA91000C3E0CA /* SafeAreaView.swift */,
+			);
+			path = SafeAreaView;
+			sourceTree = "<group>";
+		};
+		020543562B6FB30D00C3E0CA /* ChooseCafe */ = {
+			isa = PBXGroup;
+			children = (
+				0205435B2B6FB36300C3E0CA /* ViewModel */,
+				020543572B6FB30F00C3E0CA /* View */,
+			);
+			path = ChooseCafe;
+			sourceTree = "<group>";
+		};
+		020543572B6FB30F00C3E0CA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				020543582B6FB31600C3E0CA /* ChooseCafeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0205435B2B6FB36300C3E0CA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0205435C2B6FB36C00C3E0CA /* ChooseCafeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		0231F2962B30C849003BBF55 = {
@@ -398,9 +484,11 @@
 		027468222B30CC0300664A7F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				020543562B6FB30D00C3E0CA /* ChooseCafe */,
+				0205434B2B6DA64300C3E0CA /* CreateUserProfile */,
 				02B610BB2B600F8300844CC3 /* Onboarding */,
 				020509C92B31DF0700B1D0F3 /* Menu */,
-				020509C82B31DF0100B1D0F3 /* CoffeePreview */,
+				020509C82B31DF0100B1D0F3 /* MenuItem */,
 				027468662B319A9A00664A7F /* Login */,
 				027468502B30E49700664A7F /* QRCode */,
 				0274683D2B30CF5C00664A7F /* Home */,
@@ -439,6 +527,7 @@
 		0274682A2B30CC3D00664A7F /* Utilis */ = {
 			isa = PBXGroup;
 			children = (
+				02ECB4762B6D0B4400F71974 /* FirestoreUtility */,
 				02ECB4692B6C126500F71974 /* Helpers */,
 				02F095422B67DCE4002E5B6A /* AppStorageKeys */,
 				02D9BB032B62D14D009FF2FC /* ApplicationUtility */,
@@ -602,6 +691,7 @@
 			isa = PBXGroup;
 			children = (
 				0274685B2B30EFAD00664A7F /* UIDevice+Extension.swift */,
+				02ECB4802B6D0F4600F71974 /* CLLocation+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -609,6 +699,7 @@
 		0274685D2B30F9F300664A7F /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
+				020543522B6DA90800C3E0CA /* SafeAreaView */,
 				02D592552B6ABAC60089A9B9 /* Modifiers */,
 				02B610B82B5FED9A00844CC3 /* CustomPagingIndicator */,
 				02B610B22B5FE14A00844CC3 /* CoverFlowView */,
@@ -801,6 +892,7 @@
 			isa = PBXGroup;
 			children = (
 				02D9BB122B62D2A1009FF2FC /* SessionService.swift */,
+				02ECB4732B6D0B2300F71974 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -811,6 +903,14 @@
 				02ECB46A2B6C126A00F71974 /* KeyWindow.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		02ECB4762B6D0B4400F71974 /* FirestoreUtility */ = {
+			isa = PBXGroup;
+			children = (
+				02ECB4772B6D0B4A00F71974 /* FirestoreUtility.swift */,
+			);
+			path = FirestoreUtility;
 			sourceTree = "<group>";
 		};
 		02F095422B67DCE4002E5B6A /* AppStorageKeys */ = {
@@ -942,21 +1042,25 @@
 				027468352B30CEBF00664A7F /* MainViewModel.swift in Sources */,
 				02F095442B67DCF4002E5B6A /* AppStorageKeys.swift in Sources */,
 				027468432B30CF7400664A7F /* HomeViewModel.swift in Sources */,
+				020543602B6FBE3B00C3E0CA /* CreateUserProfileViewModel.swift in Sources */,
 				0274683C2B30CF2B00664A7F /* SettingsView.swift in Sources */,
 				0231F2A52B30C849003BBF55 /* MainView.swift in Sources */,
 				02D9BB092B62D17E009FF2FC /* CAError.swift in Sources */,
 				020509DC2B32E51D00B1D0F3 /* CoffeeAccessoryType.swift in Sources */,
 				0232911E2B5F13D1004A2B26 /* HapticManager.swift in Sources */,
 				02D9BAFA2B62AE20009FF2FC /* LoginWithEmailButton.swift in Sources */,
+				02ECB4782B6D0B4A00F71974 /* FirestoreUtility.swift in Sources */,
 				02D9BB012B62B64E009FF2FC /* TabPage.swift in Sources */,
 				020509D62B3244DE00B1D0F3 /* TagLayout.swift in Sources */,
 				0232911B2B5F0CB9004A2B26 /* Menu.swift in Sources */,
 				023291152B5EF182004A2B26 /* CoffeeAccessoryButton.swift in Sources */,
 				02D9BB052B62D156009FF2FC /* ApplicationUtility.swift in Sources */,
 				02B610BA2B5FEDA200844CC3 /* CustomPagingIndicator.swift in Sources */,
+				0205435D2B6FB36C00C3E0CA /* ChooseCafeViewModel.swift in Sources */,
 				027468602B30FA0A00664A7F /* TrackableScrollView.swift in Sources */,
 				0274684A2B30D87900664A7F /* DateFormatter.swift in Sources */,
-				020509CD2B31DF1C00B1D0F3 /* CoffeePreview.swift in Sources */,
+				020509CD2B31DF1C00B1D0F3 /* MenuItemPreview.swift in Sources */,
+				020543512B6DA71800C3E0CA /* CreateUserProfileView.swift in Sources */,
 				02D592572B6ABACC0089A9B9 /* OffsetModifier.swift in Sources */,
 				02ECB46B2B6C126A00F71974 /* KeyWindow.swift in Sources */,
 				020509E22B32E64400B1D0F3 /* CoffeeDto.swift in Sources */,
@@ -966,20 +1070,25 @@
 				0274682D2B30CC4500664A7F /* BaseViewModel.swift in Sources */,
 				02B610B72B5FE94A00844CC3 /* CoffeeCell.swift in Sources */,
 				023291172B5EF1E2004A2B26 /* AddProductPlusButton.swift in Sources */,
+				02ECB47B2B6D0D6C00F71974 /* UserDto.swift in Sources */,
 				023291132B5EF0CB004A2B26 /* CoffeeAccessoriesList.swift in Sources */,
+				02ECB4742B6D0B2300F71974 /* UserService.swift in Sources */,
 				0231F2A32B30C849003BBF55 /* CoffeeAppApp.swift in Sources */,
 				027468302B30CD7100664A7F /* Route.swift in Sources */,
 				0274685C2B30EFAD00664A7F /* UIDevice+Extension.swift in Sources */,
 				02D9BAF22B62AD71009FF2FC /* LoginWithGoogleButton.swift in Sources */,
+				020543542B6DA91000C3E0CA /* SafeAreaView.swift in Sources */,
 				02B610BF2B600F9200844CC3 /* OnboardingViewModel.swift in Sources */,
 				0233E2952B5C1CE200595272 /* QRCodeImageView.swift in Sources */,
 				024430C52B3996800024D729 /* CoffeeAccessoryProtocol.swift in Sources */,
 				02B610C12B600FB000844CC3 /* OnboardingView.swift in Sources */,
+				02ECB4812B6D0F4600F71974 /* CLLocation+Ext.swift in Sources */,
 				023291192B5EF45B004A2B26 /* SelectedCoffeeAccessoryButton.swift in Sources */,
 				02B610C42B600FC600844CC3 /* OnboardingPageView.swift in Sources */,
 				0274684D2B30E10B00664A7F /* VisualEffectView.swift in Sources */,
 				02D9BB132B62D2A1009FF2FC /* SessionService.swift in Sources */,
 				02D9BAF62B62AD85009FF2FC /* Typealiases.swift in Sources */,
+				02ECB47E2B6D0E3700F71974 /* CafeDto.swift in Sources */,
 				027468272B30CC1100664A7F /* SplashView.swift in Sources */,
 				027468472B30D30500664A7F /* VoucherCell.swift in Sources */,
 				02B610B42B5FE15100844CC3 /* CoverFlowView.swift in Sources */,
@@ -987,11 +1096,12 @@
 				0232910C2B5EEE24004A2B26 /* CoffeeAccessory.swift in Sources */,
 				027468532B30E49E00664A7F /* QRCodeView.swift in Sources */,
 				0274683A2B30CF1800664A7F /* ProfileViewModel.swift in Sources */,
+				020543592B6FB31600C3E0CA /* ChooseCafeView.swift in Sources */,
 				02F095402B67CDD2002E5B6A /* ChangeAppearanceButton.swift in Sources */,
 				0274686A2B319AD700664A7F /* LoginView.swift in Sources */,
 				027468292B30CC2F00664A7F /* SplashViewModel.swift in Sources */,
 				020509D92B32593000B1D0F3 /* PriceFormatter.swift in Sources */,
-				020509D32B323D8E00B1D0F3 /* CoffeePreviewViewModel.swift in Sources */,
+				020509D32B323D8E00B1D0F3 /* MenuItemPreviewViewModel.swift in Sources */,
 				0274686C2B319ADE00664A7F /* LoginViewModel.swift in Sources */,
 				02ECB46D2B6C1FC600F71974 /* DeviceRotationModifier.swift in Sources */,
 			);
@@ -1004,6 +1114,7 @@
 				02D9BAD72B62A2CC009FF2FC /* SettingsView.swift in Sources */,
 				02D9BACD2B62A2A0009FF2FC /* CoffeeAccessoryButton.swift in Sources */,
 				02D9BAD12B62A2B4009FF2FC /* LoginView.swift in Sources */,
+				02ECB4822B6D0F4600F71974 /* CLLocation+Ext.swift in Sources */,
 				02D9BABE2B62A255009FF2FC /* CoverFlowView.swift in Sources */,
 				02D9BAD42B62A2C1009FF2FC /* HomeViewModel.swift in Sources */,
 				02D9BADA2B62A2D8009FF2FC /* MainView.swift in Sources */,
@@ -1017,11 +1128,15 @@
 				02D9BB022B62B64E009FF2FC /* TabPage.swift in Sources */,
 				02D9BAD22B62A2B7009FF2FC /* LoginViewModel.swift in Sources */,
 				02D9BACC2B62A29D009FF2FC /* CoffeeAccessoriesList.swift in Sources */,
-				02D9BAD02B62A2A9009FF2FC /* CoffeePreview.swift in Sources */,
+				02D9BAD02B62A2A9009FF2FC /* MenuItemPreview.swift in Sources */,
+				020543612B6FBE3B00C3E0CA /* CreateUserProfileViewModel.swift in Sources */,
 				02D9BAC62B62A27B009FF2FC /* OnboardingPageView.swift in Sources */,
+				020543552B6DA91000C3E0CA /* SafeAreaView.swift in Sources */,
 				02D9BACE2B62A2A4009FF2FC /* AddProductPlusButton.swift in Sources */,
 				02D9BADC2B62A2E5009FF2FC /* SplashView.swift in Sources */,
-				02D9BACA2B62A296009FF2FC /* CoffeePreviewViewModel.swift in Sources */,
+				0205435E2B6FB36C00C3E0CA /* ChooseCafeViewModel.swift in Sources */,
+				02ECB47C2B6D0D6C00F71974 /* UserDto.swift in Sources */,
+				02D9BACA2B62A296009FF2FC /* MenuItemPreviewViewModel.swift in Sources */,
 				02D9BABB2B62A244009FF2FC /* TagLayout.swift in Sources */,
 				02D9BAB82B62A235009FF2FC /* CoffeeAccessoryProtocol.swift in Sources */,
 				02D9BAD92B62A2D5009FF2FC /* MainViewModel.swift in Sources */,
@@ -1037,17 +1152,18 @@
 				02D9BAC92B62A28D009FF2FC /* MenuList.swift in Sources */,
 				02D9BAC32B62A26B009FF2FC /* DateFormatter.swift in Sources */,
 				02D9BADF2B62A300009FF2FC /* CoffeeAccessory.swift in Sources */,
+				02ECB47F2B6D0E3700F71974 /* CafeDto.swift in Sources */,
 				02D9BAD52B62A2C5009FF2FC /* VoucherCell.swift in Sources */,
 				02D9BABF2B62A259009FF2FC /* QRCodeImageView.swift in Sources */,
 				02D9BAD32B62A2BD009FF2FC /* QRCodeView.swift in Sources */,
 				02D9BB062B62D156009FF2FC /* ApplicationUtility.swift in Sources */,
+				0205435A2B6FB31600C3E0CA /* ChooseCafeView.swift in Sources */,
 				02D9BAC82B62A28A009FF2FC /* CoffeeCell.swift in Sources */,
 				02D9BAF32B62AD71009FF2FC /* LoginWithGoogleButton.swift in Sources */,
 				02D9BAD82B62A2CF009FF2FC /* ProfileViewModel.swift in Sources */,
 				02D9BABA2B62A23F009FF2FC /* PriceFormatter.swift in Sources */,
 				02D9BAE02B62A302009FF2FC /* Menu.swift in Sources */,
 				02D9BB0A2B62D17E009FF2FC /* CAError.swift in Sources */,
-				02D9BB142B62D2A1009FF2FC /* SessionService.swift in Sources */,
 				02F095452B67DCF4002E5B6A /* AppStorageKeys.swift in Sources */,
 				02D9BADE2B62A2FD009FF2FC /* CoffeeDto.swift in Sources */,
 				02D9BABD2B62A24D009FF2FC /* CustomPagingIndicator.swift in Sources */,

@@ -1,20 +1,37 @@
 import SwiftUI
 import Firebase
 
+enum LoginNetworkResult {
+    case success
+    case failure
+}
+
 final class LoginViewModel: BaseViewModel {
     
     @Published var shouldPresentLogin: Bool = true
     
-    private let service = SessionService()
+    private let sessionService = SessionService()
+    private let userService = UserService()
     
-    func loginWithGoogle() {
+    func loginWithGoogle(callback: ((LoginNetworkResult) -> ())? = nil) {
         isLoading = true
-        service.loginWithGoogle()
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in }) { [weak self] user, _ in
+        sessionService.loginWithGoogle()
+            .flatMap({ [unowned self] user, result in
+                /// Creates new user only if Firestore snapshot doesn't exist
+                return userService.createGoogleUser(user: user, result: result)
+                    .flatMap { [unowned self] in userService.getUser(uid: result?.user.uid ?? "") }
+            })
+            .sink(receiveCompletion: { [weak self] completion in
                 self?.isLoading = false
                 self?.shouldPresentLogin = Auth.auth().currentUser == nil
-            }
+                switch completion {
+                case .finished:
+                    callback?(.success)
+                case .failure(let error):
+                    callback?(.failure)
+                    print(error.localizedDescription)
+                }
+            }, receiveValue: { _ in })
             .store(in: &cancellables)
     }
 }

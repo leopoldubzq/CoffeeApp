@@ -1,7 +1,7 @@
 import SwiftUI
 import Combine
 
-final class CoffeePreviewViewModel: BaseViewModel {
+final class MenuItemPreviewViewModel: BaseViewModel {
     
     //MARK: - PUBLIC PROPERTIES
     @Published var coffeeAccesories: [CoffeeAccessoryType] = []
@@ -15,12 +15,12 @@ final class CoffeePreviewViewModel: BaseViewModel {
             if isMilk(accessory) {
                 selectedCoffeeAccessories.removeAll(where: { $0.substitute && isMilk($0) })
             }
-            selectedCoffeeAccessories.insert(accessory, at: 0)
+            selectedCoffeeAccessories.append(accessory)
         case false:
             if isSyrup(accessory) {
                 selectedCoffeeAccessories.removeAll(where: { !$0.substitute && isSyrup($0) })
             }
-            selectedCoffeeAccessories.insert(accessory, at: 0)
+            selectedCoffeeAccessories.append(accessory)
         }
     }
     

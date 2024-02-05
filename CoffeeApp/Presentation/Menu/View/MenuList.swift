@@ -85,7 +85,7 @@ struct MenuList: View {
             })
             .overlay {
                 if coffeePreviewVisible, let selectedCoffee {
-                    CoffeePreview(coffeePreviewVisible: $coffeePreviewVisible,
+                    MenuItemPreview(coffeePreviewVisible: $coffeePreviewVisible,
                                   coffee: selectedCoffee,
                                   coffeeImageNamespace: coffeeImageNamespace,
                                   coffeeTitleNamespace: coffeeTitleNamespace,

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct CoffeeAccessoriesList: View {
     
-    @StateObject var viewModel: CoffeePreviewViewModel
+    @StateObject var viewModel: MenuItemPreviewViewModel
     
     var coffeeAccessories: [CoffeeAccessoryType]
     var coffeeSubstitutes: [CoffeeAccessoryType]
@@ -41,7 +41,7 @@ struct CoffeeAccessoriesList: View {
 }
 
 #Preview {
-    CoffeeAccessoriesList(viewModel: CoffeePreviewViewModel(),
+    CoffeeAccessoriesList(viewModel: MenuItemPreviewViewModel(),
                           coffeeAccessories: CoffeeAccessoryType.allCases.filter { !$0.substitute },
                           coffeeSubstitutes: CoffeeAccessoryType.allCases.filter { $0.substitute })
 }

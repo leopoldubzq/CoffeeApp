@@ -1,10 +1,11 @@
 import SwiftUI
 
-struct CoffeePreview: View {
+struct MenuItemPreview: View {
     
-    @StateObject private var viewModel = CoffeePreviewViewModel()
+    @StateObject private var viewModel = MenuItemPreviewViewModel()
     @Binding var coffeePreviewVisible: Bool
     @State private var scrollOffsetY: CGFloat = 0
+    @State private var headerHeight: CGFloat = 0
     var coffee: CoffeeDto
     var coffeeImageNamespace: Namespace.ID
     var coffeeTitleNamespace: Namespace.ID
@@ -12,7 +13,7 @@ struct CoffeePreview: View {
     
     var body: some View {
         GeometryReader { proxy in
-            VStack(alignment: .center) {
+            VStack(alignment: .center, spacing: 0) {
                 HStack {
                     CancelButton()
                     Spacer()
@@ -25,10 +26,10 @@ struct CoffeePreview: View {
                 }
                 
                 ScrollView {
-                    LazyVStack(spacing: 8, pinnedViews: [.sectionHeaders]) {
+                    LazyVStack(pinnedViews: [.sectionHeaders]) {
                         Section {
                             TagLayout(alignment: .leading) {
-                                ForEach(Array(Set(viewModel.selectedCoffeeAccessories)), id: \.self) { accessory in
+                                ForEach(Array(Set(viewModel.selectedCoffeeAccessories.sorted(by: { $0.title > $1.title }))), id: \.self) { accessory in
                                     SelectedCoffeeAccessoryButton(accessory: accessory) {
                                         withAnimation(.snappy(duration: 0.35, extraBounce: 0.1)) {
                                             viewModel.selectedCoffeeAccessories.removeAll(where: { $0.rawValue == accessory.rawValue })
@@ -59,15 +60,22 @@ struct CoffeePreview: View {
                                             viewModel.performCoffeeAccessoryAction(for: substitute)
                                         }
                                     }
-                                    .padding(.horizontal)
+                                                          .padding(.horizontal)
                                 }
                             }
                         } header: {
                             OrderedCoffeeHeader()
+//                                .overlay {
+//                                    Text("ScrollOffset: \(scrollOffsetY)")
+//                                        .frame(minWidth: 100, minHeight: 100)
+//                                        .background(Color.red)
+//                                        .offset(y: 200)
+//                                }
                         }
                     }
-                    
+                    // .modifier(OffsetModifier(offset: $scrollOffsetY, startOffset: 119))
                 }
+                
                 .scrollBounceBehavior(.basedOnSize)
                 .scrollIndicators(.hidden)
                 .zIndex(0)
@@ -80,6 +88,7 @@ struct CoffeePreview: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.init(uiColor: .systemBackground))
+            
             .onAppear {
                 viewModel.coffeeAccesories = coffee.accessories
             }
@@ -110,10 +119,6 @@ struct CoffeePreview: View {
     
     private func getExtraPrice(from accessory: CoffeeAccessoryType) -> String {
         accessory.extraPrice > 0 ? " (+\(PriceFormatter.formatToPLN(price: accessory.extraPrice)))" : ""
-    }
-    
-    private func getMaxOffsetYValue() -> CGFloat {
-        max(120 + min(scrollOffsetY, 70), 70)
     }
     
     @ViewBuilder
@@ -153,8 +158,8 @@ struct CoffeePreview: View {
         HStack(alignment: .center) {
             Image(coffee.imageName)
                 .resizable()
-                .aspectRatio(contentMode: .fit)
                 .matchedGeometryEffect(id: coffee.imageMatchedGeometryID, in: coffeeImageNamespace)
+                .aspectRatio(contentMode: .fit)
                 .frame(width: 120, height: 120)
             VStack(alignment: .leading, spacing: 4) {
                 Text(coffee.title)
@@ -169,15 +174,13 @@ struct CoffeePreview: View {
                 }
             }
         }
-        .frame(height: 120)
         .frame(maxWidth: .infinity, alignment: .center)
+        .frame(height: 120)
         .padding(.horizontal)
         .padding(.top, -16)
         .zIndex(1)
-        .background(Color.init(uiColor: .systemBackground))
         .scrollClipDisabled()
-        
-        
+        .background(Color.init(uiColor: .systemBackground))
     }
 }
 
@@ -185,7 +188,7 @@ struct CoffeePreview: View {
     @Namespace var coffeeImageNamespace
     @Namespace var coffeeTitleNamespace
     @Namespace var coffeePriceNamespace
-    return CoffeePreview(coffeePreviewVisible: .constant(true),
+    return MenuItemPreview(coffeePreviewVisible: .constant(true),
                          coffee: CoffeeDto(title: "Cappuccino", 
                                            price: 18.00,
                                            imageName: "cappuccino",
