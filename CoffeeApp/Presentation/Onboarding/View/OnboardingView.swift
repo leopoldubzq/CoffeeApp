@@ -73,15 +73,16 @@ struct OnboardingView: View {
                     .padding(.bottom)
                 }
             }
+            .ignoresSafeArea(edges: .top)
             .scrollIndicators(.hidden)
             .scrollTargetBehavior(.paging)
             .overlay(alignment: .topTrailing) {
-                Button {} label: {
+                Button { hasSeenOnboarding = true } label: {
                     Text("Skip")
                         .foregroundStyle(.white)
                 }
-                .safeAreaPadding(.top, (UIDevice.hasNotch && UIDevice.isIPhone) ? 28 : 0)
                 .padding(32)
+                .padding(.top, UIDevice.isIPhone ? 24 : 0)
                 .font(.headline)
                 .fontWeight(.bold)
             }

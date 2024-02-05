@@ -17,7 +17,7 @@ struct CoffeeAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            CreateUserProfileView(user: .constant(UserDto(uid: UUID().uuidString, email: "leopold.romanowski@gmail.com")))
+            showInitialScreen()
         }
     }
     

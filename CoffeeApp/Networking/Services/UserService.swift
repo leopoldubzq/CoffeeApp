@@ -82,7 +82,9 @@ final class UserService {
                 .getDocument(completion: { snapshot, error in
                     if let error { promise(.failure(.basicError(error.localizedDescription))) }
                     guard let snapshot else { return }
-                    if !snapshot.exists { promise(.success(nil)) }
+                    if !snapshot.exists {
+                        promise(.success(nil))
+                    }
                     guard let user = try? snapshot.data(as: UserDto.self) else { return }
                     promise(.success(user))
                 })

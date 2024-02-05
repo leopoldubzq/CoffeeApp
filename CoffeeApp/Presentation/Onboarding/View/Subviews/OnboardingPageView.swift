@@ -14,6 +14,7 @@ struct OnboardingPageView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: size.width, height: size.height)
+                    .clipped()
                     .overlay {
                         Rectangle()
                             .fill(
@@ -44,7 +45,6 @@ struct OnboardingPageView: View {
             .frame(width: proxy.size.width, height: proxy.size.height)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .ignoresSafeArea(.all)
     }
 }
 
