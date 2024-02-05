@@ -1,40 +1,56 @@
 import SwiftUI
 
-struct TrackableScrollView<T: View>: View {
-    let axes: Axis.Set
-    let showsIndicator: Bool
-    let onOffsetChanged: (CGPoint) -> Void
-    let content: T
+struct PositionObservingView<Content: View>: View {
+    var coordinateSpace: CoordinateSpace
+    @Binding var position: CGPoint
+    @ViewBuilder var content: () -> Content
     
     var body: some View {
-        ScrollView(axes, showsIndicators: showsIndicator) {
-            GeometryReader { proxy in
+        content()
+            .background(GeometryReader { geometry in
                 Color.clear.preference(
-                    key: OffsetPreferenceKey.self,
-                    value: proxy.frame(in: .named("ScrollViewOrigin")).origin)
+                    key: PreferenceKey.self,
+                    value: geometry.frame(in: coordinateSpace).origin
+                )
+            })
+            .onPreferenceChange(PreferenceKey.self) { position in
+                self.position = position
             }
-            .frame(width: 0, height: 0)
-            content
-        }
-        .coordinateSpace(name: "ScrollViewOrigin")
-        .onPreferenceChange(OffsetPreferenceKey.self,
-                            perform: onOffsetChanged)
-    }
-    
-    init(axes: Axis.Set = .vertical,
-         showsIndicator: Bool = true,
-         onOffsetChanged: @escaping (CGPoint) -> Void = { _ in },
-         @ViewBuilder content: () -> T
-    ) {
-        self.axes = axes
-        self.showsIndicator = showsIndicator
-        self.onOffsetChanged = onOffsetChanged
-        self.content = content()
     }
 }
 
+private extension PositionObservingView {
+    struct PreferenceKey: SwiftUI.PreferenceKey {
+        static var defaultValue: CGPoint { .zero }
+        static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {}
+    }
+}
 
-private struct OffsetPreferenceKey: PreferenceKey {
-    static var defaultValue: CGPoint = .zero
-    static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) { }
+struct OffsetObservingScrollView<Content: View>: View {
+    var axes: Axis.Set = [.vertical]
+    var showsIndicators = true
+    @Binding var offset: CGFloat
+    @ViewBuilder var content: () -> Content
+    
+    // The name of our coordinate space doesn't have to be
+    // stable between view updates (it just needs to be
+    // consistent within this view), so we'll simply use a
+    // plain UUID for it:
+    private let coordinateSpaceName = UUID()
+    
+    var body: some View {
+        ScrollView(axes, showsIndicators: showsIndicators) {
+            PositionObservingView(
+                coordinateSpace: .named(coordinateSpaceName),
+                position: Binding(
+                    get: { CGPoint(x: 0, y: offset) },
+                    set: { newOffset in
+                        offset = newOffset.y
+                    }
+                ),
+                content: content
+            )
+        }
+        .coordinateSpace(name: coordinateSpaceName)
+    }
 }

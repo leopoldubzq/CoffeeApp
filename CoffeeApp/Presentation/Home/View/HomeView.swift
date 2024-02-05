@@ -18,9 +18,7 @@ struct HomeView: View {
         NavigationStack(path: $route) {
             GeometryReader { proxy in
                 let size = proxy.size
-                TrackableScrollView(axes: .vertical) { point in
-                    scrollOffsetY = point.y
-                } content: {
+                OffsetObservingScrollView(offset: $scrollOffsetY) {
                     VStack(spacing: 16) {
                         if viewModel.isLoggedIn {
                             TitleSectionView()
