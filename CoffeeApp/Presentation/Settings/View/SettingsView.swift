@@ -123,6 +123,7 @@ struct SettingsView: View {
     @State private var route: [String] = []
     @State private var selectedSetting: SelectedIPadSetting = .termsOfUse
     @State private var columnVisibility = NavigationSplitViewVisibility.all
+    @AppStorage(AppStorageKeys.isLoggedIn.rawValue) var isLoggedIn: Bool = false
     
     var body: some View {
         if UIDevice.isIPad {
@@ -216,6 +217,7 @@ struct SettingsView: View {
                     Section {
                         Button {
                             try! Auth.auth().signOut()
+                            isLoggedIn = false
                             shouldPresentLoginView.toggle()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 selectedTab = .home

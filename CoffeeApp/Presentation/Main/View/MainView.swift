@@ -10,6 +10,7 @@ struct MainView: View {
     @State private var shouldPresentLoginView: Bool = false
     @Environment(\.colorScheme) var colorScheme
     @AppStorage(AppStorageKeys.hasSeenOnboarding.rawValue) var hasSeenOnboarding: Bool = false
+    @AppStorage(AppStorageKeys.isLoggedIn.rawValue) var isLoggedIn: Bool = false
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -46,7 +47,7 @@ struct MainView: View {
             LoginView(shouldPresentLoginView: $shouldPresentLoginView)
         })
         .onAppear {
-             shouldPresentLoginView = Auth.auth().currentUser == nil
+             shouldPresentLoginView = !isLoggedIn
              shouldFinishOnboarding = hasSeenOnboarding
         }
         .overlay {
