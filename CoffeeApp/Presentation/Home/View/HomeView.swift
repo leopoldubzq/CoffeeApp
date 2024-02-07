@@ -10,8 +10,8 @@ struct HomeView: View {
     @Namespace private var qrCodeBackgroundNamespace
     @Namespace private var qrCodeStringNamespace
     @State private var scrollOffsetY: CGFloat = 0
-    @State private var voucherToActivate: Voucher?
-    @State private var coffeeShopPickerExpanded: Bool = false
+    @State private var voucherToActivate: VoucherDto?
+    @State private var cafeViewPresented: Bool = false
     @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
@@ -51,6 +51,15 @@ struct HomeView: View {
                 .scrollIndicators(.hidden)
                 .overlay(alignment: .top) { SafeAreaTopView(proxy: proxy) }
                 .overlay {
+                    if viewModel.isLoading {
+                        ProgressView("Wczytywanie")
+                            .padding()
+                            .padding(.vertical)
+                            .background(Color("GroupedListCellBackgroundColor"))
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                }
+                .overlay {
                     if qrCodeViewIsPresented {
                         QRCodeView(qrCodeViewIsPresented: $qrCodeViewIsPresented,
                                    qrCodeString: "123456789",
@@ -60,12 +69,20 @@ struct HomeView: View {
                     }
                 }
                 .toolbar(qrCodeViewIsPresented ? .hidden : .visible, for: .tabBar)
+                .sheet(isPresented: $cafeViewPresented) {
+                    ChooseCafeView(selectedCafe: $viewModel.currentCafe) {
+                        guard viewModel.user?.currentCafe != viewModel.currentCafe else { return }
+                        viewModel.user?.currentCafe = viewModel.currentCafe
+                        viewModel.updateUser()
+                    }
+                }
                 .onChange(of: qrCodeViewIsPresented) { _, _ in
                     HapticManager.shared.impact(.soft)
                 }
-                .task(id: shouldPresentLoginView) {
+                .onChange(of: shouldPresentLoginView, { _, _ in
                     viewModel.getUser()
-                }
+                })
+                .onLoad { viewModel.getUser() }
             }
         }
     }
@@ -98,7 +115,7 @@ struct HomeView: View {
         HStack {
             Group {
                 Text("Cześć, ")
-                + Text("\((viewModel.user?.name ?? "").uppercased())!")
+                + Text("\((viewModel.user?.name ?? "Preview User").uppercased())!")
                     .foregroundStyle(.accent)
             }
             .minimumScaleFactor(0.95)
@@ -125,7 +142,7 @@ struct HomeView: View {
     private func VouchersList(size: CGSize) -> some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(viewModel.activeVouchers, id: \.id) { voucher in
+                ForEach(viewModel.activeVouchers, id: \.uid) { voucher in
                     VoucherCell(voucher: voucher,
                                 voucherToActivate: $voucherToActivate)
                     .frame(width: getCellWidth(size: size), height: 220)
@@ -182,17 +199,16 @@ struct HomeView: View {
     private func CoffeeShopPickerButton() -> some View {
         Button {
             withAnimation(.snappy(duration: 0.35, extraBounce: 0.08)) {
-                coffeeShopPickerExpanded.toggle()
+                cafeViewPresented.toggle()
             }
         } label: {
             HStack {
-                Text("CostaCoffee")
+                Text(viewModel.user?.currentCafe?.title ?? "Preview Cafe")
                     .font(.callout)
                 Image(systemName: "chevron.down")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 12, height: 12)
-                    .rotationEffect(.degrees(coffeeShopPickerExpanded ? 180 : 0))
                 Spacer()
             }
         }
@@ -201,6 +217,6 @@ struct HomeView: View {
 }
 
 #Preview {
-    MainView(selectedTab: .home)
+    HomeView(shouldPresentLoginView: .constant(false))
 }
 

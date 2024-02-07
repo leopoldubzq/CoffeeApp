@@ -3,9 +3,10 @@ import SwiftUI
 struct ChooseCafeView: View {
     
     @Binding var selectedCafe: CafeDto?
+    var refreshCompletion: VoidCallback?
     @StateObject private var viewModel = ChooseCafeViewModel()
     @State private var searchText: String = ""
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     @State private var route: [Route] = []
     
     var body: some View {
@@ -60,6 +61,10 @@ struct ChooseCafeView: View {
             .searchable(text: $searchText, 
                         placement: .navigationBarDrawer,
                         prompt: Text("Szukaj"))
+            .toolbar {
+                Button("Gotowe") { dismiss() }
+                .fontWeight(.semibold)
+            }
             .navigationDestination(for: Route.self, destination: { $0.handleDestination(route: $route) })
             .overlay {
                 if viewModel.isLoading {
@@ -69,12 +74,12 @@ struct ChooseCafeView: View {
                 }
                 
             }
-            .onAppear {
-                if let selectedCafe { viewModel.selectedCafe = selectedCafe }
-                viewModel.getCafes()
-            }
+            .onAppear { viewModel.getCafes() }
             .onChange(of: selectedCafe) { _, newValue in
                 viewModel.selectedCafe = newValue
+            }
+            .onDisappear {
+                refreshCompletion?()
             }
         }
     }

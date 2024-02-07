@@ -1,44 +1,46 @@
 import SwiftUI
 
-struct Voucher: Identifiable, Equatable {
-    let id = UUID().uuidString
+struct VoucherDto: Codable, Equatable, Hashable {
+    let uid: String
     var title: String
-    var shop: CoffeeShop
+    var shop: CafeDto
     var code: String
     var expirationDate: Date
     var expirationDateString: String {
         "Kupon ważny do \(DateManager.formatDate(expirationDate))"
     }
     
-    static func == (lhs: Voucher, rhs: Voucher) -> Bool {
-        lhs.id == rhs.id
-    }
-    
-    static var mocks: [Voucher] = [
-        Voucher(title: "Rabat 5zł na Americano, Cappuccino, Latte",
-                shop: CoffeeShop(title: "Costa Coffee"),
-                code: QRCodeGenerator.generate(),
-                expirationDate: Date()),
-        Voucher(title: "Rabat 5zł na Americano, Cappuccino, Latte",
-                shop: CoffeeShop(title: "Costa Coffee"),
-                code: QRCodeGenerator.generate(),
-                expirationDate: Date()),
-        Voucher(title: "Rabat 5zł na Americano, Cappuccino, Latte",
-                shop: CoffeeShop(title: "Costa Coffee"),
-                code: QRCodeGenerator.generate(),
-                expirationDate: Date()),
-        Voucher(title: "Rabat 5zł na Americano, Cappuccino, Latte",
-                shop: CoffeeShop(title: "Costa Coffee"),
-                code: QRCodeGenerator.generate(),
-                expirationDate: Date()),
-        Voucher(title: "Rabat 5zł na Americano, Cappuccino, Latte",
-                shop: CoffeeShop(title: "Costa Coffee"),
-                code: QRCodeGenerator.generate(),
-                expirationDate: Date()),
-        Voucher(title: "Rabat 5zł na Americano, Cappuccino, Latte",
-                shop: CoffeeShop(title: "Costa Coffee"),
-                code: QRCodeGenerator.generate(),
-                expirationDate: Date())
+    static var mocks: [VoucherDto] = [
+        VoucherDto(uid: UUID().uuidString,
+                   title: "Rabat 5zł na Americano, Cappuccino, Latte",
+                   shop: CafeDto.mock.randomElement()!,
+                   code: QRCodeGenerator.generate(),
+                   expirationDate: Date()),
+        VoucherDto(uid: UUID().uuidString,
+                   title: "Rabat 5zł na Americano, Cappuccino, Latte",
+                   shop: CafeDto.mock.randomElement()!,
+                   code: QRCodeGenerator.generate(),
+                   expirationDate: Date()),
+        VoucherDto(uid: UUID().uuidString,
+                   title: "Rabat 5zł na Americano, Cappuccino, Latte",
+                   shop: CafeDto.mock.randomElement()!,
+                   code: QRCodeGenerator.generate(),
+                   expirationDate: Date()),
+        VoucherDto(uid: UUID().uuidString,
+                   title: "Rabat 5zł na Americano, Cappuccino, Latte",
+                   shop: CafeDto.mock.randomElement()!,
+                   code: QRCodeGenerator.generate(),
+                   expirationDate: Date()),
+        VoucherDto(uid: UUID().uuidString,
+                   title: "Rabat 5zł na Americano, Cappuccino, Latte",
+                   shop: CafeDto.mock.randomElement()!,
+                   code: QRCodeGenerator.generate(),
+                   expirationDate: Date()),
+        VoucherDto(uid: UUID().uuidString,
+                   title: "Rabat 5zł na Americano, Cappuccino, Latte",
+                   shop: CafeDto.mock.randomElement()!,
+                   code: QRCodeGenerator.generate(),
+                   expirationDate: Date())
     ]
 }
 
@@ -48,8 +50,8 @@ struct CoffeeShop {
 
 struct VoucherCell: View {
     
-    var voucher: Voucher
-    @Binding var voucherToActivate: Voucher?
+    var voucher: VoucherDto
+    @Binding var voucherToActivate: VoucherDto?
     @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
@@ -133,10 +135,11 @@ struct VoucherCell: View {
 }
 
 #Preview {
-    VoucherCell(voucher: Voucher(title: "Rabat 5zł na Americano, Cappuccino, Latte",
-                                 shop: CoffeeShop(title: "Costa Coffee"),
-                                 code: QRCodeGenerator.generate(),
-                                 expirationDate: Date()),
+    VoucherCell(voucher: VoucherDto(uid: UUID().uuidString,
+                                    title: "Rabat 5zł na Americano, Cappuccino, Latte",
+                                    shop: CafeDto.mock.first!,
+                                    code: QRCodeGenerator.generate(),
+                                    expirationDate: Date()),
                 voucherToActivate: .constant(nil))
     .frame(maxWidth: .infinity)
     .frame(height: 220)
