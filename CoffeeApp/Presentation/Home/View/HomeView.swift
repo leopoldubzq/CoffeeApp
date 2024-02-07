@@ -20,11 +20,7 @@ struct HomeView: View {
                 let size = proxy.size
                 OffsetObservingScrollView(offset: $scrollOffsetY) {
                     VStack(spacing: 16) {
-                        if viewModel.isLoggedIn {
-                            TitleSectionView()
-                        } else {
-                            LoginTopSectionView()
-                        }
+                        TitleSectionView()
                         VStack(spacing: 8) {
                             HStack {
                                 CoffeeShopPickerButton()
@@ -68,8 +64,7 @@ struct HomeView: View {
                     HapticManager.shared.impact(.soft)
                 }
                 .task(id: shouldPresentLoginView) {
-                    viewModel.isLoggedIn = !shouldPresentLoginView
-                    viewModel.fetchData()
+                    viewModel.getUser()
                 }
             }
         }
@@ -103,7 +98,7 @@ struct HomeView: View {
         HStack {
             Group {
                 Text("Cześć, ")
-                + Text("LEOPOLD!")
+                + Text("\((viewModel.user?.name ?? "").uppercased())!")
                     .foregroundStyle(.accent)
             }
             .minimumScaleFactor(0.95)
@@ -139,27 +134,6 @@ struct HomeView: View {
                             .opacity(phase.isIdentity ? 1 : 0.3)
                             .scaleEffect(phase.isIdentity ? 1 : 0.95)
                     }
-                }
-                if !viewModel.isLoggedIn {
-                    Button {} label: {
-                        VStack {
-                            ZStack {
-                                Circle()
-                                    .fill(Color.gray.opacity(colorScheme == .dark ? 0.15 : 0.08))
-                                    .frame(width: 100, height: 100)
-                                Image(systemName: "chevron.right")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 25, height: 25)
-                                    .foregroundStyle(Color.init(uiColor: .label))
-                            }
-                            
-                            Text("Zaloguj się")
-                                .fontWeight(.semibold)
-                                .foregroundStyle(Color.init(uiColor: .label))
-                        }
-                    }
-                    .padding(.leading)
                 }
             }
             

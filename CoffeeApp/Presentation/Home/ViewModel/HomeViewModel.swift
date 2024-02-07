@@ -1,26 +1,28 @@
 import SwiftUI
+import Firebase
 
 final class HomeViewModel: BaseViewModel {
     @Published var activeVouchers: [Voucher] = Voucher.mocks
-    @Published var isLoggedIn: Bool = true
+    @Published var user: UserDto?
+    
+    private let userService = UserService()
     
     override init() {
         super.init()
-        setupActiveVouchersArray()
+        activeVouchers = Voucher.mocks
     }
     
-    func fetchData() {
-        guard isLoggedIn else { return }
+    func getUser() {
+        guard Auth.auth().currentUser != nil else { return }
         print("Fetch data")
+        isLoading = true
+        userService.getUser(uid: Auth.auth().currentUser?.uid)
+            .sink { [weak self] _ in
+                self?.isLoading = false
+            } receiveValue: { [weak self] user in
+                self?.user = user
+            }
+            .store(in: &cancellables)
     }
-    
-    private func setupActiveVouchersArray() {
-        if isLoggedIn {
-            activeVouchers = Voucher.mocks
-        } else {
-            activeVouchers = Voucher.mocks.count > 3 ? Array(Voucher.mocks[0...2]) : Voucher.mocks
-        }
-    }
-    
     
 }
