@@ -217,8 +217,9 @@ struct SettingsView: View {
                     Section {
                         Button {
                             try! Auth.auth().signOut()
-                            isLoggedIn = false
-                            shouldPresentLoginView.toggle()
+                            withAnimation(.easeIn(duration: 0.3)) {
+                                shouldPresentLoginView.toggle()
+                            }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 selectedTab = .home
                             }

@@ -5,7 +5,6 @@ struct LoginView: View {
     @Binding var shouldPresentLoginView: Bool
     @State private var imageAnimationTrigger: Bool = false
     @Environment(\.colorScheme) var colorScheme
-    @AppStorage(AppStorageKeys.isLoggedIn.rawValue) private var isLoggedIn: Bool = false
     @StateObject private var viewModel = LoginViewModel()
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -24,9 +23,7 @@ struct LoginView: View {
                 VStack(spacing: 16) {
                     Spacer()
                     LoginWithGoogleButton(size: size) { viewModel.loginWithGoogle() }
-                    LoginWithEmailButton(size: size) {
-                        shouldPresentLoginView.toggle()
-                    }
+                    LoginWithEmailButton(size: size) { shouldPresentLoginView.toggle() }
                 }
                 .safeAreaPadding(.bottom)
                 .padding(.bottom, 32)
@@ -53,9 +50,11 @@ struct LoginView: View {
                     })
                 }
             }
+            .background(Color.init(uiColor: .systemBackground))
             .onChange(of: viewModel.shouldPresentLogin) { _, newValue in
-                isLoggedIn = newValue
-                shouldPresentLoginView = newValue
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    shouldPresentLoginView = newValue
+                }
             }
             .overlay {
                 if viewModel.isLoading {

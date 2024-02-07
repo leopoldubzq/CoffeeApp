@@ -5,12 +5,11 @@ struct MainView: View {
     
     @State var selectedTab: TabPage = .home
     @State private var imageAnimationTrigger: Bool = false
-    @State private var shouldFinishOnboarding: Bool = false
+    @State private var shouldFinishOnboarding: Bool = true
     @State private var viewModel = MainViewModel()
     @State private var shouldPresentLoginView: Bool = false
     @Environment(\.colorScheme) var colorScheme
     @AppStorage(AppStorageKeys.hasSeenOnboarding.rawValue) var hasSeenOnboarding: Bool = false
-    @AppStorage(AppStorageKeys.isLoggedIn.rawValue) var isLoggedIn: Bool = false
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -39,25 +38,32 @@ struct MainView: View {
             HapticManager.shared.impact(.medium)
         }
         .onChange(of: hasSeenOnboarding, { _, newValue in
-            withAnimation(.easeIn(duration: 0.2)) {
+            withAnimation(.easeIn(duration: 0.3)) {
                 shouldFinishOnboarding = newValue
             }
         })
-        .fullScreenCover(isPresented: $shouldPresentLoginView, content: {
-            LoginView(shouldPresentLoginView: $shouldPresentLoginView)
+        .onChange(of: shouldPresentLoginView, { _, newValue in
+            withAnimation(.easeInOut(duration: 0.3)) {
+                shouldPresentLoginView = newValue
+            }
         })
-        .onAppear {
-             shouldPresentLoginView = !isLoggedIn
-             shouldFinishOnboarding = hasSeenOnboarding
+        .overlay {
+            if shouldPresentLoginView {
+                LoginView(shouldPresentLoginView: $shouldPresentLoginView)
+            }
         }
         .overlay {
-            if !shouldPresentLoginView && !shouldFinishOnboarding {
+            if !shouldFinishOnboarding {
                 ZStack {
                     VisualEffectView(effect: UIBlurEffect(style: colorScheme == .dark ? .dark : .light))
                     OnboardingView(shouldFinishOnboarding: $shouldFinishOnboarding)
                 }
                 .ignoresSafeArea(.all)
             }
+        }
+        .onAppear {
+            shouldPresentLoginView = Auth.auth().currentUser == nil
+            shouldFinishOnboarding = hasSeenOnboarding
         }
     }
 }

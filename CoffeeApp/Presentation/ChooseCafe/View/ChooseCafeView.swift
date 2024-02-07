@@ -46,6 +46,7 @@ struct ChooseCafeView: View {
                 Section(selectedCafe == nil ? "Kawiarnie" : "Pozostałe kawiarnie") {
                     ForEach(getCafes(), id: \.uid) { cafe in
                         Text(cafe.title)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .onTapGesture {
                                 withAnimation(.snappy(duration: 0.35, extraBounce: 0.08)) {
                                     selectedCafe = cafe

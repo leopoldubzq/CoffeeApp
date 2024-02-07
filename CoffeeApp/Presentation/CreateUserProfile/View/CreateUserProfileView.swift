@@ -2,73 +2,31 @@ import SwiftUI
 
 struct CreateUserProfileView: View {
     
-    @Binding private var user: UserDto
     @State private var usernameText: String = ""
-    @State private var emailText: String = ""
     @FocusState private var usernameTextFieldFocused: Bool
     @FocusState private var emailTextFieldFocused: Bool
     @State private var chooseCafeViewPresented: Bool = false
     @StateObject private var viewModel = CreateUserProfileViewModel()
     
     init(user: Binding<UserDto>) {
-        self._user = user
+        viewModel.user = user.wrappedValue
     }
     
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
-                VStack(spacing: 12) {
+                VStack {
                     Text("Stwórz profil")
                         .font(.title2)
                         .fontWeight(.semibold)
                         .frame(maxWidth: .infinity)
                         .overlay(alignment: .trailing) {
-                            Button {} label: {
-                                Text("Zapisz")
-                                    .font(.system(size: 16))
-                                    .fontWeight(.semibold)
-                                    
-                            }
-                            .disabled(usernameText.isEmpty || viewModel.selectedCafe == nil)
+                            SaveButton()
                         }
-                    VStack(spacing: 8) {
-                        Text("Nick")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading)
-                            .padding(.top)
-                            .foregroundStyle(.secondary)
-                        TextField("Aa", text: $usernameText)
-                            .padding(10)
-                            .background(Color("GroupedListCellBackgroundColor"))
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                            .focused($usernameTextFieldFocused)
-                            .textInputAutocapitalization(.never)
-                            .onSubmit {
-                                usernameTextFieldFocused = false
-                            }
-                        Text("Email")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading)
-                            .padding(.top)
-                            .foregroundStyle(.secondary)
-                        TextField("Email", text: $emailText)
-                            .padding(10)
-                            .background(Color("GroupedListCellBackgroundColor"))
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                            .focused($emailTextFieldFocused)
-                            .textInputAutocapitalization(.never)
-                            .keyboardType(.emailAddress)
-                            .onSubmit {
-                                emailTextFieldFocused = false
-                            }
-                    }
+                    NickSectionTextField()
                     VStack(spacing: 8) {
                         if viewModel.selectedCafe != nil {
-                            Text("Wybrana kawiarnia")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading)
-                                .padding(.top)
-                                .foregroundStyle(.secondary)
+                            SectionText("Wybrana kawiarnia")
                         }
                         ChooseCafeButton()
                     }
@@ -83,10 +41,12 @@ struct CreateUserProfileView: View {
                 ChooseCafeView(selectedCafe: $viewModel.selectedCafe)
             }
             .onChange(of: viewModel.selectedCafe) { _, newValue in
-                user.currentCafe = newValue
+                viewModel.user?.currentCafe = newValue
+            }
+            .onChange(of: usernameText) { _, newValue in
+                viewModel.user?.name = newValue
             }
         }
-        
         .frame(maxHeight: .infinity)
     }
     
@@ -106,7 +66,48 @@ struct CreateUserProfileView: View {
             .foregroundStyle(viewModel.selectedCafe == nil ? .secondary : Color.primary)
         }
     }
-        
+    
+    @ViewBuilder
+    private func SaveButton() -> some View {
+        Button {
+            viewModel.updateUser {
+                
+            }
+        } label: {
+            Text("Zapisz")
+                .font(.system(size: 16))
+                .fontWeight(.semibold)
+                
+        }
+        .enabled(validToSave())
+    }
+    
+    @ViewBuilder
+    private func NickSectionTextField() -> some View {
+        VStack {
+            SectionText("Nick")
+            TextField("Aa", text: $usernameText)
+                .padding(10)
+                .background(Color("GroupedListCellBackgroundColor"))
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .focused($usernameTextFieldFocused)
+                .textInputAutocapitalization(.never)
+                .onSubmit { usernameTextFieldFocused = false }
+        }
+    }
+    
+    @ViewBuilder
+    private func SectionText(_ text: String) -> some View {
+        Text(text)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading)
+            .padding(.top, 8)
+            .foregroundStyle(.secondary)
+    }
+    
+    private func validToSave() -> Bool {
+        !usernameText.isEmpty && viewModel.selectedCafe != nil
+    }
 }
 
 #Preview {
