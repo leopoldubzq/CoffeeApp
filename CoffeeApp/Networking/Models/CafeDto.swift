@@ -2,7 +2,7 @@ import Foundation
 import Firebase
 import CoreLocation
 
-struct CafeDto: Codable, Equatable, Hashable {
+struct CafeDto: FirestoreProtocol, Equatable, Hashable {
     let uid: String
     var title: String
     var description: String

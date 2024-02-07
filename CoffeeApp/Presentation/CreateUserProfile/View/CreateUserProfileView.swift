@@ -2,28 +2,24 @@ import SwiftUI
 
 struct CreateUserProfileView: View {
     
+    var completion: VoidCallback
+    @State private var user: UserDto
     @State private var usernameText: String = ""
     @FocusState private var usernameTextFieldFocused: Bool
     @FocusState private var emailTextFieldFocused: Bool
     @State private var chooseCafeViewPresented: Bool = false
     @StateObject private var viewModel = CreateUserProfileViewModel()
     
-    init(user: Binding<UserDto>) {
-        viewModel.user = user.wrappedValue
+    init(user: UserDto, completion: @escaping VoidCallback) {
+        self.completion = completion
+        self.user = user
     }
     
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
                 VStack {
-                    Text("Stwórz profil")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity)
-                        .overlay(alignment: .trailing) {
-                            SaveButton()
-                        }
-                    NickSectionTextField()
+                    UsernameSectionTextField()
                     VStack(spacing: 8) {
                         if viewModel.selectedCafe != nil {
                             SectionText("Wybrana kawiarnia")
@@ -36,7 +32,9 @@ struct CreateUserProfileView: View {
                 .frame(maxWidth: .infinity)
                 .padding()
             }
-            .overlay(alignment: .top) { SafeAreaView() }
+            .navigationTitle("Uzupełnij profil")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar { SaveButton() }
             .sheet(isPresented: $chooseCafeViewPresented) {
                 ChooseCafeView(selectedCafe: $viewModel.selectedCafe)
             }
@@ -45,6 +43,17 @@ struct CreateUserProfileView: View {
             }
             .onChange(of: usernameText) { _, newValue in
                 viewModel.user?.name = newValue
+            }
+            .onAppear {
+                guard viewModel.user == nil else { return }
+                viewModel.user = user
+            }
+            .overlay {
+                if viewModel.isLoading {
+                    ProgressView("Wczytywanie")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color.init(uiColor: .systemBackground))
+                }
             }
         }
         .frame(maxHeight: .infinity)
@@ -70,9 +79,8 @@ struct CreateUserProfileView: View {
     @ViewBuilder
     private func SaveButton() -> some View {
         Button {
-            viewModel.updateUser {
-                
-            }
+            viewModel.user?.accountConfigured = true
+            viewModel.updateUser { completion() }
         } label: {
             Text("Zapisz")
                 .font(.system(size: 16))
@@ -83,16 +91,21 @@ struct CreateUserProfileView: View {
     }
     
     @ViewBuilder
-    private func NickSectionTextField() -> some View {
+    private func UsernameSectionTextField() -> some View {
         VStack {
-            SectionText("Nick")
-            TextField("Aa", text: $usernameText)
+            SectionText("Imię")
+            TextField("Twoje imię", text: $usernameText)
                 .padding(10)
                 .background(Color("GroupedListCellBackgroundColor"))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .focused($usernameTextFieldFocused)
                 .textInputAutocapitalization(.never)
                 .onSubmit { usernameTextFieldFocused = false }
+            Text("Od 3 do 20 znaków")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading)
+                .font(.caption)
+                .foregroundStyle(.secondary)
         }
     }
     
@@ -106,11 +119,13 @@ struct CreateUserProfileView: View {
     }
     
     private func validToSave() -> Bool {
-        !usernameText.isEmpty && viewModel.selectedCafe != nil
+        !usernameText.isEmpty && usernameText.count >= 3 && usernameText.count <= 20 && viewModel.selectedCafe != nil
     }
 }
 
 #Preview {
-    CreateUserProfileView(user: .constant(UserDto(uid: UUID().uuidString,
-                                                  email: "leopold.romanowski@gmail.com")))
+    NavigationStack {
+        CreateUserProfileView(user: UserDto(uid: UUID().uuidString,
+                                            email: "leopold.romanowski@gmail.com")) {}
+    }
 }

@@ -9,6 +9,7 @@ enum LoginNetworkResult {
 final class LoginViewModel: BaseViewModel {
     
     @Published var shouldPresentLogin: Bool = true
+    @Published var user: UserDto?
     
     private let sessionService = SessionService()
     private let userService = UserService()
@@ -31,7 +32,9 @@ final class LoginViewModel: BaseViewModel {
                     callback?(.failure)
                     print(error.localizedDescription)
                 }
-            }, receiveValue: { _ in })
+            }, receiveValue: { [weak self] user in
+                self?.user = user
+            })
             .store(in: &cancellables)
     }
 }

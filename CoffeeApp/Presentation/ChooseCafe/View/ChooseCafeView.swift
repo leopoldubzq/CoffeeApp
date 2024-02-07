@@ -61,6 +61,21 @@ struct ChooseCafeView: View {
                         placement: .navigationBarDrawer,
                         prompt: Text("Szukaj"))
             .navigationDestination(for: Route.self, destination: { $0.handleDestination(route: $route) })
+            .overlay {
+                if viewModel.isLoading {
+                    ProgressView("Wczytywanie")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color.init(uiColor: .systemBackground))
+                }
+                
+            }
+            .onAppear {
+                if let selectedCafe { viewModel.selectedCafe = selectedCafe }
+                viewModel.getCafes()
+            }
+            .onChange(of: selectedCafe) { _, newValue in
+                viewModel.selectedCafe = newValue
+            }
         }
     }
     

@@ -3,6 +3,7 @@ import Firebase
 enum FirestoreCollection: String {
     case users
     case menu
+    case cafes
 }
 
 struct FirestoreUtility {
