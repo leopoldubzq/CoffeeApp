@@ -198,6 +198,7 @@ struct HomeView: View {
     @ViewBuilder
     private func CoffeeShopPickerButton() -> some View {
         Button {
+            HapticManager.shared.impact(.soft)
             withAnimation(.snappy(duration: 0.35, extraBounce: 0.08)) {
                 cafeViewPresented.toggle()
             }

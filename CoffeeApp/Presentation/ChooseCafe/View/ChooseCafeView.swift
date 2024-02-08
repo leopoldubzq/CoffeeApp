@@ -62,7 +62,10 @@ struct ChooseCafeView: View {
                         placement: .navigationBarDrawer,
                         prompt: Text("Szukaj"))
             .toolbar {
-                Button("Gotowe") { dismiss() }
+                Button("Gotowe") {
+                    HapticManager.shared.impact(.soft)
+                    dismiss()
+                }
                 .fontWeight(.semibold)
             }
             .navigationDestination(for: Route.self, destination: { $0.handleDestination(route: $route) })

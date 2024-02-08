@@ -7,9 +7,7 @@ struct OrderCoffeeButton: View {
     
     var body: some View {
         Button {
-            withAnimation(.snappy(duration: 0.3)) {
-                coffeePreviewVisible.toggle()
-            }
+            coffeePreviewVisible = false
         } label: {
             Text("Zamów")
                 .foregroundStyle(.white)

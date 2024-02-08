@@ -6,6 +6,7 @@ struct MenuItemPreview: View {
     @Binding var coffeePreviewVisible: Bool
     @State private var scrollOffsetY: CGFloat = 0
     @State private var headerHeight: CGFloat = 0
+    @State private var userInteractionEnabled: Bool = true
     var coffee: CoffeeDto
     var coffeeImageNamespace: Namespace.ID
     var coffeeTitleNamespace: Namespace.ID
@@ -31,6 +32,7 @@ struct MenuItemPreview: View {
                             TagLayout(alignment: .leading) {
                                 ForEach(Array(Set(viewModel.selectedCoffeeAccessories.sorted(by: { $0.title > $1.title }))), id: \.self) { accessory in
                                     SelectedCoffeeAccessoryButton(accessory: accessory) {
+                                        
                                         withAnimation(.snappy(duration: 0.35, extraBounce: 0.1)) {
                                             viewModel.selectedCoffeeAccessories.removeAll(where: { $0.rawValue == accessory.rawValue })
                                         }
@@ -39,11 +41,13 @@ struct MenuItemPreview: View {
                             }
                             .padding(.horizontal)
                             .padding(.bottom, viewModel.selectedCoffeeAccessories.isEmpty ? 0 : 8)
+                            .allowsHitTesting(userInteractionEnabled)
                             if !getCoffeeAccessories().isEmpty {
                                 SectionText(title: "Dodatki", paddingTop: 0)
                                 ForEach(getCoffeeAccessories(), id: \.self) { accessory in
                                     CoffeeAccessoryButton(title: accessory.title,
                                                           extraPrice: accessory.extraPrice) {
+                                        blockUserInteraction()
                                         withAnimation(.snappy(duration: 0.35, extraBounce: 0.08)) {
                                             viewModel.performCoffeeAccessoryAction(for: accessory)
                                         }
@@ -65,15 +69,8 @@ struct MenuItemPreview: View {
                             }
                         } header: {
                             OrderedCoffeeHeader()
-//                                .overlay {
-//                                    Text("ScrollOffset: \(scrollOffsetY)")
-//                                        .frame(minWidth: 100, minHeight: 100)
-//                                        .background(Color.red)
-//                                        .offset(y: 200)
-//                                }
                         }
                     }
-                    // .modifier(OffsetModifier(offset: $scrollOffsetY, startOffset: 119))
                 }
                 
                 .scrollBounceBehavior(.basedOnSize)
@@ -92,6 +89,13 @@ struct MenuItemPreview: View {
             .onAppear {
                 viewModel.coffeeAccesories = coffee.accessories
             }
+        }
+    }
+    
+    private func blockUserInteraction() {
+        userInteractionEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+            userInteractionEnabled = true
         }
     }
     
@@ -125,9 +129,7 @@ struct MenuItemPreview: View {
     private func CancelButton() -> some View {
         Button {
             HapticManager.shared.impact(.soft)
-            withAnimation(.snappy(duration: 0.3, extraBounce: 0.03)) {
-                coffeePreviewVisible.toggle()
-            }
+            coffeePreviewVisible = false
         } label: {
             Text("Anuluj")
         }
@@ -158,18 +160,18 @@ struct MenuItemPreview: View {
         HStack(alignment: .center) {
             Image(coffee.imageName)
                 .resizable()
-                .matchedGeometryEffect(id: coffee.imageMatchedGeometryID, in: coffeeImageNamespace)
+                //.matchedGeometryEffect(id: coffee.imageMatchedGeometryID, in: coffeeImageNamespace)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 120, height: 120)
             VStack(alignment: .leading, spacing: 4) {
                 Text(coffee.title)
-                    .matchedGeometryEffect(id: coffee.titleMatchedGeometryID, in: coffeeTitleNamespace)
+                    //.matchedGeometryEffect(id: coffee.titleMatchedGeometryID, in: coffeeTitleNamespace)
                     .fontWeight(.semibold)
                     .minimumScaleFactor(0.8)
                 HStack {
                     Text(PriceFormatter.formatToPLN(price: getCoffeeFullPrice()))
                         .contentTransition(.numericText())
-                        .matchedGeometryEffect(id: coffee.priceMatchedGeometryID, in: coffeePriceNamespace)
+                        //.matchedGeometryEffect(id: coffee.priceMatchedGeometryID, in: coffeePriceNamespace)
                         .minimumScaleFactor(0.8)
                 }
             }

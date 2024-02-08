@@ -31,9 +31,7 @@ struct CoffeeCell: View {
         }
         .onTapGesture {
             selectedCoffee = coffee
-            withAnimation(.snappy(duration: 0.3, extraBounce: 0.03)) {
-                coffeePreviewVisible.toggle()
-            }
+            coffeePreviewVisible = true
         }
     }
     

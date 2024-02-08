@@ -1,6 +1,7 @@
 import Foundation
 import Firebase
 import CoreLocation
+import FirebaseFirestoreSwift
 
 struct CafeDto: FirestoreProtocol, Equatable, Hashable {
     let uid: String
@@ -8,6 +9,7 @@ struct CafeDto: FirestoreProtocol, Equatable, Hashable {
     var description: String
     var contactInfo: CafeContactInfoDto
     var location: GeoPoint
+    @ServerTimestamp var createdAt: Timestamp? = Timestamp(date: .now)
     
     static var mock: [CafeDto] = [CafeDto(uid: UUID().uuidString,
                                           title: "Kawiarnia Drukarnia",
