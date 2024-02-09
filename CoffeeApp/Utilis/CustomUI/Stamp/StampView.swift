@@ -20,7 +20,6 @@ struct StampView: View {
     
     @State private var voucherStampsAppearance: VoucherStampsAppearance = .all
     @Environment(\.colorScheme) private var colorScheme
-    private var stampsPerVoucher: Int = 10
     private var userStamps: [StampDto]
     
     init(userStamps: [StampDto]) {
@@ -97,7 +96,7 @@ struct StampView: View {
                                     .foregroundStyle(.secondary)
                             }
                             ForEach(Array(1...getActiveVouchersCount()), id: \.self) { i in
-                                VoucherView(voucherIndex: i, isActive: true)
+                                VoucherView(voucherIndex: i, isActive: true, userStamps: userStamps)
                             }
                         }
                         if voucherStampsAppearance == .all && getVouchersCount() > 0 {
@@ -106,7 +105,7 @@ struct StampView: View {
                                 .padding(.leading)
                                 .padding(.leading)
                                 .foregroundStyle(.secondary)
-                            VoucherView(voucherIndex: getLastIndex(), isActive: false)
+                            VoucherView(voucherIndex: getLastIndex(), isActive: false, userStamps: userStamps)
                         }
                     }
                     .animation(.snappy(duration: 0.35, extraBounce: 0.04), value: voucherStampsAppearance)
@@ -114,7 +113,7 @@ struct StampView: View {
                 } else {
                     LazyVGrid(columns: Array(repeating: GridItem(), count: 2), spacing: 8) {
                         ForEach(Array(1...getVouchersCount()), id: \.self) { i in
-                            VoucherView(voucherIndex: i, isActive: false)
+                            VoucherView(voucherIndex: i, isActive: false, userStamps: userStamps)
                         }
                     }
                     .animation(.snappy(duration: 0.35, extraBounce: 0.04), value: voucherStampsAppearance)
@@ -123,43 +122,6 @@ struct StampView: View {
             }
             .navigationTitle("Twoje pieczątki")
         }
-    }
-    
-    @ViewBuilder
-    private func VoucherView(voucherIndex i: Int, isActive: Bool) -> some View {
-        LazyVGrid(columns: Array(repeating: GridItem(), count: 5)) {
-            ForEach(getRange(i: i), id: \.self) { j in
-                StampleCell(isEmpty: j > userStamps.count)
-            }
-        }
-        .padding()
-        .background(Color("GroupedListCellBackgroundColor"))
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .onTapGesture {
-            guard isActive else { return }
-        }
-    }
-    
-    @ViewBuilder
-    private func StampleCell(isEmpty: Bool) -> some View {
-        Image("stamp")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 45, height: 45)
-            .overlay {
-                Image(systemName: "checkmark")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 12, height: 12)
-                    .foregroundStyle(.white)
-            }
-            .overlay {
-                if isEmpty {
-                    Circle()
-                        .fill(colorScheme == .dark ? .gray : .white)
-                        .frame(width: 38, height: 38)
-                }
-            }
     }
     
     private func getVouchersCount() -> Int {
@@ -172,26 +134,26 @@ struct StampView: View {
     }
     
     private func getAllVouchersCount() -> Int {
-        let value = Int(ceil(CGFloat(userStamps.count) / CGFloat(stampsPerVoucher)))
-        return value + (String(userStamps.count).last == "0" ? 1 : 0)
+        let value = Int(CGFloat(userStamps.count) / CGFloat(Constants.stampsPerVoucher))
+        return value + 1
     }
     
     private func getActiveVouchersCount() -> Int {
-        let value = Int(ceil(CGFloat(userStamps.count) / CGFloat(stampsPerVoucher)))
-        return value - (value == 1 ? 0 : 1)
+        let value = Int(CGFloat(userStamps.count) / CGFloat(Constants.stampsPerVoucher))
+        return userStamps.count < Constants.stampsPerVoucher ? 0 : value
     }
     
     private func getLastIndex() -> Int {
-        Int(userStamps.count / stampsPerVoucher) + 1
+        Int(CGFloat(userStamps.count) / CGFloat(Constants.stampsPerVoucher)) + 1
     }
     
     private func getRange(i: Int) -> ClosedRange<Int> {
         switch i {
         case 1:
-            return (1...stampsPerVoucher)
+            return (1...Constants.stampsPerVoucher)
         default:
-            let initialValue: Int = ((i - 1) * stampsPerVoucher) + 1
-            let destinationValue: Int = i * stampsPerVoucher
+            let initialValue: Int = ((i - 1) * Constants.stampsPerVoucher) + 1
+            let destinationValue: Int = i * Constants.stampsPerVoucher
             return (initialValue...destinationValue)
         }
     }
@@ -199,6 +161,6 @@ struct StampView: View {
 
 #Preview {
     NavigationStack {
-        StampView(userStamps: Array(repeating: StampDto(uid: UUID().uuidString, createdAt: Timestamp(date: .now)), count: 12))
+        StampView(userStamps: Array(repeating: StampDto.mock, count: 0))
     }
 }

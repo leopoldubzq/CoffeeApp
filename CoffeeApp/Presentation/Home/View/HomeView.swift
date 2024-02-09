@@ -1,4 +1,6 @@
 import SwiftUI
+import FirebaseFirestoreSwift
+import Firebase
 
 struct HomeView: View {
     
@@ -41,9 +43,9 @@ struct HomeView: View {
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                         }
+                        
                         VouchersText()
                         VouchersList(size: size)
-
                         Spacer()
                     }
                     .padding(.horizontal, 16)

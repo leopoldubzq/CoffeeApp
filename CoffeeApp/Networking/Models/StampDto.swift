@@ -9,4 +9,8 @@ struct StampDto: FirestoreProtocol, Hashable, Equatable {
     static func == (lhs: StampDto, rhs: StampDto) -> Bool {
         lhs.uid == rhs.uid
     }
+    
+    static var mock: Self {
+        return .init(uid: UUID().uuidString)
+    }
 }

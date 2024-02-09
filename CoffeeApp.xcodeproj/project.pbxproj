@@ -151,6 +151,12 @@
 		02E54F4A2B751B7600F49C5B /* PluralizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E54F482B751B7600F49C5B /* PluralizedString.swift */; };
 		02E54F4C2B752B7F00F49C5B /* StampDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E54F4B2B752B7F00F49C5B /* StampDto.swift */; };
 		02E54F4D2B752B7F00F49C5B /* StampDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E54F4B2B752B7F00F49C5B /* StampDto.swift */; };
+		02E54F502B753E4D00F49C5B /* VoucherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E54F4F2B753E4D00F49C5B /* VoucherView.swift */; };
+		02E54F512B753E4D00F49C5B /* VoucherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E54F4F2B753E4D00F49C5B /* VoucherView.swift */; };
+		02E54F532B753EA800F49C5B /* StampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E54F522B753EA800F49C5B /* StampleCell.swift */; };
+		02E54F542B753EA800F49C5B /* StampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E54F522B753EA800F49C5B /* StampleCell.swift */; };
+		02E54F572B753F2D00F49C5B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E54F562B753F2D00F49C5B /* Constants.swift */; };
+		02E54F582B753F2D00F49C5B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E54F562B753F2D00F49C5B /* Constants.swift */; };
 		02ECB46B2B6C126A00F71974 /* KeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB46A2B6C126A00F71974 /* KeyWindow.swift */; };
 		02ECB46D2B6C1FC600F71974 /* DeviceRotationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB46C2B6C1FC600F71974 /* DeviceRotationModifier.swift */; };
 		02ECB46E2B6C1FC600F71974 /* DeviceRotationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB46C2B6C1FC600F71974 /* DeviceRotationModifier.swift */; };
@@ -244,6 +250,9 @@
 		02E54F452B751B5E00F49C5B /* StringManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringManager.swift; sourceTree = "<group>"; };
 		02E54F482B751B7600F49C5B /* PluralizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluralizedString.swift; sourceTree = "<group>"; };
 		02E54F4B2B752B7F00F49C5B /* StampDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampDto.swift; sourceTree = "<group>"; };
+		02E54F4F2B753E4D00F49C5B /* VoucherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoucherView.swift; sourceTree = "<group>"; };
+		02E54F522B753EA800F49C5B /* StampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampleCell.swift; sourceTree = "<group>"; };
+		02E54F562B753F2D00F49C5B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02ECB46A2B6C126A00F71974 /* KeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWindow.swift; sourceTree = "<group>"; };
 		02ECB46C2B6C1FC600F71974 /* DeviceRotationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationModifier.swift; sourceTree = "<group>"; };
 		02ECB4732B6D0B2300F71974 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -581,6 +590,7 @@
 		0274682A2B30CC3D00664A7F /* Utilis */ = {
 			isa = PBXGroup;
 			children = (
+				02E54F552B753F2600F49C5B /* Constants */,
 				02E54F442B751B5700F49C5B /* Managers */,
 				02ECB4762B6D0B4400F71974 /* FirestoreUtility */,
 				02ECB4692B6C126500F71974 /* Helpers */,
@@ -960,6 +970,7 @@
 		02E54F402B74DD5400F49C5B /* Stamp */ = {
 			isa = PBXGroup;
 			children = (
+				02E54F4E2B753E4500F49C5B /* Subviews */,
 				02E54F412B74DD6000F49C5B /* StampView.swift */,
 			);
 			path = Stamp;
@@ -971,6 +982,23 @@
 				02E54F452B751B5E00F49C5B /* StringManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		02E54F4E2B753E4500F49C5B /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				02E54F4F2B753E4D00F49C5B /* VoucherView.swift */,
+				02E54F522B753EA800F49C5B /* StampleCell.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		02E54F552B753F2600F49C5B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				02E54F562B753F2D00F49C5B /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		02ECB4692B6C126500F71974 /* Helpers */ = {
@@ -1145,6 +1173,7 @@
 				027468412B30CF6700664A7F /* HomeView.swift in Sources */,
 				027468632B31032B00664A7F /* QRCodeGenerator.swift in Sources */,
 				023291112B5EF024004A2B26 /* OrderCoffeeButton.swift in Sources */,
+				02E54F532B753EA800F49C5B /* StampleCell.swift in Sources */,
 				0274682D2B30CC4500664A7F /* BaseViewModel.swift in Sources */,
 				02B610B72B5FE94A00844CC3 /* CoffeeCell.swift in Sources */,
 				023291172B5EF1E2004A2B26 /* AddProductPlusButton.swift in Sources */,
@@ -1155,6 +1184,7 @@
 				027468302B30CD7100664A7F /* Route.swift in Sources */,
 				0274685C2B30EFAD00664A7F /* UIDevice+Extension.swift in Sources */,
 				02D9BAF22B62AD71009FF2FC /* LoginWithGoogleButton.swift in Sources */,
+				02E54F502B753E4D00F49C5B /* VoucherView.swift in Sources */,
 				020543542B6DA91000C3E0CA /* SafeAreaView.swift in Sources */,
 				02B610BF2B600F9200844CC3 /* OnboardingViewModel.swift in Sources */,
 				0205439D2B73CE2800C3E0CA /* Base.swift in Sources */,
@@ -1180,6 +1210,7 @@
 				027468532B30E49E00664A7F /* QRCodeView.swift in Sources */,
 				0274683A2B30CF1800664A7F /* ProfileViewModel.swift in Sources */,
 				020543592B6FB31600C3E0CA /* ChooseCafeView.swift in Sources */,
+				02E54F572B753F2D00F49C5B /* Constants.swift in Sources */,
 				02F095402B67CDD2002E5B6A /* ChangeAppearanceButton.swift in Sources */,
 				0274686A2B319AD700664A7F /* LoginView.swift in Sources */,
 				027468292B30CC2F00664A7F /* SplashViewModel.swift in Sources */,
@@ -1201,6 +1232,7 @@
 				02D9BAD12B62A2B4009FF2FC /* LoginView.swift in Sources */,
 				02ECB4822B6D0F4600F71974 /* CLLocation+Ext.swift in Sources */,
 				02D9BABE2B62A255009FF2FC /* CoverFlowView.swift in Sources */,
+				02E54F512B753E4D00F49C5B /* VoucherView.swift in Sources */,
 				02D9BAD42B62A2C1009FF2FC /* HomeViewModel.swift in Sources */,
 				02D9BADA2B62A2D8009FF2FC /* MainView.swift in Sources */,
 				02D9BAC22B62A266009FF2FC /* UIDevice+Extension.swift in Sources */,
@@ -1259,12 +1291,14 @@
 				02F095452B67DCF4002E5B6A /* AppStorageKeys.swift in Sources */,
 				02D9BADE2B62A2FD009FF2FC /* CoffeeDto.swift in Sources */,
 				02D9BABD2B62A24D009FF2FC /* CustomPagingIndicator.swift in Sources */,
+				02E54F542B753EA800F49C5B /* StampleCell.swift in Sources */,
 				02D9BAC12B62A260009FF2FC /* VisualEffectView.swift in Sources */,
 				02E54F432B74DD6000F49C5B /* StampView.swift in Sources */,
 				02F095412B67CDD2002E5B6A /* ChangeAppearanceButton.swift in Sources */,
 				02D9BAAC2B62A1E8009FF2FC /* CoffeeAppAdminApp.swift in Sources */,
 				02E54F472B751B5E00F49C5B /* StringManager.swift in Sources */,
 				02D9BACF2B62A2A6009FF2FC /* SelectedCoffeeAccessoryButton.swift in Sources */,
+				02E54F582B753F2D00F49C5B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
