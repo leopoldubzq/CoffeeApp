@@ -12,7 +12,7 @@ class BaseService {
             FirestoreUtility
                 .collectionReference(collectionReference)
                 .addSnapshotListener { documentShapshot, error in
-                    if let error { promise(.failure(CAError.basicError(error.localizedDescription))) }
+                    if let error { promise(.failure(.basicError(error.localizedDescription))) }
                     guard let documents = documentShapshot?.documents else {
                         print("No documents")
                         promise(.success(nil))
@@ -71,13 +71,12 @@ class BaseService {
     
     func create<T: FirestoreProtocol>(_ model: FirestoreProtocol, type: T.Type) -> AnyPublisher<T, CAError> {
         return Future { promise in
-            
             do {
                 try FirestoreUtility
                     .collectionReference(.users)
                     .document(model.uid)
                     .setData(from: model) { error in
-                        if let error { promise(.failure(CAError.basicError(error.localizedDescription))) }
+                        if let error { promise(.failure(.basicError(error.localizedDescription))) }
                         if let model = model as? T {
                             promise(.success(model))
                         }

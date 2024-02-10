@@ -35,6 +35,7 @@ struct CreateUserProfileView: View {
             .navigationTitle("Uzupełnij profil")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { SaveButton() }
+            .navigationBarBackButtonHidden()
             .sheet(isPresented: $chooseCafeViewPresented) {
                 ChooseCafeView(selectedCafe: $viewModel.selectedCafe)
             }
@@ -119,7 +120,9 @@ struct CreateUserProfileView: View {
     }
     
     private func validToSave() -> Bool {
-        !usernameText.isEmpty && usernameText.count >= 3 && usernameText.count <= 20 && viewModel.selectedCafe != nil
+        !usernameText.isEmpty && usernameText.count >= 3 
+        && usernameText.count <= 20 && viewModel.selectedCafe != nil
+        && !viewModel.isLoading
     }
 }
 

@@ -1,26 +1,45 @@
 import SwiftUI
+import Firebase
 
 final class HomeViewModel: BaseViewModel {
-    @Published var activeVouchers: [Voucher] = Voucher.mocks
-    @Published var isLoggedIn: Bool = true
+    @Published var activeVouchers: [VoucherDto] = VoucherDto.mocks
+    @Published var user: UserDto?
+    @Published var currentCafe: CafeDto?
+    @Published var stamps: [StampDto] = []
     
-    override init() {
-        super.init()
-        setupActiveVouchersArray()
-    }
+    private let userService = UserService()
     
-    func fetchData() {
-        guard isLoggedIn else { return }
+    func getUser() {
+        guard Auth.auth().currentUser != nil else { return }
         print("Fetch data")
+        isLoading = true
+        userService.getUser(uid: Auth.auth().currentUser?.uid)
+            .sink { [weak self] _ in
+                self?.isLoading = false
+            } receiveValue: { [weak self] user in
+                self?.user = user
+                self?.stamps = user?.stamps ?? []
+                self?.currentCafe = user?.currentCafe
+            }
+            .store(in: &cancellables)
     }
     
-    private func setupActiveVouchersArray() {
-        if isLoggedIn {
-            activeVouchers = Voucher.mocks
-        } else {
-            activeVouchers = Voucher.mocks.count > 3 ? Array(Voucher.mocks[0...2]) : Voucher.mocks
+    func updateUser() {
+        guard Auth.auth().currentUser != nil else { return }
+        print("Update user")
+        if let user {
+            isLoading = true
+            userService.updateUser(user: user)
+                .sink { [weak self] _ in
+                    self?.isLoading = false
+                } receiveValue: { [weak self] user in
+                    self?.user = user
+                    self?.currentCafe = user.currentCafe
+                }
+                .store(in: &cancellables)
+
         }
+        
     }
-    
     
 }

@@ -83,15 +83,24 @@ struct MenuList: View {
             .onRotate(perform: { orientation in
                 self.orientation = orientation
             })
-            .overlay {
-                if coffeePreviewVisible, let selectedCoffee {
+            .sheet(isPresented: $coffeePreviewVisible) {
+                if let selectedCoffee {
                     MenuItemPreview(coffeePreviewVisible: $coffeePreviewVisible,
-                                  coffee: selectedCoffee,
-                                  coffeeImageNamespace: coffeeImageNamespace,
-                                  coffeeTitleNamespace: coffeeTitleNamespace,
-                                  coffeePriceNamespace: coffeePriceNamespace)
+                                    coffee: selectedCoffee,
+                                    coffeeImageNamespace: coffeeImageNamespace,
+                                    coffeeTitleNamespace: coffeeTitleNamespace,
+                                    coffeePriceNamespace: coffeePriceNamespace)
                 }
             }
+//            .overlay {
+//                if coffeePreviewVisible, let selectedCoffee {
+//                    MenuItemPreview(coffeePreviewVisible: $coffeePreviewVisible,
+//                                  coffee: selectedCoffee,
+//                                  coffeeImageNamespace: coffeeImageNamespace,
+//                                  coffeeTitleNamespace: coffeeTitleNamespace,
+//                                  coffeePriceNamespace: coffeePriceNamespace)
+//                }
+//            }
             .onChange(of: selectedMenuType) { _, _ in
                 HapticManager.shared.impact(.medium)
             }
