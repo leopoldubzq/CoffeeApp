@@ -1,6 +1,7 @@
 import SwiftUI
 import FirebaseFirestoreSwift
 import Firebase
+import Shimmer
 
 struct HomeView: View {
     
@@ -18,12 +19,6 @@ struct HomeView: View {
     @State private var stampsCountString: String = ""
     @Environment(\.colorScheme) private var colorScheme
     
-    let formatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        return formatter
-    }()
-    
     var body: some View {
         NavigationStack(path: $route) {
             GeometryReader { proxy in
@@ -37,10 +32,12 @@ struct HomeView: View {
                                 Spacer()
                                     .frame(maxWidth: .infinity)
                             }
+                            .showPlaceholder($viewModel.isLoading)
                             Text("Godziny otwarcia")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .font(.callout)
                                 .foregroundStyle(.accent)
+                                .showPlaceholder($viewModel.isLoading)
                             Group {
                                 Text("pn-pt: ")
                                     .foregroundStyle(.secondary)
@@ -52,6 +49,7 @@ struct HomeView: View {
                                     .fontWeight(.semibold)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
+                            .showPlaceholder($viewModel.isLoading)
                         }
                         if viewModel.stamps.count > 0 {
                             if viewModel.getActiveVouchersCount() > 0 {
@@ -81,12 +79,16 @@ struct HomeView: View {
                                 }
                                 .contentTransition(.numericText())
                                 .frame(maxWidth: .infinity, alignment: .leading)
+                                .showPlaceholder($viewModel.isLoading)
                             }
                             
                             VoucherView(voucherIndex: 1, userStamps: $viewModel.stamps)
+                                .showPlaceholder($viewModel.isLoading)
                         }
                         VouchersText()
+                            .showPlaceholder($viewModel.isLoading)
                         VouchersList(size: size)
+                            .showPlaceholder($viewModel.isLoading)
                         Spacer()
                     }
                     .padding(.horizontal, 16)
@@ -94,15 +96,6 @@ struct HomeView: View {
                 }
                 .scrollIndicators(.hidden)
                 .overlay(alignment: .top) { SafeAreaTopView(proxy: proxy) }
-                .overlay {
-                    if viewModel.isLoading {
-                        ProgressView("Wczytywanie")
-                            .padding()
-                            .padding(.vertical)
-                            .background(Color("GroupedListCellBackgroundColor"))
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                    }
-                }
                 .overlay {
                     if qrCodeViewIsPresented {
                         QRCodeView(qrCodeViewIsPresented: $qrCodeViewIsPresented,
@@ -190,6 +183,7 @@ struct HomeView: View {
             }
         }
         .frame(height: 44)
+        .showPlaceholder($viewModel.isLoading)
     }
 
     @ViewBuilder

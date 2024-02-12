@@ -71,6 +71,8 @@
 		02B610BF2B600F9200844CC3 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610BE2B600F9200844CC3 /* OnboardingViewModel.swift */; };
 		02B610C12B600FB000844CC3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610C02B600FB000844CC3 /* OnboardingView.swift */; };
 		02B610C42B600FC600844CC3 /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610C32B600FC600844CC3 /* OnboardingPageView.swift */; };
+		02CC85D02B7A53D600A1F141 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 02CC85CF2B7A53D600A1F141 /* Shimmer */; };
+		02CC85D22B7A551D00A1F141 /* PlaceholderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CC85D12B7A551D00A1F141 /* PlaceholderModifier.swift */; };
 		02D592572B6ABACC0089A9B9 /* OffsetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D592562B6ABACC0089A9B9 /* OffsetModifier.swift */; };
 		02D9BAAC2B62A1E8009FF2FC /* CoffeeAppAdminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D9BAAB2B62A1E8009FF2FC /* CoffeeAppAdminApp.swift */; };
 		02D9BAAE2B62A1E8009FF2FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D9BAAD2B62A1E8009FF2FC /* ContentView.swift */; };
@@ -233,6 +235,7 @@
 		02B610BE2B600F9200844CC3 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		02B610C02B600FB000844CC3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		02B610C32B600FC600844CC3 /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
+		02CC85D12B7A551D00A1F141 /* PlaceholderModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderModifier.swift; sourceTree = "<group>"; };
 		02D592562B6ABACC0089A9B9 /* OffsetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetModifier.swift; sourceTree = "<group>"; };
 		02D9BAA92B62A1E8009FF2FC /* CoffeeAppAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeAppAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D9BAAB2B62A1E8009FF2FC /* CoffeeAppAdminApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeAppAdminApp.swift; sourceTree = "<group>"; };
@@ -282,6 +285,7 @@
 				02D9BB172B62D302009FF2FC /* GoogleSignIn in Frameworks */,
 				02D9BB1B2B62D49A009FF2FC /* FirebaseAuth in Frameworks */,
 				02D9BB1D2B62D49A009FF2FC /* FirebaseFirestoreSwift in Frameworks */,
+				02CC85D02B7A53D600A1F141 /* Shimmer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -888,6 +892,7 @@
 				02ECB46C2B6C1FC600F71974 /* DeviceRotationModifier.swift */,
 				020543932B73A82B00C3E0CA /* ButtonEnabledModifier.swift */,
 				0205439F2B741E0F00C3E0CA /* ViewDidLoadModifier.swift */,
+				02CC85D12B7A551D00A1F141 /* PlaceholderModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -1056,6 +1061,7 @@
 				02D9BB1A2B62D49A009FF2FC /* FirebaseAuth */,
 				02D9BB1C2B62D49A009FF2FC /* FirebaseFirestoreSwift */,
 				02D9BB1E2B62D49A009FF2FC /* FirebaseStorage */,
+				02CC85CF2B7A53D600A1F141 /* Shimmer */,
 			);
 			productName = CoffeeApp;
 			productReference = 0231F29F2B30C849003BBF55 /* CoffeeApp.app */;
@@ -1108,6 +1114,7 @@
 			packageReferences = (
 				02D9BAE52B62A8D2009FF2FC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				02D9BB152B62D302009FF2FC /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				02CC85CE2B7A53D600A1F141 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = 0231F2A02B30C849003BBF55 /* Products */;
 			projectDirPath = "";
@@ -1152,6 +1159,7 @@
 				027468432B30CF7400664A7F /* HomeViewModel.swift in Sources */,
 				020543602B6FBE3B00C3E0CA /* CreateUserProfileViewModel.swift in Sources */,
 				0274683C2B30CF2B00664A7F /* SettingsView.swift in Sources */,
+				02CC85D22B7A551D00A1F141 /* PlaceholderModifier.swift in Sources */,
 				020543942B73A82B00C3E0CA /* ButtonEnabledModifier.swift in Sources */,
 				0231F2A52B30C849003BBF55 /* MainView.swift in Sources */,
 				02E54F5A2B7A278500F49C5B /* AuthProtocol.swift in Sources */,
@@ -1591,6 +1599,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		02CC85CE2B7A53D600A1F141 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.2;
+			};
+		};
 		02D9BAE52B62A8D2009FF2FC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1610,6 +1626,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		02CC85CF2B7A53D600A1F141 /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02CC85CE2B7A53D600A1F141 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
+		};
 		02D9BAE62B62A8D2009FF2FC /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 02D9BAE52B62A8D2009FF2FC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
