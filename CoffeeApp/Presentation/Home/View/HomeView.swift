@@ -14,7 +14,15 @@ struct HomeView: View {
     @State private var scrollOffsetY: CGFloat = 0
     @State private var voucherToActivate: VoucherDto?
     @State private var cafeViewPresented: Bool = false
+    @State private var stampsAlertIsPresented: Bool = false
+    @State private var stampsCountString: String = ""
     @Environment(\.colorScheme) private var colorScheme
+    
+    let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
     
     var body: some View {
         NavigationStack(path: $route) {
@@ -35,20 +43,54 @@ struct HomeView: View {
                                 .foregroundStyle(.accent)
                             Group {
                                 Text("pn-pt: ")
+                                    .foregroundStyle(.secondary)
                                 + Text("9:00 - 19:00")
                                     .fontWeight(.semibold)
                                 Text("sb-nd: ")
+                                    .foregroundStyle(.secondary)
                                 + Text("10:00 - 18:00")
                                     .fontWeight(.semibold)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                         }
-                        
+                        if viewModel.stamps.count > 0 {
+                            if viewModel.getActiveVouchersCount() > 0 {
+                                HStack {
+                                    Image(systemName: "checkmark")
+                                        .foregroundStyle(.green)
+                                    Group {
+                                        Text("Masz do wykorzystania ")
+                                            .foregroundStyle(.secondary)
+                                        + Text("\(viewModel.getActiveVouchersCount())")
+                                            .foregroundStyle(.primary)
+                                            .fontWeight(.semibold)
+                                        + Text(" \(PluralizedString.voucher(viewModel.getActiveVouchersCount()).pluralized)")
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    Spacer()
+                                }
+                            } else {
+                                Group {
+                                    Text("Brakuje ci ")
+                                        .foregroundStyle(.secondary)
+                                    + Text("\(Constants.stampsPerVoucher - viewModel.stamps.count)")
+                                        .fontWeight(.semibold)
+                                        .foregroundStyle(.accent)
+                                    + Text(" \(PluralizedString.stamps(viewModel.getActiveVouchersCount()).pluralized) do otrzymania nagrody")
+                                        .foregroundStyle(.secondary)
+                                }
+                                .contentTransition(.numericText())
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            
+                            VoucherView(voucherIndex: 1, userStamps: $viewModel.stamps)
+                        }
                         VouchersText()
                         VouchersList(size: size)
                         Spacer()
                     }
                     .padding(.horizontal, 16)
+                    .animation(.easeInOut(duration: 0.3), value: viewModel.stamps)
                 }
                 .scrollIndicators(.hidden)
                 .overlay(alignment: .top) { SafeAreaTopView(proxy: proxy) }
@@ -83,6 +125,18 @@ struct HomeView: View {
                 }
                 .onChange(of: shouldPresentLoginView, { _, _ in
                     viewModel.getUser()
+                })
+                .alert("Dodaj pieczątki", 
+                       isPresented: $stampsAlertIsPresented,
+                       actions: {
+                    TextField("Pieczątki", text: $stampsCountString)
+                        .keyboardType(.numberPad)
+                    Button("Ok") {
+                        if let stampsCount = Int(stampsCountString) {
+                            viewModel.addStamps(count: stampsCount)
+                        }
+                        
+                    }
                 })
                 .onLoad { viewModel.getUser() }
             }
@@ -126,6 +180,11 @@ struct HomeView: View {
             .scaleEffect(1 + (scrollOffsetY > 0 ? (scrollOffsetY / 2000) : 0))
             .offset(x: scrollOffsetY > 0 ? (scrollOffsetY / 20) : 0)
             Spacer()
+            Button { stampsAlertIsPresented.toggle() } label: {
+                Image(systemName: "plus")
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(Color.init(uiColor: .label))
+            }
             if !qrCodeViewIsPresented {
                 QRCodeButton()
             }

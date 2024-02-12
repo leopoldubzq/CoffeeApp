@@ -48,7 +48,7 @@ class BaseService {
         .eraseToAnyPublisher()
     }
     
-    func update<T: FirestoreProtocol>(_ model: FirestoreProtocol, type: T.Type) -> AnyPublisher<T, CAError> {
+    func update<T: FirestoreProtocol>(_ model: FirestoreProtocol, type: T.Type) -> AnyPublisher<T?, CAError> {
         return Future { promise in
             do {
                 try FirestoreUtility
@@ -56,9 +56,7 @@ class BaseService {
                     .document(model.uid)
                     .setData(from: model) { error in
                         if let error { promise(.failure(CAError.basicError(error.localizedDescription))) }
-                        if let model = model as? T {
-                            promise(.success((model)))
-                        }
+                        promise(.success((model as? T)))
                     }
             } catch {
                 promise(.failure(.basicError(error.localizedDescription)))

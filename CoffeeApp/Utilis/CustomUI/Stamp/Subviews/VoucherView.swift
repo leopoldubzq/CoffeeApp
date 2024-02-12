@@ -4,7 +4,7 @@ struct VoucherView: View {
     
     var voucherIndex: Int
     var isActive: Bool = false
-    var userStamps: [StampDto]
+    @Binding var userStamps: [StampDto]
     
     var body: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 5)) {
@@ -15,6 +15,7 @@ struct VoucherView: View {
         .padding()
         .background(Color("GroupedListCellBackgroundColor"))
         .clipShape(RoundedRectangle(cornerRadius: 12))
+        .animation(.snappy(duration: 0.35), value: userStamps)
         .onTapGesture {
             guard isActive else { return }
         }
@@ -33,5 +34,6 @@ struct VoucherView: View {
 }
 
 #Preview {
-    VoucherView(voucherIndex: 1, userStamps: Array(repeating: StampDto.mock, count: 4))
+    VoucherView(voucherIndex: 1,
+                userStamps: .constant(Array(repeating: StampDto.mock, count: 4)))
 }

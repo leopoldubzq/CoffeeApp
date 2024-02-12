@@ -9,7 +9,7 @@ final class UserService: BaseService {
         create(user, type: UserDto.self)
     }
     
-    func updateUser(user: UserDto) -> AnyPublisher<UserDto, CAError> {
+    func updateUser(user: UserDto) -> AnyPublisher<UserDto?, CAError> {
         update(user, type: UserDto.self)
     }
     
@@ -19,6 +19,16 @@ final class UserService: BaseService {
     
     func getUser(uid: String?) -> AnyPublisher<UserDto?, CAError> {
         getResult(for: UserDto.self, withUid: uid, collectionReference: .users)
+    }
+    
+    func addStamps(count: Int, to cafe: CafeDto, for user: UserDto) -> AnyPublisher<[String : Int], CAError> {
+        var cafeStamps = user.cafeStamps
+        var userToUpdate = user
+        cafeStamps.updateValue(count, forKey: cafe.uid)
+        userToUpdate.cafeStamps = cafeStamps
+        return update(userToUpdate, type: UserDto.self)
+            .compactMap { $0?.cafeStamps }
+            .eraseToAnyPublisher()
     }
     
     func createGoogleUser(user: GIDGoogleUser?, result: AuthDataResult?) -> AnyPublisher<Void, CAError> {
