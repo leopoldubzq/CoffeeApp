@@ -2,7 +2,7 @@ import SwiftUI
 
 struct VoucherView: View {
     
-    var voucherIndex: Int
+    var voucherIndex: Int = 1
     var isActive: Bool = false
     @Binding var userStamps: [StampDto]
     
@@ -34,6 +34,5 @@ struct VoucherView: View {
 }
 
 #Preview {
-    VoucherView(voucherIndex: 1,
-                userStamps: .constant(Array(repeating: StampDto.mock, count: 4)))
+    VoucherView(userStamps: .constant(Array(repeating: StampDto.mock, count: 4)))
 }

@@ -9,7 +9,7 @@ struct PlaceholderModifier: ViewModifier {
         if showPlaceholder {
             content
                 .redacted(reason: .placeholder)
-                .shimmering()
+                .shimmering(animation: .easeInOut(duration: 0.5).repeatForever(autoreverses: false))
                 .allowsHitTesting(false)
         } else {
             content

@@ -83,24 +83,24 @@ struct MenuList: View {
             .onRotate(perform: { orientation in
                 self.orientation = orientation
             })
-            .sheet(isPresented: $coffeePreviewVisible) {
-                if let selectedCoffee {
-                    MenuItemPreview(coffeePreviewVisible: $coffeePreviewVisible,
-                                    coffee: selectedCoffee,
-                                    coffeeImageNamespace: coffeeImageNamespace,
-                                    coffeeTitleNamespace: coffeeTitleNamespace,
-                                    coffeePriceNamespace: coffeePriceNamespace)
-                }
-            }
-//            .overlay {
-//                if coffeePreviewVisible, let selectedCoffee {
+//            .sheet(isPresented: $coffeePreviewVisible) {
+//                if let selectedCoffee {
 //                    MenuItemPreview(coffeePreviewVisible: $coffeePreviewVisible,
-//                                  coffee: selectedCoffee,
-//                                  coffeeImageNamespace: coffeeImageNamespace,
-//                                  coffeeTitleNamespace: coffeeTitleNamespace,
-//                                  coffeePriceNamespace: coffeePriceNamespace)
+//                                    coffee: selectedCoffee,
+//                                    coffeeImageNamespace: coffeeImageNamespace,
+//                                    coffeeTitleNamespace: coffeeTitleNamespace,
+//                                    coffeePriceNamespace: coffeePriceNamespace)
 //                }
 //            }
+            .overlay {
+                if coffeePreviewVisible, let selectedCoffee {
+                    MenuItemPreview(coffeePreviewVisible: $coffeePreviewVisible,
+                                  coffee: selectedCoffee,
+                                  coffeeImageNamespace: coffeeImageNamespace,
+                                  coffeeTitleNamespace: coffeeTitleNamespace,
+                                  coffeePriceNamespace: coffeePriceNamespace)
+                }
+            }
             .onChange(of: selectedMenuType) { _, _ in
                 HapticManager.shared.impact(.medium)
             }
@@ -177,7 +177,7 @@ struct MenuList: View {
                 Text(listAppearance.title)
                     .fontWeight(.semibold)
             }
-            .foregroundStyle(Color.white)
+            .foregroundStyle(Color.init(uiColor: .label))
             .padding(6)
             .padding(.horizontal, 2)
         }
@@ -264,5 +264,5 @@ struct MenuList: View {
 }
 
 #Preview {
-    MainView(selectedTab: .menu)
+    MenuList()
 }

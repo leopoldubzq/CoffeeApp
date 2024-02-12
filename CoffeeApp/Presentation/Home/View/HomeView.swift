@@ -13,7 +13,7 @@ struct HomeView: View {
     @Namespace private var qrCodeBackgroundNamespace
     @Namespace private var qrCodeStringNamespace
     @State private var scrollOffsetY: CGFloat = 0
-    @State private var voucherToActivate: VoucherDto?
+    @State private var couponToActivate: CouponDto?
     @State private var cafeViewPresented: Bool = false
     @State private var stampsAlertIsPresented: Bool = false
     @State private var stampsCountString: String = ""
@@ -53,36 +53,13 @@ struct HomeView: View {
                         }
                         if viewModel.stamps.count > 0 {
                             if viewModel.getActiveVouchersCount() > 0 {
-                                HStack {
-                                    Image(systemName: "checkmark")
-                                        .foregroundStyle(.green)
-                                    Group {
-                                        Text("Masz do wykorzystania ")
-                                            .foregroundStyle(.secondary)
-                                        + Text("\(viewModel.getActiveVouchersCount())")
-                                            .foregroundStyle(.primary)
-                                            .fontWeight(.semibold)
-                                        + Text(" \(PluralizedString.voucher(viewModel.getActiveVouchersCount()).pluralized)")
-                                            .foregroundStyle(.secondary)
-                                    }
-                                    Spacer()
-                                }
+                                RewardsAmountInfoText()
+                                    .showPlaceholder($viewModel.isLoading)
                             } else {
-                                Group {
-                                    Text("Brakuje ci ")
-                                        .foregroundStyle(.secondary)
-                                    + Text("\(Constants.stampsPerVoucher - viewModel.stamps.count)")
-                                        .fontWeight(.semibold)
-                                        .foregroundStyle(.accent)
-                                    + Text(" \(PluralizedString.stamps(viewModel.getActiveVouchersCount()).pluralized) do otrzymania nagrody")
-                                        .foregroundStyle(.secondary)
-                                }
-                                .contentTransition(.numericText())
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .showPlaceholder($viewModel.isLoading)
+                                StampsLeftInfoText()
+                                    .showPlaceholder($viewModel.isLoading)
                             }
-                            
-                            VoucherView(voucherIndex: 1, userStamps: $viewModel.stamps)
+                            VoucherView(userStamps: $viewModel.stamps)
                                 .showPlaceholder($viewModel.isLoading)
                         }
                         VouchersText()
@@ -92,7 +69,7 @@ struct HomeView: View {
                         Spacer()
                     }
                     .padding(.horizontal, 16)
-                    .animation(.easeInOut(duration: 0.3), value: viewModel.stamps)
+                    .animation(.easeInOut(duration: 0.2), value: viewModel.stamps)
                 }
                 .scrollIndicators(.hidden)
                 .overlay(alignment: .top) { SafeAreaTopView(proxy: proxy) }
@@ -128,7 +105,6 @@ struct HomeView: View {
                         if let stampsCount = Int(stampsCountString) {
                             viewModel.addStamps(count: stampsCount)
                         }
-                        
                     }
                 })
                 .onLoad { viewModel.getUser() }
@@ -139,6 +115,36 @@ struct HomeView: View {
     private func getCellWidth(size: CGSize) -> CGFloat {
         let defaultWidth: CGFloat = size.width * 0.8
         return defaultWidth > 350 ? 350 : defaultWidth
+    }
+    
+    @ViewBuilder
+    private func RewardsAmountInfoText() -> some View {
+        Group {
+            Text("Masz do wykorzystania ")
+                .foregroundStyle(.secondary)
+            + Text("\(viewModel.getActiveVouchersCount())")
+                .foregroundStyle(.primary)
+                .fontWeight(.semibold)
+            + Text(" \(PluralizedString.reward(viewModel.getActiveVouchersCount()).pluralized)")
+                .foregroundStyle(.secondary)
+        }
+        .contentTransition(.numericText())
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    @ViewBuilder
+    private func StampsLeftInfoText() -> some View {
+        Group {
+            Text("Brakuje ci ")
+                .foregroundStyle(.secondary)
+            + Text("\(Constants.stampsPerVoucher - viewModel.stamps.count)")
+                .fontWeight(.semibold)
+                .foregroundStyle(.accent)
+            + Text(" \(PluralizedString.stamps(viewModel.getActiveVouchersCount()).pluralized) do otrzymania nagrody")
+                .foregroundStyle(.secondary)
+        }
+        .contentTransition(.numericText())
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     @ViewBuilder
@@ -197,18 +203,16 @@ struct HomeView: View {
     private func VouchersList(size: CGSize) -> some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(viewModel.activeVouchers, id: \.uid) { voucher in
-                    VoucherCell(voucher: voucher,
-                                voucherToActivate: $voucherToActivate)
-                    .frame(width: getCellWidth(size: size), height: 220)
-                    .scrollTransition { content, phase in
-                        content
-                            .opacity(phase.isIdentity ? 1 : 0.3)
-                            .scaleEffect(phase.isIdentity ? 1 : 0.95)
-                    }
+                ForEach(viewModel.coupons, id: \.uid) { coupon in
+                    CouponCell(coupon: coupon, couponToActivate: $couponToActivate)
+                        .frame(width: getCellWidth(size: size), height: 220)
+                        .scrollTransition { content, phase in
+                            content
+                                .opacity(phase.isIdentity ? 1 : 0.3)
+                                .scaleEffect(phase.isIdentity ? 1 : 0.95)
+                        }
                 }
             }
-            
             .scrollTargetLayout()
         }
         .scrollIndicators(.hidden)

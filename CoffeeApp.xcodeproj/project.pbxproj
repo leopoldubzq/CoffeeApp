@@ -55,7 +55,7 @@
 		0274683C2B30CF2B00664A7F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274683B2B30CF2B00664A7F /* SettingsView.swift */; };
 		027468412B30CF6700664A7F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468402B30CF6700664A7F /* HomeView.swift */; };
 		027468432B30CF7400664A7F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468422B30CF7400664A7F /* HomeViewModel.swift */; };
-		027468472B30D30500664A7F /* VoucherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468462B30D30500664A7F /* VoucherCell.swift */; };
+		027468472B30D30500664A7F /* CouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468462B30D30500664A7F /* CouponCell.swift */; };
 		0274684A2B30D87900664A7F /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468492B30D87900664A7F /* DateFormatter.swift */; };
 		0274684D2B30E10B00664A7F /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274684C2B30E10B00664A7F /* VisualEffectView.swift */; };
 		027468532B30E49E00664A7F /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468522B30E49E00664A7F /* QRCodeView.swift */; };
@@ -73,6 +73,10 @@
 		02B610C42B600FC600844CC3 /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B610C32B600FC600844CC3 /* OnboardingPageView.swift */; };
 		02CC85D02B7A53D600A1F141 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 02CC85CF2B7A53D600A1F141 /* Shimmer */; };
 		02CC85D22B7A551D00A1F141 /* PlaceholderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CC85D12B7A551D00A1F141 /* PlaceholderModifier.swift */; };
+		02CC85D42B7A983E00A1F141 /* CouponDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CC85D32B7A983E00A1F141 /* CouponDto.swift */; };
+		02CC85D52B7A983E00A1F141 /* CouponDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CC85D32B7A983E00A1F141 /* CouponDto.swift */; };
+		02CC85D72B7AA0BF00A1F141 /* FirestoreTimestamp+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CC85D62B7AA0BF00A1F141 /* FirestoreTimestamp+Ext.swift */; };
+		02CC85D82B7AA0BF00A1F141 /* FirestoreTimestamp+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CC85D62B7AA0BF00A1F141 /* FirestoreTimestamp+Ext.swift */; };
 		02D592572B6ABACC0089A9B9 /* OffsetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D592562B6ABACC0089A9B9 /* OffsetModifier.swift */; };
 		02D9BAAC2B62A1E8009FF2FC /* CoffeeAppAdminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D9BAAB2B62A1E8009FF2FC /* CoffeeAppAdminApp.swift */; };
 		02D9BAAE2B62A1E8009FF2FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D9BAAD2B62A1E8009FF2FC /* ContentView.swift */; };
@@ -108,7 +112,7 @@
 		02D9BAD22B62A2B7009FF2FC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274686B2B319ADE00664A7F /* LoginViewModel.swift */; };
 		02D9BAD32B62A2BD009FF2FC /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468522B30E49E00664A7F /* QRCodeView.swift */; };
 		02D9BAD42B62A2C1009FF2FC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468422B30CF7400664A7F /* HomeViewModel.swift */; };
-		02D9BAD52B62A2C5009FF2FC /* VoucherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468462B30D30500664A7F /* VoucherCell.swift */; };
+		02D9BAD52B62A2C5009FF2FC /* CouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468462B30D30500664A7F /* CouponCell.swift */; };
 		02D9BAD62B62A2C8009FF2FC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468402B30CF6700664A7F /* HomeView.swift */; };
 		02D9BAD72B62A2CC009FF2FC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274683B2B30CF2B00664A7F /* SettingsView.swift */; };
 		02D9BAD82B62A2CF009FF2FC /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468392B30CF1800664A7F /* ProfileViewModel.swift */; };
@@ -219,7 +223,7 @@
 		0274683B2B30CF2B00664A7F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		027468402B30CF6700664A7F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		027468422B30CF7400664A7F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		027468462B30D30500664A7F /* VoucherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoucherCell.swift; sourceTree = "<group>"; };
+		027468462B30D30500664A7F /* CouponCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCell.swift; sourceTree = "<group>"; };
 		027468492B30D87900664A7F /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		0274684C2B30E10B00664A7F /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		027468522B30E49E00664A7F /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 		02B610C02B600FB000844CC3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		02B610C32B600FC600844CC3 /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
 		02CC85D12B7A551D00A1F141 /* PlaceholderModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderModifier.swift; sourceTree = "<group>"; };
+		02CC85D32B7A983E00A1F141 /* CouponDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponDto.swift; sourceTree = "<group>"; };
+		02CC85D62B7AA0BF00A1F141 /* FirestoreTimestamp+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirestoreTimestamp+Ext.swift"; sourceTree = "<group>"; };
 		02D592562B6ABACC0089A9B9 /* OffsetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetModifier.swift; sourceTree = "<group>"; };
 		02D9BAA92B62A1E8009FF2FC /* CoffeeAppAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeAppAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D9BAAB2B62A1E8009FF2FC /* CoffeeAppAdminApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeAppAdminApp.swift; sourceTree = "<group>"; };
@@ -386,6 +392,7 @@
 				0232911A2B5F0CB9004A2B26 /* Menu.swift */,
 				02ECB47D2B6D0E3600F71974 /* CafeDto.swift */,
 				02E54F4B2B752B7F00F49C5B /* StampDto.swift */,
+				02CC85D32B7A983E00A1F141 /* CouponDto.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -723,7 +730,7 @@
 		027468452B30D2FA00664A7F /* VoucherCell */ = {
 			isa = PBXGroup;
 			children = (
-				027468462B30D30500664A7F /* VoucherCell.swift */,
+				027468462B30D30500664A7F /* CouponCell.swift */,
 			);
 			path = VoucherCell;
 			sourceTree = "<group>";
@@ -765,6 +772,7 @@
 			children = (
 				0274685B2B30EFAD00664A7F /* UIDevice+Extension.swift */,
 				02ECB4802B6D0F4600F71974 /* CLLocation+Ext.swift */,
+				02CC85D62B7AA0BF00A1F141 /* FirestoreTimestamp+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1212,10 +1220,11 @@
 				0274684D2B30E10B00664A7F /* VisualEffectView.swift in Sources */,
 				02D9BB132B62D2A1009FF2FC /* SessionService.swift in Sources */,
 				02D9BAF62B62AD85009FF2FC /* Typealiases.swift in Sources */,
+				02CC85D72B7AA0BF00A1F141 /* FirestoreTimestamp+Ext.swift in Sources */,
 				02ECB47E2B6D0E3700F71974 /* CafeDto.swift in Sources */,
 				02E54F4C2B752B7F00F49C5B /* StampDto.swift in Sources */,
 				027468272B30CC1100664A7F /* SplashView.swift in Sources */,
-				027468472B30D30500664A7F /* VoucherCell.swift in Sources */,
+				027468472B30D30500664A7F /* CouponCell.swift in Sources */,
 				02B610B42B5FE15100844CC3 /* CoverFlowView.swift in Sources */,
 				027468652B31094E00664A7F /* MenuList.swift in Sources */,
 				0232910C2B5EEE24004A2B26 /* CoffeeAccessory.swift in Sources */,
@@ -1223,6 +1232,7 @@
 				027468532B30E49E00664A7F /* QRCodeView.swift in Sources */,
 				0274683A2B30CF1800664A7F /* ProfileViewModel.swift in Sources */,
 				020543592B6FB31600C3E0CA /* ChooseCafeView.swift in Sources */,
+				02CC85D42B7A983E00A1F141 /* CouponDto.swift in Sources */,
 				02E54F572B753F2D00F49C5B /* Constants.swift in Sources */,
 				02F095402B67CDD2002E5B6A /* ChangeAppearanceButton.swift in Sources */,
 				0274686A2B319AD700664A7F /* LoginView.swift in Sources */,
@@ -1265,6 +1275,7 @@
 				020543552B6DA91000C3E0CA /* SafeAreaView.swift in Sources */,
 				02D9BACE2B62A2A4009FF2FC /* AddProductPlusButton.swift in Sources */,
 				02D9BADC2B62A2E5009FF2FC /* SplashView.swift in Sources */,
+				02CC85D82B7AA0BF00A1F141 /* FirestoreTimestamp+Ext.swift in Sources */,
 				02E54F4A2B751B7600F49C5B /* PluralizedString.swift in Sources */,
 				0205435E2B6FB36C00C3E0CA /* ChooseCafeViewModel.swift in Sources */,
 				02ECB47C2B6D0D6C00F71974 /* UserDto.swift in Sources */,
@@ -1273,6 +1284,7 @@
 				0205439B2B73CD6F00C3E0CA /* CafeService.swift in Sources */,
 				02D9BABB2B62A244009FF2FC /* TagLayout.swift in Sources */,
 				02E54F4D2B752B7F00F49C5B /* StampDto.swift in Sources */,
+				02CC85D52B7A983E00A1F141 /* CouponDto.swift in Sources */,
 				02D9BAB82B62A235009FF2FC /* CoffeeAccessoryProtocol.swift in Sources */,
 				02D9BAD92B62A2D5009FF2FC /* MainViewModel.swift in Sources */,
 				02D9BADB2B62A2E0009FF2FC /* SplashViewModel.swift in Sources */,
@@ -1289,7 +1301,7 @@
 				02D9BAC32B62A26B009FF2FC /* DateFormatter.swift in Sources */,
 				02D9BADF2B62A300009FF2FC /* CoffeeAccessory.swift in Sources */,
 				02ECB47F2B6D0E3700F71974 /* CafeDto.swift in Sources */,
-				02D9BAD52B62A2C5009FF2FC /* VoucherCell.swift in Sources */,
+				02D9BAD52B62A2C5009FF2FC /* CouponCell.swift in Sources */,
 				02D9BABF2B62A259009FF2FC /* QRCodeImageView.swift in Sources */,
 				02D9BAD32B62A2BD009FF2FC /* QRCodeView.swift in Sources */,
 				02D9BB062B62D156009FF2FC /* ApplicationUtility.swift in Sources */,

@@ -62,8 +62,9 @@ struct ChooseCafeView: View {
                         placement: .navigationBarDrawer,
                         prompt: Text("Szukaj"))
             .toolbar {
-                Button("Gotowe") {
+                Button("Zapisz") {
                     HapticManager.shared.impact(.soft)
+                    refreshCompletion?()
                     dismiss()
                 }
                 .fontWeight(.semibold)
@@ -77,12 +78,9 @@ struct ChooseCafeView: View {
                 }
                 
             }
-            .onAppear { viewModel.getCafes() }
+            .onLoad { viewModel.getCafes() }
             .onChange(of: selectedCafe) { _, newValue in
                 viewModel.selectedCafe = newValue
-            }
-            .onDisappear {
-                refreshCompletion?()
             }
         }
     }

@@ -30,8 +30,11 @@ struct CoffeeCell: View {
                 .frame(width: getImageDimensions(), height: getImageDimensions())
         }
         .onTapGesture {
+            HapticManager.shared.impact(.soft)
             selectedCoffee = coffee
-            coffeePreviewVisible = true
+            withAnimation(.snappy(duration: 0.3, extraBounce: 0.03)) {
+                coffeePreviewVisible = true
+            }
         }
     }
     

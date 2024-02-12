@@ -1,62 +1,14 @@
 import SwiftUI
 
-struct VoucherDto: Codable, Equatable, Hashable {
-    let uid: String
-    var title: String
-    var shop: CafeDto
-    var code: String
-    var expirationDate: Date
-    var expirationDateString: String {
-        "Kupon ważny do \(DateManager.formatDate(expirationDate))"
-    }
+struct CouponCell: View {
     
-    static var mocks: [VoucherDto] = [
-        VoucherDto(uid: UUID().uuidString,
-                   title: "Rabat 5zł na Americano, Cappuccino, Latte",
-                   shop: CafeDto.mock.randomElement()!,
-                   code: QRCodeGenerator.generate(),
-                   expirationDate: Date()),
-        VoucherDto(uid: UUID().uuidString,
-                   title: "Rabat 5zł na Americano, Cappuccino, Latte",
-                   shop: CafeDto.mock.randomElement()!,
-                   code: QRCodeGenerator.generate(),
-                   expirationDate: Date()),
-        VoucherDto(uid: UUID().uuidString,
-                   title: "Rabat 5zł na Americano, Cappuccino, Latte",
-                   shop: CafeDto.mock.randomElement()!,
-                   code: QRCodeGenerator.generate(),
-                   expirationDate: Date()),
-        VoucherDto(uid: UUID().uuidString,
-                   title: "Rabat 5zł na Americano, Cappuccino, Latte",
-                   shop: CafeDto.mock.randomElement()!,
-                   code: QRCodeGenerator.generate(),
-                   expirationDate: Date()),
-        VoucherDto(uid: UUID().uuidString,
-                   title: "Rabat 5zł na Americano, Cappuccino, Latte",
-                   shop: CafeDto.mock.randomElement()!,
-                   code: QRCodeGenerator.generate(),
-                   expirationDate: Date()),
-        VoucherDto(uid: UUID().uuidString,
-                   title: "Rabat 5zł na Americano, Cappuccino, Latte",
-                   shop: CafeDto.mock.randomElement()!,
-                   code: QRCodeGenerator.generate(),
-                   expirationDate: Date())
-    ]
-}
-
-struct CoffeeShop {
-    var title: String
-}
-
-struct VoucherCell: View {
-    
-    var voucher: VoucherDto
-    @Binding var voucherToActivate: VoucherDto?
+    var coupon: CouponDto
+    @Binding var couponToActivate: CouponDto?
     @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         VStack(spacing: 8) {
-            if voucherToActivate == voucher {
+            if couponToActivate == coupon {
                 ZStack {
                     RoundedRectangle(cornerRadius: 12)
                         .frame(width: 170, height: 170)
@@ -73,12 +25,12 @@ struct VoucherCell: View {
                         .frame(width: 120, height: 120)
                 }
             } else {
-                Text(voucher.title)
+                Text(coupon.title)
                     .foregroundStyle(Color(uiColor: .label))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.leading)
-                Text(voucher.expirationDateString)
+                Text("Kupon ważny do \(DateManager.formatDate(coupon.expirationDate))")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .multilineTextAlignment(.leading)
                     .foregroundStyle(.secondary)
@@ -86,7 +38,7 @@ struct VoucherCell: View {
                 Spacer()
                 Button {
                     withAnimation(.snappy(duration: 0.4, extraBounce: 0.05)) {
-                        voucherToActivate = voucher
+                        couponToActivate = coupon
                     }
                 } label: {
                     Text("Aktywuj")
@@ -107,12 +59,12 @@ struct VoucherCell: View {
         }
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .overlay(alignment: .topTrailing) {
-            if voucherToActivate == voucher {
+            if couponToActivate == coupon {
                 HStack {
                     Spacer()
                     Button {
                         withAnimation(.snappy(duration: 0.4, extraBounce: 0.05)) {
-                            voucherToActivate = nil
+                            couponToActivate = nil
                         }
                     } label: {
                         Image(systemName: "xmark")
@@ -124,24 +76,19 @@ struct VoucherCell: View {
                 .padding()
             }
         }
-        .rotation3DEffect(.degrees(voucherToActivate == voucher ? 180 : 0),
+        .rotation3DEffect(.degrees(couponToActivate == coupon ? 180 : 0),
                           axis: (x: 0, y: 1, z: 0))
         .onTapGesture {
             withAnimation(.snappy(duration: 0.4, extraBounce: 0.05)) {
-                voucherToActivate = nil
+                couponToActivate = nil
             }
         }
     }
 }
 
 #Preview {
-    VoucherCell(voucher: VoucherDto(uid: UUID().uuidString,
-                                    title: "Rabat 5zł na Americano, Cappuccino, Latte",
-                                    shop: CafeDto.mock.first!,
-                                    code: QRCodeGenerator.generate(),
-                                    expirationDate: Date()),
-                voucherToActivate: .constant(nil))
-    .frame(maxWidth: .infinity)
-    .frame(height: 220)
-    .padding(.horizontal)
+    CouponCell(coupon: CouponDto.mock, couponToActivate: .constant(nil))
+        .frame(maxWidth: .infinity)
+        .frame(height: 220)
+        .padding(.horizontal)
 }

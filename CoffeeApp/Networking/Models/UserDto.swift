@@ -5,7 +5,7 @@ protocol FirestoreProtocol: Codable {
     var uid: String { get }
 }
 
-struct UserDto: Equatable, Hashable, FirestoreProtocol {
+struct UserDto: FirestoreProtocol, Hashable, Equatable {
     var uid: String
     var email: String
     var name: String?

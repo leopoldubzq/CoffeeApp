@@ -3,10 +3,10 @@ import Firebase
 import Combine
 
 final class HomeViewModel: BaseViewModel, AuthProtocol {
-    @Published var activeVouchers: [VoucherDto] = VoucherDto.mocks
     @Published var user: UserDto?
     @Published var currentCafe: CafeDto?
     @Published var stamps: [StampDto] = []
+    @Published var coupons: [CouponDto] = []
     
     private let userService = UserService()
     private let cafeService = CafeService()
@@ -51,6 +51,7 @@ final class HomeViewModel: BaseViewModel, AuthProtocol {
                 self.user = user
                 self.stamps = getStamps(user: user)
                 self.currentCafe = user.currentCafe
+                self.coupons = user.currentCafe?.coupons ?? []
             }
             .store(in: &cancellables)
     }
@@ -70,6 +71,7 @@ final class HomeViewModel: BaseViewModel, AuthProtocol {
                     self.user = user
                     self.currentCafe = user.currentCafe
                     self.stamps = self.getStamps(user: user)
+                    self.coupons = user.currentCafe?.coupons ?? []
                 }
                 .store(in: &cancellables)
 

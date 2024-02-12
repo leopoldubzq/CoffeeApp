@@ -124,7 +124,7 @@ struct StampView: View {
             + Text("\(getActiveVouchersCount())")
                 .foregroundStyle(.primary)
                 .fontWeight(.semibold)
-            + Text(" \(PluralizedString.voucher(getActiveVouchersCount()).pluralized)")
+            + Text(" \(PluralizedString.reward(getActiveVouchersCount()).pluralized)")
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
