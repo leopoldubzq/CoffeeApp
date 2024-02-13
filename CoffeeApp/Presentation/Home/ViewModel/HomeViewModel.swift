@@ -11,6 +11,22 @@ final class HomeViewModel: BaseViewModel, AuthProtocol {
     private let userService = UserService()
     private let cafeService = CafeService()
     
+    func createCoupons() {
+        if let cafe = currentCafe {
+            isLoading = true
+            cafeService.createCoupons(for: cafe)
+                .receive(on: DispatchQueue.main)
+                .compactMap(\.?.coupons)
+                .sink { [weak self] _ in
+                    HapticManager.shared.impact(.medium)
+                    self?.isLoading = false
+                } receiveValue: { [weak self] coupons in
+                    self?.coupons = coupons
+                }
+                .store(in: &cancellables)
+        }
+    }
+    
     func addStamps(count: Int) {
         guard isLoggedIn(), let currentCafe = user?.currentCafe, let user else { return }
         isLoading = true

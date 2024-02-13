@@ -6,18 +6,22 @@ import Firebase
 final class UserService: BaseService {
     
     func createUser(_ user: UserDto) -> AnyPublisher<UserDto, CAError> {
-        create(user, type: UserDto.self)
+        create(user, collectionReference: .users, type: UserDto.self)
     }
     
     func updateUser(user: UserDto) -> AnyPublisher<UserDto?, CAError> {
-        update(user, type: UserDto.self)
+        update(user, collectionReference: .users, type: UserDto.self)
     }
     
     func getUsers() -> AnyPublisher<[UserDto]?, CAError> {
         getResults(for: UserDto.self, collectionReference: .users)
     }
     
-    func getUser(uid: String?) -> AnyPublisher<UserDto?, CAError> {
+    func getUser(_ user: UserDto) -> AnyPublisher<UserDto?, CAError> {
+        getResult(for: user, collectionReference: .users, type: UserDto.self)
+    }
+    
+    func getUser(uid: String) -> AnyPublisher<UserDto?, CAError> {
         getResult(for: UserDto.self, withUid: uid, collectionReference: .users)
     }
     
@@ -26,7 +30,7 @@ final class UserService: BaseService {
         var userToUpdate = user
         cafeStamps.updateValue(count, forKey: cafe.uid)
         userToUpdate.cafeStamps = cafeStamps
-        return update(userToUpdate, type: UserDto.self)
+        return update(userToUpdate, collectionReference: .users, type: UserDto.self)
             .compactMap { $0?.cafeStamps }
             .eraseToAnyPublisher()
     }

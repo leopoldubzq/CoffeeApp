@@ -66,6 +66,8 @@ struct HomeView: View {
                             .showPlaceholder($viewModel.isLoading)
                         VouchersList(size: size)
                             .showPlaceholder($viewModel.isLoading)
+//                        Button("Create coupons") { viewModel.createCoupons() }
+//                            .showPlaceholder($viewModel.isLoading)
                         Spacer()
                     }
                     .padding(.horizontal, 16)
