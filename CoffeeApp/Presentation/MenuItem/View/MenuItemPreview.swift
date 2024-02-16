@@ -18,7 +18,6 @@ struct MenuItemPreview: View {
                 HStack {
                     CancelButton()
                     Spacer()
-                    addToCartButton()
                 }
                 .padding()
                 .overlay(alignment: .center) {
@@ -79,12 +78,9 @@ struct MenuItemPreview: View {
                 
 
                 Spacer()
-                OrderCoffeeButton(coffeePreviewVisible: $coffeePreviewVisible,
-                                  safeAreaBottom: proxy.safeAreaInsets.bottom)
-                .padding(.bottom, UIDevice.isIPad ? 100 : 0)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.init(uiColor: .systemBackground))
+            .background(Color("Background"))
             
             .onAppear {
                 viewModel.coffeeAccesories = coffee.accessories
@@ -184,7 +180,6 @@ struct MenuItemPreview: View {
         .padding(.top, -16)
         .zIndex(1)
         .scrollClipDisabled()
-        .background(Color.init(uiColor: .systemBackground))
     }
 }
 

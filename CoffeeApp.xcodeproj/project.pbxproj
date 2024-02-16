@@ -45,6 +45,10 @@
 		0232911B2B5F0CB9004A2B26 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0232911A2B5F0CB9004A2B26 /* Menu.swift */; };
 		0232911E2B5F13D1004A2B26 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0232911D2B5F13D1004A2B26 /* HapticManager.swift */; };
 		0233E2952B5C1CE200595272 /* QRCodeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0233E2942B5C1CE200595272 /* QRCodeImageView.swift */; };
+		0239B1632B7E4C4E002EA211 /* View+Shine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239B1622B7E4C4E002EA211 /* View+Shine.swift */; };
+		0239B1642B7E4C4E002EA211 /* View+Shine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239B1622B7E4C4E002EA211 /* View+Shine.swift */; };
+		0239B1662B7E4EA9002EA211 /* ShimmerEffectModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239B1652B7E4EA9002EA211 /* ShimmerEffectModifier.swift */; };
+		0239B1672B7E4EA9002EA211 /* ShimmerEffectModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239B1652B7E4EA9002EA211 /* ShimmerEffectModifier.swift */; };
 		024430C52B3996800024D729 /* CoffeeAccessoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024430C42B3996800024D729 /* CoffeeAccessoryProtocol.swift */; };
 		027468272B30CC1100664A7F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468262B30CC1100664A7F /* SplashView.swift */; };
 		027468292B30CC2F00664A7F /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027468282B30CC2F00664A7F /* SplashViewModel.swift */; };
@@ -213,6 +217,8 @@
 		0232911A2B5F0CB9004A2B26 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		0232911D2B5F13D1004A2B26 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		0233E2942B5C1CE200595272 /* QRCodeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeImageView.swift; sourceTree = "<group>"; };
+		0239B1622B7E4C4E002EA211 /* View+Shine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Shine.swift"; sourceTree = "<group>"; };
+		0239B1652B7E4EA9002EA211 /* ShimmerEffectModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffectModifier.swift; sourceTree = "<group>"; };
 		024430C42B3996800024D729 /* CoffeeAccessoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeAccessoryProtocol.swift; sourceTree = "<group>"; };
 		027468262B30CC1100664A7F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		027468282B30CC2F00664A7F /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
@@ -773,6 +779,7 @@
 				0274685B2B30EFAD00664A7F /* UIDevice+Extension.swift */,
 				02ECB4802B6D0F4600F71974 /* CLLocation+Ext.swift */,
 				02CC85D62B7AA0BF00A1F141 /* FirestoreTimestamp+Ext.swift */,
+				0239B1622B7E4C4E002EA211 /* View+Shine.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -901,6 +908,7 @@
 				020543932B73A82B00C3E0CA /* ButtonEnabledModifier.swift */,
 				0205439F2B741E0F00C3E0CA /* ViewDidLoadModifier.swift */,
 				02CC85D12B7A551D00A1F141 /* PlaceholderModifier.swift */,
+				0239B1652B7E4EA9002EA211 /* ShimmerEffectModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -1187,6 +1195,7 @@
 				027468602B30FA0A00664A7F /* TrackableScrollView.swift in Sources */,
 				0274684A2B30D87900664A7F /* DateFormatter.swift in Sources */,
 				020509CD2B31DF1C00B1D0F3 /* MenuItemPreview.swift in Sources */,
+				0239B1662B7E4EA9002EA211 /* ShimmerEffectModifier.swift in Sources */,
 				020543512B6DA71800C3E0CA /* CreateUserProfileView.swift in Sources */,
 				02D592572B6ABACC0089A9B9 /* OffsetModifier.swift in Sources */,
 				02ECB46B2B6C126A00F71974 /* KeyWindow.swift in Sources */,
@@ -1202,6 +1211,7 @@
 				023291132B5EF0CB004A2B26 /* CoffeeAccessoriesList.swift in Sources */,
 				02ECB4742B6D0B2300F71974 /* UserService.swift in Sources */,
 				0231F2A32B30C849003BBF55 /* CoffeeAppApp.swift in Sources */,
+				0239B1632B7E4C4E002EA211 /* View+Shine.swift in Sources */,
 				027468302B30CD7100664A7F /* Route.swift in Sources */,
 				0274685C2B30EFAD00664A7F /* UIDevice+Extension.swift in Sources */,
 				02D9BAF22B62AD71009FF2FC /* LoginWithGoogleButton.swift in Sources */,
@@ -1254,6 +1264,7 @@
 				02D9BACD2B62A2A0009FF2FC /* CoffeeAccessoryButton.swift in Sources */,
 				02D9BAD12B62A2B4009FF2FC /* LoginView.swift in Sources */,
 				02ECB4822B6D0F4600F71974 /* CLLocation+Ext.swift in Sources */,
+				0239B1672B7E4EA9002EA211 /* ShimmerEffectModifier.swift in Sources */,
 				02D9BABE2B62A255009FF2FC /* CoverFlowView.swift in Sources */,
 				02E54F512B753E4D00F49C5B /* VoucherView.swift in Sources */,
 				02D9BAD42B62A2C1009FF2FC /* HomeViewModel.swift in Sources */,
@@ -1298,6 +1309,7 @@
 				02D9BADD2B62A2F6009FF2FC /* Route.swift in Sources */,
 				02D9BABC2B62A248009FF2FC /* QRCodeGenerator.swift in Sources */,
 				02D9BAC92B62A28D009FF2FC /* MenuList.swift in Sources */,
+				0239B1642B7E4C4E002EA211 /* View+Shine.swift in Sources */,
 				02D9BAC32B62A26B009FF2FC /* DateFormatter.swift in Sources */,
 				02D9BADF2B62A300009FF2FC /* CoffeeAccessory.swift in Sources */,
 				02ECB47F2B6D0E3700F71974 /* CafeDto.swift in Sources */,

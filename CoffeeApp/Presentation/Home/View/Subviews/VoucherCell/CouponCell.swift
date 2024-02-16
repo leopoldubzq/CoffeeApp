@@ -16,7 +16,6 @@ struct CouponCell: View {
                         .overlay(alignment: .bottom) {
                             Text("123456789")
                                 .foregroundStyle(Color.black)
-                                .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                                 .padding(.bottom, 5)
                                 .font(.system(size: 16))
                         }
@@ -24,6 +23,7 @@ struct CouponCell: View {
                     QRCodeImageView(from: "123456789")
                         .frame(width: 120, height: 120)
                 }
+                .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
             } else {
                 Text(coupon.title)
                     .foregroundStyle(Color(uiColor: .label))
@@ -54,9 +54,7 @@ struct CouponCell: View {
         .padding()
         .frame(maxWidth: .infinity)
         .frame(height: 220)
-        .background {
-            Color.gray.opacity(colorScheme == .dark ? 0.15 : 0.08)
-        }
+        .background(Color("SecondaryBackground"))
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .overlay(alignment: .topTrailing) {
             if couponToActivate == coupon {

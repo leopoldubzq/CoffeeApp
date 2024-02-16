@@ -87,7 +87,6 @@ class BaseService {
         .eraseToAnyPublisher()
     }
     
-    
     func create<T: FirestoreProtocol>(_ model: FirestoreProtocol, 
                                       collectionReference: FirestoreCollection,
                                       type: T.Type) -> AnyPublisher<T, CAError> {

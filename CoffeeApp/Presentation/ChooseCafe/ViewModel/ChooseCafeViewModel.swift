@@ -11,6 +11,11 @@ final class ChooseCafeViewModel: BaseViewModel, AuthProtocol {
     //MARK: - PRIVATE PROPERTIES
     private let cafeService = CafeService()
     
+    override init() {
+        super.init()
+        cafes = CafeDto.mock
+    }
+    
     //MARK: - PUBLIC METHODS
     func getCafes() {
         guard isLoggedIn() else { return }

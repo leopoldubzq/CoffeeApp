@@ -134,7 +134,7 @@ struct SettingsView: View {
                 case .termsOfUse:
                     Text("Terms of use")
                 case .privacyPolicy:
-                    HomeView(shouldPresentLoginView: .constant(false))
+                    Text("Privacy policy")
                 default:
                     Text("Settings screen")
                 }
@@ -146,15 +146,6 @@ struct SettingsView: View {
             }
         }
         
-    }
-    
-    @ViewBuilder
-    private func SafeAreaTopView(proxy: GeometryProxy) -> some View {
-        Rectangle()
-            .fill(Color.init(uiColor: .systemBackground))
-            .frame(maxWidth: .infinity)
-            .frame(height: proxy.safeAreaInsets.top)
-            .ignoresSafeArea(.all)
     }
     
     @ViewBuilder
@@ -172,6 +163,7 @@ struct SettingsView: View {
                                 }
                             }
                             .foregroundStyle(Color.primary)
+                            .listRowBackground(Color("SecondaryBackground"))
                         }
                     }
                     Section("Konto") {
@@ -184,6 +176,7 @@ struct SettingsView: View {
                                 }
                             }
                             .foregroundStyle(Color.primary)
+                            .listRowBackground(Color("SecondaryBackground"))
                         }
                     }
                     
@@ -200,6 +193,7 @@ struct SettingsView: View {
                                 }
                             }
                             .foregroundStyle(Color.primary)
+                            .listRowBackground(Color("SecondaryBackground"))
                         }
                     }
                     
@@ -212,6 +206,7 @@ struct SettingsView: View {
                             }
                             .foregroundStyle(Color.red)
                         }
+                        .listRowBackground(Color("SecondaryBackground"))
                     }
                     
                     Section {
@@ -231,9 +226,12 @@ struct SettingsView: View {
                             }
                             .foregroundStyle(Color.primary)
                         }
+                        .listRowBackground(Color("SecondaryBackground"))
                     }
                 }
                 .navigationTitle("Ustawienia")
+                .scrollContentBackground(.hidden)
+                .background(Color("Background"))
             }
             .navigationDestination(for: String.self) { title in
                 Text(title)
@@ -248,5 +246,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    MainView(selectedTab: .settings)
+    SettingsView(shouldPresentLoginView: .constant(false), selectedTab: .constant(.settings))
 }

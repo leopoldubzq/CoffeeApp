@@ -56,6 +56,7 @@ struct MenuList: View {
     @Namespace private var coffeeImageNamespace
     @Namespace private var coffeeTitleNamespace
     @Namespace private var coffeePriceNamespace
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         GeometryReader { proxy in
@@ -69,7 +70,6 @@ struct MenuList: View {
                 .padding(.horizontal)
                 if listAppearance == .horizontal {
                     Spacer()
-                    
                     if UIDevice.isIPad {
                         iPadLayoutHoriontalList(size: size)
                     } else {
@@ -80,18 +80,10 @@ struct MenuList: View {
                     VerticalList(size: size)
                 }
             }
+            .background(Color("Background"))
             .onRotate(perform: { orientation in
                 self.orientation = orientation
             })
-//            .sheet(isPresented: $coffeePreviewVisible) {
-//                if let selectedCoffee {
-//                    MenuItemPreview(coffeePreviewVisible: $coffeePreviewVisible,
-//                                    coffee: selectedCoffee,
-//                                    coffeeImageNamespace: coffeeImageNamespace,
-//                                    coffeeTitleNamespace: coffeeTitleNamespace,
-//                                    coffeePriceNamespace: coffeePriceNamespace)
-//                }
-//            }
             .overlay {
                 if coffeePreviewVisible, let selectedCoffee {
                     MenuItemPreview(coffeePreviewVisible: $coffeePreviewVisible,
@@ -228,7 +220,7 @@ struct MenuList: View {
             }
             .frame(height: size.height * 0.83)
             .overlay(alignment: .bottom) {
-                CustomPagingIndicator(activeTint: Color.init(uiColor: .label),
+                CustomPagingIndicator(activeTint: colorScheme == .dark ? .white : .secondary,
                                       inActiveTint: .secondary,
                                       cellItemPadding: 0,
                                       cellItemSpacing: 0,

@@ -18,6 +18,9 @@ struct HomeView: View {
     @State private var stampsAlertIsPresented: Bool = false
     @State private var stampsCountString: String = ""
     @Environment(\.colorScheme) private var colorScheme
+    @State private var shakeEffectEnabled: Bool = false
+    @State private var rewardsCountTextOffsetXValue: CGFloat = -1.5
+    private let timer = Timer.publish(every: 4, on: .main, in: .common).autoconnect()
     
     var body: some View {
         NavigationStack(path: $route) {
@@ -73,8 +76,10 @@ struct HomeView: View {
                     .padding(.horizontal, 16)
                     .animation(.easeInOut(duration: 0.2), value: viewModel.stamps)
                 }
+                .background(Color("Background"))
                 .scrollIndicators(.hidden)
                 .overlay(alignment: .top) { SafeAreaTopView(proxy: proxy) }
+                .toolbar(qrCodeViewIsPresented ? .hidden : .visible, for: .tabBar)
                 .overlay {
                     if qrCodeViewIsPresented {
                         QRCodeView(qrCodeViewIsPresented: $qrCodeViewIsPresented,
@@ -84,21 +89,31 @@ struct HomeView: View {
                                    qrCodeStringNamespace: qrCodeStringNamespace)
                     }
                 }
-                .toolbar(qrCodeViewIsPresented ? .hidden : .visible, for: .tabBar)
                 .sheet(isPresented: $cafeViewPresented) {
                     ChooseCafeView(selectedCafe: $viewModel.currentCafe) {
                         guard viewModel.user?.currentCafe != viewModel.currentCafe else { return }
                         viewModel.user?.currentCafe = viewModel.currentCafe
                         viewModel.updateUser()
                     }
+                    .presentationDetents([.large, .fraction(0.55)])
                 }
-                .onChange(of: qrCodeViewIsPresented) { _, _ in
+                .onChange(of: qrCodeViewIsPresented) { _, isPresented in
                     HapticManager.shared.impact(.soft)
                 }
                 .onChange(of: shouldPresentLoginView, { _, _ in
                     viewModel.getUser()
                 })
-                .alert("Dodaj pieczątki", 
+                .onReceive(timer, perform: { _ in
+                    if viewModel.stamps.count >= 10 {
+                        rewardsCountTextOffsetXValue = -1.5
+                        withAnimation(.default.repeatCount(12, autoreverses: true).speed(24)) {
+                            shakeEffectEnabled.toggle()
+                        } completion: {
+                            rewardsCountTextOffsetXValue = 0
+                        }
+                    }
+                })
+                .alert("Dodaj pieczątki",
                        isPresented: $stampsAlertIsPresented,
                        actions: {
                     TextField("Pieczątki", text: $stampsCountString)
@@ -121,16 +136,30 @@ struct HomeView: View {
     
     @ViewBuilder
     private func RewardsAmountInfoText() -> some View {
-        Group {
-            Text("Masz do wykorzystania ")
-                .foregroundStyle(.secondary)
-            + Text("\(viewModel.getActiveVouchersCount())")
-                .foregroundStyle(.primary)
-                .fontWeight(.semibold)
-            + Text(" \(PluralizedString.reward(viewModel.getActiveVouchersCount()).pluralized)")
-                .foregroundStyle(.secondary)
+        HStack {
+            HStack(spacing: 0) {
+                Text("Masz do odebrania ")
+                    .foregroundStyle(.secondary)
+                Text("\(viewModel.getActiveVouchersCount())")
+                    .foregroundStyle(.accent)
+                    .fontWeight(.semibold)
+                Text(" \(PluralizedString.reward(viewModel.getActiveVouchersCount()).pluralized)!")
+                    .foregroundStyle(.secondary)
+                Text(" 🥳")
+            }
+            .offset(x: shakeEffectEnabled ? rewardsCountTextOffsetXValue : 0)
+            Spacer(minLength: 16)
+            Button {} label: {
+                HStack(alignment: .center, spacing: 4) {
+                    Text("Pokaż")
+                    Image(systemName: "chevron.right")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 12, height: 12)
+                        .offset(y: 0.5)
+                }
+            }
         }
-        .contentTransition(.numericText())
         .frame(maxWidth: .infinity, alignment: .leading)
     }
     
@@ -181,11 +210,11 @@ struct HomeView: View {
             .scaleEffect(1 + (scrollOffsetY > 0 ? (scrollOffsetY / 2000) : 0))
             .offset(x: scrollOffsetY > 0 ? (scrollOffsetY / 20) : 0)
             Spacer()
-            Button { stampsAlertIsPresented.toggle() } label: {
-                Image(systemName: "plus")
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(Color.init(uiColor: .label))
-            }
+//            Button { stampsAlertIsPresented.toggle() } label: {
+//                Image(systemName: "plus")
+//                    .aspectRatio(contentMode: .fit)
+//                    .foregroundStyle(Color.init(uiColor: .label))
+//            }
             if !qrCodeViewIsPresented {
                 QRCodeButton()
             }
@@ -226,7 +255,7 @@ struct HomeView: View {
     @ViewBuilder
     private func SafeAreaTopView(proxy: GeometryProxy) -> some View {
         Rectangle()
-            .fill(Color.init(uiColor: .systemBackground))
+            .fill(Color("Background"))
             .frame(maxWidth: .infinity)
             .frame(height: proxy.safeAreaInsets.top)
             .ignoresSafeArea(.all)
@@ -281,4 +310,3 @@ struct HomeView: View {
 #Preview {
     HomeView(shouldPresentLoginView: .constant(false))
 }
-

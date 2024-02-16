@@ -6,6 +6,8 @@ struct VoucherView: View {
     var isActive: Bool = false
     @Binding var userStamps: [StampDto]
     
+    @Environment(\.colorScheme) private var colorScheme
+    
     var body: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 5)) {
             ForEach(getRange(i: voucherIndex), id: \.self) { j in
@@ -13,7 +15,7 @@ struct VoucherView: View {
             }
         }
         .padding()
-        .background(Color("GroupedListCellBackgroundColor"))
+        .background(Color("SecondaryBackground"))
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .animation(.snappy(duration: 0.35), value: userStamps)
         .onTapGesture {

@@ -85,6 +85,7 @@ struct StampView: View {
             }
             .navigationTitle("Twoje pieczątki")
         }
+        .background(Color("Background"))
     }
     
     @ViewBuilder
@@ -114,6 +115,7 @@ struct StampView: View {
             .frame(maxWidth: .infinity, alignment: .center)
         }
         .ignoresSafeArea(.all)
+        .background(Color("Background"))
     }
     
     @ViewBuilder
@@ -156,6 +158,6 @@ struct StampView: View {
 
 #Preview {
     NavigationStack {
-        StampView(userStamps: .constant(Array(repeating: StampDto.mock, count: 14)))
+        StampView(userStamps: .constant(Array(repeating: StampDto.mock, count: 12)))
     }
 }

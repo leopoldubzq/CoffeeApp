@@ -33,7 +33,8 @@ struct CafeDetailsView: View {
                         Text(cafe.title)
                             .font(.headline)
                             .foregroundStyle(Color.init(uiColor: .label))
-                            .offset(y: 30 - min(30, -(scrollOffsetY * 0.2)))
+                            .offset(y: 16 - min(16, -(scrollOffsetY * 0.2)))
+                            .padding(.top, proxy.safeAreaInsets.top > 0 ? 0 : 8)
                     }
                     .opacity(min(1, -scrollOffsetY / (getImageHeight() * 0.4)))
                     .overlay(alignment: .leading) {
@@ -49,6 +50,7 @@ struct CafeDetailsView: View {
                                 .clipShape(Circle())
                         }
                         .padding(.leading, 24)
+                        .padding(.top, proxy.safeAreaInsets.top > 0 ? 0 : 8)
                         .frame(width: 44, height: 44)
                         .opacity(min(1, (1.0 - (scrollOffsetY / (getImageHeight() * 0.4)))))
                     }
