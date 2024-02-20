@@ -16,8 +16,8 @@ struct MenuItemPreview: View {
         GeometryReader { proxy in
             VStack(alignment: .center, spacing: 0) {
                 HStack {
-                    CancelButton()
                     Spacer()
+                    CancelButton()
                 }
                 .padding()
                 .overlay(alignment: .center) {

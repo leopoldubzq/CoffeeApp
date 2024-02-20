@@ -20,6 +20,8 @@ struct HomeView: View {
     @Environment(\.colorScheme) private var colorScheme
     @State private var shakeEffectEnabled: Bool = false
     @State private var rewardsCountTextOffsetXValue: CGFloat = -1.5
+    @State private var claimRewardViewVisible: Bool = false
+    @Namespace private var claimRewardNamespace
     private let timer = Timer.publish(every: 4, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -64,6 +66,7 @@ struct HomeView: View {
                             }
                             VoucherView(userStamps: $viewModel.stamps)
                                 .showPlaceholder($viewModel.isLoading)
+                                .matchedGeometryEffect(id: "VoucherView", in: claimRewardNamespace)
                         }
                         VouchersText()
                             .showPlaceholder($viewModel.isLoading)
@@ -97,9 +100,12 @@ struct HomeView: View {
                     }
                     .presentationDetents([.large, .fraction(0.55)])
                 }
-                .onChange(of: qrCodeViewIsPresented) { _, isPresented in
+                .onChange(of: qrCodeViewIsPresented) { _, _ in
                     HapticManager.shared.impact(.soft)
                 }
+                .onChange(of: claimRewardViewVisible, { _, _ in
+                    HapticManager.shared.impact(.soft)
+                })
                 .onChange(of: shouldPresentLoginView, { _, _ in
                     viewModel.getUser()
                 })
@@ -124,6 +130,14 @@ struct HomeView: View {
                         }
                     }
                 })
+                .overlay {
+                    if claimRewardViewVisible {
+                        ClaimRewardView(claimRewardViewVisible: $claimRewardViewVisible,
+                                        stamps: $viewModel.stamps,
+                                        voucherNamespace: claimRewardNamespace,
+                                        code: "123456789")
+                    }
+                }
                 .onLoad { viewModel.getUser() }
             }
         }
@@ -149,7 +163,11 @@ struct HomeView: View {
             }
             .offset(x: shakeEffectEnabled ? rewardsCountTextOffsetXValue : 0)
             Spacer(minLength: 16)
-            Button {} label: {
+            Button {
+                withAnimation(.snappy(duration: 0.3, extraBounce: 0.08)) {
+                    claimRewardViewVisible = true
+                }
+            } label: {
                 HStack(alignment: .center, spacing: 4) {
                     Text("Pokaż")
                     Image(systemName: "chevron.right")
