@@ -18,6 +18,8 @@ struct CoverFlowView<Content: View, Item: RandomAccessCollection>: View where It
     var content: (Item.Element) -> Content
     var iPadSpacing: CGFloat = 48
     
+    @Environment(\.colorScheme) private var colorScheme
+    
     var body: some View {
         GeometryReader {
             let size = $0.size
@@ -43,7 +45,7 @@ struct CoverFlowView<Content: View, Item: RandomAccessCollection>: View where It
                 .padding(.horizontal, (size.width - itemWidth) / 2)
                 .scrollTargetLayout()
                 .overlay(alignment: .bottom) {
-                    CustomPagingIndicator(activeTint: Color.primary, inActiveTint: .secondary,
+                    CustomPagingIndicator(activeTint: colorScheme == .dark ? .white : .secondary, inActiveTint: .secondary,
                                           cellItemPadding: (size.width - itemWidth) / 2,
                                           cellItemSpacing: (spacing < 0 ? -spacing : spacing),
                                           opacityEffect: true, clipEdges: false)

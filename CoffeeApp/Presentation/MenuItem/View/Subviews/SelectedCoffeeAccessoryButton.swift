@@ -15,7 +15,7 @@ struct SelectedCoffeeAccessoryButton: View {
             }
             .padding(.vertical, 8)
             .padding(.horizontal)
-            .background(Color("GroupedListCellBackgroundColor"))
+            .background(Color("SecondaryBackground"))
             .clipShape(Capsule())
         }
         .foregroundStyle(Color.init(uiColor: .label))

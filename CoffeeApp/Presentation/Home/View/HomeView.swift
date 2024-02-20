@@ -1,6 +1,7 @@
 import SwiftUI
 import FirebaseFirestoreSwift
 import Firebase
+import Shimmer
 
 struct HomeView: View {
     
@@ -12,9 +13,16 @@ struct HomeView: View {
     @Namespace private var qrCodeBackgroundNamespace
     @Namespace private var qrCodeStringNamespace
     @State private var scrollOffsetY: CGFloat = 0
-    @State private var voucherToActivate: VoucherDto?
+    @State private var couponToActivate: CouponDto?
     @State private var cafeViewPresented: Bool = false
+    @State private var stampsAlertIsPresented: Bool = false
+    @State private var stampsCountString: String = ""
     @Environment(\.colorScheme) private var colorScheme
+    @State private var shakeEffectEnabled: Bool = false
+    @State private var rewardsCountTextOffsetXValue: CGFloat = -1.5
+    @State private var claimRewardViewVisible: Bool = false
+    @Namespace private var claimRewardNamespace
+    private let timer = Timer.publish(every: 4, on: .main, in: .common).autoconnect()
     
     var body: some View {
         NavigationStack(path: $route) {
@@ -29,38 +37,52 @@ struct HomeView: View {
                                 Spacer()
                                     .frame(maxWidth: .infinity)
                             }
+                            .showPlaceholder($viewModel.isLoading)
                             Text("Godziny otwarcia")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .font(.callout)
                                 .foregroundStyle(.accent)
+                                .showPlaceholder($viewModel.isLoading)
                             Group {
                                 Text("pn-pt: ")
+                                    .foregroundStyle(.secondary)
                                 + Text("9:00 - 19:00")
                                     .fontWeight(.semibold)
                                 Text("sb-nd: ")
+                                    .foregroundStyle(.secondary)
                                 + Text("10:00 - 18:00")
                                     .fontWeight(.semibold)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
+                            .showPlaceholder($viewModel.isLoading)
                         }
-                        
+                        if viewModel.stamps.count > 0 {
+                            if viewModel.getActiveVouchersCount() > 0 {
+                                RewardsAmountInfoText()
+                                    .showPlaceholder($viewModel.isLoading)
+                            } else {
+                                StampsLeftInfoText()
+                                    .showPlaceholder($viewModel.isLoading)
+                            }
+                            VoucherView(userStamps: $viewModel.stamps)
+                                .showPlaceholder($viewModel.isLoading)
+                                .matchedGeometryEffect(id: "VoucherView", in: claimRewardNamespace)
+                        }
                         VouchersText()
+                            .showPlaceholder($viewModel.isLoading)
                         VouchersList(size: size)
+                            .showPlaceholder($viewModel.isLoading)
+//                        Button("Create coupons") { viewModel.createCoupons() }
+//                            .showPlaceholder($viewModel.isLoading)
                         Spacer()
                     }
                     .padding(.horizontal, 16)
+                    .animation(.easeInOut(duration: 0.2), value: viewModel.stamps)
                 }
+                .background(Color("Background"))
                 .scrollIndicators(.hidden)
                 .overlay(alignment: .top) { SafeAreaTopView(proxy: proxy) }
-                .overlay {
-                    if viewModel.isLoading {
-                        ProgressView("Wczytywanie")
-                            .padding()
-                            .padding(.vertical)
-                            .background(Color("GroupedListCellBackgroundColor"))
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                    }
-                }
+                .toolbar(qrCodeViewIsPresented ? .hidden : .visible, for: .tabBar)
                 .overlay {
                     if qrCodeViewIsPresented {
                         QRCodeView(qrCodeViewIsPresented: $qrCodeViewIsPresented,
@@ -70,25 +92,57 @@ struct HomeView: View {
                                    qrCodeStringNamespace: qrCodeStringNamespace)
                     }
                 }
-                .toolbar(qrCodeViewIsPresented ? .hidden : .visible, for: .tabBar)
                 .sheet(isPresented: $cafeViewPresented) {
                     ChooseCafeView(selectedCafe: $viewModel.currentCafe) {
                         guard viewModel.user?.currentCafe != viewModel.currentCafe else { return }
                         viewModel.user?.currentCafe = viewModel.currentCafe
                         viewModel.updateUser()
                     }
+                    .presentationDetents([.large, .fraction(0.55)])
                 }
                 .onChange(of: qrCodeViewIsPresented) { _, _ in
                     HapticManager.shared.impact(.soft)
                 }
+                .onChange(of: claimRewardViewVisible, { _, _ in
+                    HapticManager.shared.impact(.soft)
+                })
                 .onChange(of: shouldPresentLoginView, { _, _ in
                     viewModel.getUser()
                 })
+                .onReceive(timer, perform: { _ in
+                    if viewModel.stamps.count >= 10 {
+                        rewardsCountTextOffsetXValue = -1.5
+                        withAnimation(.default.repeatCount(12, autoreverses: true).speed(24)) {
+                            shakeEffectEnabled.toggle()
+                        } completion: {
+                            rewardsCountTextOffsetXValue = 0
+                        }
+                    }
+                })
+                .alert("Dodaj pieczątki",
+                       isPresented: $stampsAlertIsPresented,
+                       actions: {
+                    TextField("Pieczątki", text: $stampsCountString)
+                        .keyboardType(.numberPad)
+                    Button("Ok") {
+                        if let stampsCount = Int(stampsCountString) {
+                            viewModel.addStamps(count: stampsCount)
+                        }
+                    }
+                })
+                .overlay {
+                    if claimRewardViewVisible {
+                        ClaimRewardView(claimRewardViewVisible: $claimRewardViewVisible,
+                                        stamps: $viewModel.stamps,
+                                        voucherNamespace: claimRewardNamespace,
+                                        code: "123456789")
+                    }
                 .onLoad { 
                     viewModel.getUser()
                     viewModel.getCafeeAccesory()
                     viewModel.createCafeeAccesory()
                 }
+                .onLoad { viewModel.getUser() }
             }
         }
     }
@@ -96,6 +150,54 @@ struct HomeView: View {
     private func getCellWidth(size: CGSize) -> CGFloat {
         let defaultWidth: CGFloat = size.width * 0.8
         return defaultWidth > 350 ? 350 : defaultWidth
+    }
+    
+    @ViewBuilder
+    private func RewardsAmountInfoText() -> some View {
+        HStack {
+            HStack(spacing: 0) {
+                Text("Masz do odebrania ")
+                    .foregroundStyle(.secondary)
+                Text("\(viewModel.getActiveVouchersCount())")
+                    .foregroundStyle(.accent)
+                    .fontWeight(.semibold)
+                Text(" \(PluralizedString.reward(viewModel.getActiveVouchersCount()).pluralized)!")
+                    .foregroundStyle(.secondary)
+                Text(" 🥳")
+            }
+            .offset(x: shakeEffectEnabled ? rewardsCountTextOffsetXValue : 0)
+            Spacer(minLength: 16)
+            Button {
+                withAnimation(.snappy(duration: 0.3, extraBounce: 0.08)) {
+                    claimRewardViewVisible = true
+                }
+            } label: {
+                HStack(alignment: .center, spacing: 4) {
+                    Text("Pokaż")
+                    Image(systemName: "chevron.right")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 12, height: 12)
+                        .offset(y: 0.5)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    @ViewBuilder
+    private func StampsLeftInfoText() -> some View {
+        Group {
+            Text("Brakuje ci ")
+                .foregroundStyle(.secondary)
+            + Text("\(Constants.stampsPerVoucher - viewModel.stamps.count)")
+                .fontWeight(.semibold)
+                .foregroundStyle(.accent)
+            + Text(" \(PluralizedString.stamps(viewModel.getActiveVouchersCount()).pluralized) do otrzymania nagrody")
+                .foregroundStyle(.secondary)
+        }
+        .contentTransition(.numericText())
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     @ViewBuilder
@@ -130,11 +232,17 @@ struct HomeView: View {
             .scaleEffect(1 + (scrollOffsetY > 0 ? (scrollOffsetY / 2000) : 0))
             .offset(x: scrollOffsetY > 0 ? (scrollOffsetY / 20) : 0)
             Spacer()
+//            Button { stampsAlertIsPresented.toggle() } label: {
+//                Image(systemName: "plus")
+//                    .aspectRatio(contentMode: .fit)
+//                    .foregroundStyle(Color.init(uiColor: .label))
+//            }
             if !qrCodeViewIsPresented {
                 QRCodeButton()
             }
         }
         .frame(height: 44)
+        .showPlaceholder($viewModel.isLoading)
     }
 
     @ViewBuilder
@@ -148,18 +256,16 @@ struct HomeView: View {
     private func VouchersList(size: CGSize) -> some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(viewModel.activeVouchers, id: \.uid) { voucher in
-                    VoucherCell(voucher: voucher,
-                                voucherToActivate: $voucherToActivate)
-                    .frame(width: getCellWidth(size: size), height: 220)
-                    .scrollTransition { content, phase in
-                        content
-                            .opacity(phase.isIdentity ? 1 : 0.3)
-                            .scaleEffect(phase.isIdentity ? 1 : 0.95)
-                    }
+                ForEach(viewModel.coupons, id: \.uid) { coupon in
+                    CouponCell(coupon: coupon, couponToActivate: $couponToActivate)
+                        .frame(width: getCellWidth(size: size), height: 220)
+                        .scrollTransition { content, phase in
+                            content
+                                .opacity(phase.isIdentity ? 1 : 0.3)
+                                .scaleEffect(phase.isIdentity ? 1 : 0.95)
+                        }
                 }
             }
-            
             .scrollTargetLayout()
         }
         .scrollIndicators(.hidden)
@@ -171,7 +277,7 @@ struct HomeView: View {
     @ViewBuilder
     private func SafeAreaTopView(proxy: GeometryProxy) -> some View {
         Rectangle()
-            .fill(Color.init(uiColor: .systemBackground))
+            .fill(Color("Background"))
             .frame(maxWidth: .infinity)
             .frame(height: proxy.safeAreaInsets.top)
             .ignoresSafeArea(.all)
@@ -226,4 +332,3 @@ struct HomeView: View {
 #Preview {
     HomeView(shouldPresentLoginView: .constant(false))
 }
-

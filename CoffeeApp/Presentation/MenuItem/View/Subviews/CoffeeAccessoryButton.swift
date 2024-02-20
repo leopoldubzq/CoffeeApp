@@ -16,7 +16,7 @@ struct CoffeeAccessoryButton: View {
             .padding(.horizontal)
             .frame(maxWidth: .infinity)
             .frame(height: 44)
-            .background(Color("GroupedListCellBackgroundColor"))
+            .background(Color("SecondaryBackground"))
             .clipShape(RoundedRectangle(cornerRadius: 8))
         }
         .foregroundStyle(Color(uiColor: .label))

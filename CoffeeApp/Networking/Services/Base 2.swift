@@ -48,36 +48,17 @@ class BaseService {
         .eraseToAnyPublisher()
     }
     
-    func getResult<T: Codable>(for model: FirestoreProtocol, collectionReference: FirestoreCollection, type: T.Type) -> AnyPublisher<T?, CAError> {
-        return Future { promise in
-            FirestoreUtility
-                .collectionReference(collectionReference)
-                .document(model.uid)
-                .getDocument(completion: { snapshot, error in
-                    if let error { promise(.failure(.basicError(error.localizedDescription))) }
-                    guard let snapshot else { return }
-                    if !snapshot.exists {
-                        promise(.success(nil))
-                    }
-                    guard let result = try? snapshot.data(as: T.self) else { return }
-                    promise(.success(result))
-                })
-        }
-        .subscribe(on: DispatchQueue.main)
-        .eraseToAnyPublisher()
-    }
-    
-    func update<T: FirestoreProtocol>(_ model: FirestoreProtocol,
-                                      collectionReference: FirestoreCollection,
-                                      type: T.Type) -> AnyPublisher<T?, CAError> {
+    func update<T: FirestoreProtocol>(_ model: FirestoreProtocol, type: T.Type) -> AnyPublisher<T, CAError> {
         return Future { promise in
             do {
                 try FirestoreUtility
-                    .collectionReference(collectionReference)
+                    .collectionReference(.users)
                     .document(model.uid)
                     .setData(from: model) { error in
                         if let error { promise(.failure(CAError.basicError(error.localizedDescription))) }
-                        promise(.success((model as? T)))
+                        if let model = model as? T {
+                            promise(.success((model)))
+                        }
                     }
             } catch {
                 promise(.failure(.basicError(error.localizedDescription)))
@@ -87,13 +68,12 @@ class BaseService {
         .eraseToAnyPublisher()
     }
     
-    func create<T: FirestoreProtocol>(_ model: FirestoreProtocol, 
-                                      collectionReference: FirestoreCollection,
-                                      type: T.Type) -> AnyPublisher<T, CAError> {
+    
+    func create<T: FirestoreProtocol>(_ model: FirestoreProtocol, type: T.Type, reference: FirestoreCollection = .users) -> AnyPublisher<T, CAError> {
         return Future { promise in
             do {
                 try FirestoreUtility
-                    .collectionReference(collectionReference)
+                    .collectionReference(reference)
                     .document(model.uid)
                     .setData(from: model) { error in
                         if let error { promise(.failure(.basicError(error.localizedDescription))) }

@@ -1,7 +1,7 @@
 import SwiftUI
 import Firebase
 
-final class ChooseCafeViewModel: BaseViewModel {
+final class ChooseCafeViewModel: BaseViewModel, AuthProtocol {
     
     //MARK: - PUBLIC PROPERTIES
     @Published var searchText: String = ""
@@ -11,9 +11,14 @@ final class ChooseCafeViewModel: BaseViewModel {
     //MARK: - PRIVATE PROPERTIES
     private let cafeService = CafeService()
     
+    override init() {
+        super.init()
+        cafes = CafeDto.mock
+    }
+    
     //MARK: - PUBLIC METHODS
     func getCafes() {
-        guard selectedCafe == nil else { return }
+        guard isLoggedIn() else { return }
         isLoading = true
         cafeService.getCafes()
             .sink { [weak self] _ in

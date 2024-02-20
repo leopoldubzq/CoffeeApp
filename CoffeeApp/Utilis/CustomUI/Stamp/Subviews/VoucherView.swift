@@ -2,9 +2,11 @@ import SwiftUI
 
 struct VoucherView: View {
     
-    var voucherIndex: Int
+    var voucherIndex: Int = 1
     var isActive: Bool = false
-    var userStamps: [StampDto]
+    @Binding var userStamps: [StampDto]
+    
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 5)) {
@@ -13,8 +15,9 @@ struct VoucherView: View {
             }
         }
         .padding()
-        .background(Color("GroupedListCellBackgroundColor"))
+        .background(Color("SecondaryBackground"))
         .clipShape(RoundedRectangle(cornerRadius: 12))
+        .animation(.snappy(duration: 0.35), value: userStamps)
         .onTapGesture {
             guard isActive else { return }
         }
@@ -33,5 +36,5 @@ struct VoucherView: View {
 }
 
 #Preview {
-    VoucherView(voucherIndex: 1, userStamps: Array(repeating: StampDto.mock, count: 4))
+    VoucherView(userStamps: .constant(Array(repeating: StampDto.mock, count: 4)))
 }

@@ -5,7 +5,6 @@ struct ChooseCafeView: View {
     @Binding var selectedCafe: CafeDto?
     var refreshCompletion: VoidCallback?
     @StateObject private var viewModel = ChooseCafeViewModel()
-    @State private var searchText: String = ""
     @Environment(\.dismiss) private var dismiss
     @State private var route: [Route] = []
     
@@ -46,24 +45,24 @@ struct ChooseCafeView: View {
                 }
                 Section(selectedCafe == nil ? "Kawiarnie" : "Pozostałe kawiarnie") {
                     ForEach(getCafes(), id: \.uid) { cafe in
-                        Text(cafe.title)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .onTapGesture {
-                                withAnimation(.snappy(duration: 0.35, extraBounce: 0.08)) {
-                                    selectedCafe = cafe
-                                }
+                        Button {
+                            withAnimation(.snappy(duration: 0.35, extraBounce: 0.08)) {
+                                selectedCafe = cafe
                             }
+                        } label: {
+                            Text(cafe.title)
+                        }
+                        .foregroundStyle(.primary)
                     }
                 }
             }
             .frame(maxWidth: .infinity)
             .navigationTitle("Wybierz kawiarnię")
-            .searchable(text: $searchText, 
-                        placement: .navigationBarDrawer,
-                        prompt: Text("Szukaj"))
+            .toolbarTitleDisplayMode(.inline)
             .toolbar {
-                Button("Gotowe") {
+                Button("Zapisz") {
                     HapticManager.shared.impact(.soft)
+                    refreshCompletion?()
                     dismiss()
                 }
                 .fontWeight(.semibold)
@@ -77,20 +76,15 @@ struct ChooseCafeView: View {
                 }
                 
             }
-            .onAppear { viewModel.getCafes() }
+            .onLoad { viewModel.getCafes() }
             .onChange(of: selectedCafe) { _, newValue in
                 viewModel.selectedCafe = newValue
-            }
-            .onDisappear {
-                refreshCompletion?()
             }
         }
     }
     
     private func getCafes() -> [CafeDto] {
-        let cafes = searchText.isEmpty ? viewModel.cafes : viewModel.cafes.filter { $0.title.lowercased().contains(searchText.lowercased()) }
-        return cafes.filter { $0.uid != selectedCafe?.uid }
-        
+        viewModel.cafes.filter { $0.uid != selectedCafe?.uid }
     }
 }
 

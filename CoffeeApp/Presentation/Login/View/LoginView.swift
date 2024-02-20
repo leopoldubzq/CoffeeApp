@@ -38,14 +38,17 @@ struct LoginView: View {
                                 .frame(width: 44, height: 44)
                                 .symbolEffect(.pulse, value: imageAnimationTrigger)
                                 .onAppear { imageAnimationTrigger.toggle() }
+                                .foregroundStyle(Color.init(uiColor: .label).opacity(0.8))
                             VStack {
                                 Text("CoffeeApp")
                                     .fontWeight(.semibold)
                                     .font(.system(size: 32))
+                                    .foregroundStyle(Color.init(uiColor: .label).opacity(0.8))
                                 Text("Just drink and enjoy")
                                     .foregroundStyle(.secondary)
                                     .font(.system(size: 14))
                             }
+                            
                         }
                         .onReceive(timer, perform: { _ in
                             imageAnimationTrigger.toggle()

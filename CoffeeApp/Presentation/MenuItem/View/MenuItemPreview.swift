@@ -16,9 +16,8 @@ struct MenuItemPreview: View {
         GeometryReader { proxy in
             VStack(alignment: .center, spacing: 0) {
                 HStack {
-                    CancelButton()
                     Spacer()
-                    addToCartButton()
+                    CancelButton()
                 }
                 .padding()
                 .overlay(alignment: .center) {
@@ -79,12 +78,9 @@ struct MenuItemPreview: View {
                 
 
                 Spacer()
-                OrderCoffeeButton(coffeePreviewVisible: $coffeePreviewVisible,
-                                  safeAreaBottom: proxy.safeAreaInsets.bottom)
-                .padding(.bottom, UIDevice.isIPad ? 100 : 0)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.init(uiColor: .systemBackground))
+            .background(Color("Background"))
             
             .onAppear {
                 viewModel.coffeeAccesories = coffee.accessories
@@ -129,7 +125,9 @@ struct MenuItemPreview: View {
     private func CancelButton() -> some View {
         Button {
             HapticManager.shared.impact(.soft)
-            coffeePreviewVisible = false
+            withAnimation(.snappy(duration: 0.3, extraBounce: 0.03)) {
+                coffeePreviewVisible = false
+            }
         } label: {
             Text("Anuluj")
         }
@@ -160,7 +158,7 @@ struct MenuItemPreview: View {
         HStack(alignment: .center) {
             Image(coffee.imageName)
                 .resizable()
-                //.matchedGeometryEffect(id: coffee.imageMatchedGeometryID, in: coffeeImageNamespace)
+                .matchedGeometryEffect(id: coffee.imageMatchedGeometryID, in: coffeeImageNamespace)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 120, height: 120)
             VStack(alignment: .leading, spacing: 4) {
@@ -182,7 +180,6 @@ struct MenuItemPreview: View {
         .padding(.top, -16)
         .zIndex(1)
         .scrollClipDisabled()
-        .background(Color.init(uiColor: .systemBackground))
     }
 }
 
