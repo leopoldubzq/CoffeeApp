@@ -34,14 +34,14 @@ enum ListAppearanceType {
 
 struct MenuList: View {
     
-    var coffees: [CoffeeDto] = [CoffeeDto(title: "Cappuccino", price: 18.00, imageName: "cappuccino", accessories: [.sugar, .doubleEspresso]),
-                                CoffeeDto(title: "Espresso", price: 7.00, imageName: "espresso", accessories: [.sugar]),
-                                CoffeeDto(title: "Cappuccino", price: 18.00, imageName: "cappuccino", accessories: [.sugar, .doubleEspresso]),
-                                CoffeeDto(title: "Espresso", price: 7.00, imageName: "espresso", accessories: [.sugar]),
-                                CoffeeDto(title: "Cappuccino", price: 18.00, imageName: "cappuccino", accessories: [.sugar, .doubleEspresso]),
-                                CoffeeDto(title: "Espresso", price: 7.00, imageName: "espresso", accessories: [.sugar]),
-                                CoffeeDto(title: "Cappuccino", price: 18.00, imageName: "cappuccino", accessories: [.sugar, .doubleEspresso]),
-                                CoffeeDto(title: "Espresso", price: 7.00, imageName: "espresso", accessories: [.sugar])]
+    var coffees: [CoffeeDto] = [CoffeeDto(title: "Cappuccino", price: 18.00, imageName: "cappuccino", accessories: [MockDataCoffeeAccessoriesTest.sugar, MockDataCoffeeAccessoriesTest.doubleEspresso]),
+                                CoffeeDto(title: "Espresso", price: 7.00, imageName: "espresso", accessories: [MockDataCoffeeAccessoriesTest.sugar]),
+                                CoffeeDto(title: "Cappuccino", price: 18.00, imageName: "cappuccino", accessories: [MockDataCoffeeAccessoriesTest.sugar, MockDataCoffeeAccessoriesTest.doubleEspresso]),
+                                CoffeeDto(title: "Espresso", price: 7.00, imageName: "espresso", accessories: [MockDataCoffeeAccessoriesTest.sugar]),
+                                CoffeeDto(title: "Cappuccino", price: 18.00, imageName: "cappuccino", accessories: [MockDataCoffeeAccessoriesTest.sugar, MockDataCoffeeAccessoriesTest.doubleEspresso]),
+                                CoffeeDto(title: "Espresso", price: 7.00, imageName: "espresso", accessories: [MockDataCoffeeAccessoriesTest.sugar]),
+                                CoffeeDto(title: "Cappuccino", price: 18.00, imageName: "cappuccino", accessories: [MockDataCoffeeAccessoriesTest.sugar, MockDataCoffeeAccessoriesTest.doubleEspresso]),
+                                CoffeeDto(title: "Espresso", price: 7.00, imageName: "espresso", accessories: [MockDataCoffeeAccessoriesTest.sugar])]
     
     @State private var coffeePreviewVisible: Bool = false
     @State private var selectedCoffee: CoffeeDto?

@@ -1,6 +1,6 @@
 import Foundation
 
-struct CoffeeAccessory: Codable {
-    let type: CoffeeAccessoryType
-    
-}
+//struct CoffeeAccessory: Codable {
+//    let type: CoffeeAccessoryType
+//    
+//}

@@ -10,4 +10,5 @@ struct CoffeeDto: Codable, Hashable, Identifiable {
     var imageMatchedGeometryID = UUID().uuidString
     var titleMatchedGeometryID = UUID().uuidString
     var priceMatchedGeometryID = UUID().uuidString
+    var accessories: [CoffeeAccessoryFireModel] = []
 }

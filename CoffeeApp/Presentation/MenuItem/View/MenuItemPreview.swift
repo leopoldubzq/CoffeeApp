@@ -30,11 +30,11 @@ struct MenuItemPreview: View {
                     LazyVStack(pinnedViews: [.sectionHeaders]) {
                         Section {
                             TagLayout(alignment: .leading) {
-                                ForEach(Array(Set(viewModel.selectedCoffeeAccessories.sorted(by: { $0.title > $1.title }))), id: \.self) { accessory in
+                                ForEach(viewModel.selectedCoffeeAccessories.sorted(by: { $0.title > $1.title }), id: \.id ) { accessory in
                                     SelectedCoffeeAccessoryButton(accessory: accessory) {
                                         
                                         withAnimation(.snappy(duration: 0.35, extraBounce: 0.1)) {
-                                            viewModel.selectedCoffeeAccessories.removeAll(where: { $0.rawValue == accessory.rawValue })
+                                            viewModel.selectedCoffeeAccessories.removeAll(where: { $0.title == accessory.title })
                                         }
                                     }
                                 }
@@ -64,9 +64,34 @@ struct MenuItemPreview: View {
                                             viewModel.performCoffeeAccessoryAction(for: substitute)
                                         }
                                     }
-                                                          .padding(.horizontal)
                                 }
                             }
+                            .padding(.horizontal)
+                            .padding(.bottom, viewModel.selectedCoffeeAccessories.isEmpty ? 0 : 8)
+//                            if !getCoffeeAccessories().isEmpty {
+//                                SectionText(title: "Dodatki", paddingTop: 0)
+//                                ForEach(getCoffeeAccessories(), id: \.id) { accessory in
+//                                    CoffeeAccessoryButton(title: accessory.title,
+//                                                          extraPrice: accessory.extraPrice) {
+//                                        withAnimation(.snappy(duration: 0.35, extraBounce: 0.08)) {
+//                                            viewModel.performCoffeeAccessoryAction(for: accessory)
+//                                        }
+//                                    }
+//                                    .padding(.horizontal)
+//                                }
+//                            }
+//                            if !getCoffeeSubstitutes().isEmpty {
+//                                SectionText(title: "Zamienniki", paddingTop: 16)
+//                                ForEach(getCoffeeSubstitutes(), id: \.id) { substitute in
+//                                    CoffeeAccessoryButton(title: substitute.title,
+//                                                          extraPrice: substitute.extraPrice) {
+//                                        withAnimation(.snappy(duration: 0.35, extraBounce: 0.08)) {
+//                                            viewModel.performCoffeeAccessoryAction(for: substitute)
+//                                        }
+//                                    }
+//                                                          .padding(.horizontal)
+//                                }
+//                            }
                         } header: {
                             OrderedCoffeeHeader()
                         }
@@ -99,20 +124,20 @@ struct MenuItemPreview: View {
         }
     }
     
-    private func getCoffeeAccessories() -> [CoffeeAccessoryType] {
+    private func getCoffeeAccessories() -> [any CoffeeAccessoryTypeProtocol] {
         viewModel.coffeeAccesories.filter { accessory in
             !viewModel.selectedCoffeeAccessories
                 .filter({ !$0.substitute })
-                .contains(where: { accessory.rawValue == $0.rawValue })
+                .contains(where: { accessory.title == $0.title })
             && !accessory.substitute
         }
     }
     
-    private func getCoffeeSubstitutes() -> [CoffeeAccessoryType] {
+    private func getCoffeeSubstitutes() -> [any CoffeeAccessoryTypeProtocol] {
         viewModel.coffeeAccesories.filter { accessory in
             !viewModel.selectedCoffeeAccessories
                 .filter(\.substitute)
-                .contains(where: { accessory.rawValue == $0.rawValue })
+                .contains(where: { accessory.title == $0.title })
             && accessory.substitute
         }
     }
@@ -121,7 +146,7 @@ struct MenuItemPreview: View {
         coffee.price + viewModel.getCoffeeAccessoriesExtraPrice()
     }
     
-    private func getExtraPrice(from accessory: CoffeeAccessoryType) -> String {
+    private func getExtraPrice(from accessory: any CoffeeAccessoryTypeProtocol) -> String {
         accessory.extraPrice > 0 ? " (+\(PriceFormatter.formatToPLN(price: accessory.extraPrice)))" : ""
     }
     
@@ -194,7 +219,7 @@ struct MenuItemPreview: View {
                          coffee: CoffeeDto(title: "Cappuccino", 
                                            price: 18.00,
                                            imageName: "cappuccino",
-                                           accessories: CoffeeAccessoryType.allCases),
+                                           accessories: MockDataCoffeeAccessoriesTest.allcases()),
                          coffeeImageNamespace: coffeeImageNamespace,
                          coffeeTitleNamespace: coffeeTitleNamespace,
                          coffeePriceNamespace: coffeePriceNamespace)

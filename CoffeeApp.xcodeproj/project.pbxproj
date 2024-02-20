@@ -172,6 +172,7 @@
 		02F095412B67CDD2002E5B6A /* ChangeAppearanceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0953F2B67CDD2002E5B6A /* ChangeAppearanceButton.swift */; };
 		02F095442B67DCF4002E5B6A /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F095432B67DCF4002E5B6A /* AppStorageKeys.swift */; };
 		02F095452B67DCF4002E5B6A /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F095432B67DCF4002E5B6A /* AppStorageKeys.swift */; };
+		E2D2583E2B73F9FC008B9387 /* CoffeAccessoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D2583D2B73F9FC008B9387 /* CoffeAccessoryType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -262,6 +263,7 @@
 		02ECB4802B6D0F4600F71974 /* CLLocation+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Ext.swift"; sourceTree = "<group>"; };
 		02F0953F2B67CDD2002E5B6A /* ChangeAppearanceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAppearanceButton.swift; sourceTree = "<group>"; };
 		02F095432B67DCF4002E5B6A /* AppStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeys.swift; sourceTree = "<group>"; };
+		E2D2583D2B73F9FC008B9387 /* CoffeAccessoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeAccessoryType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,6 +381,7 @@
 				0232911A2B5F0CB9004A2B26 /* Menu.swift */,
 				02ECB47D2B6D0E3600F71974 /* CafeDto.swift */,
 				02E54F4B2B752B7F00F49C5B /* StampDto.swift */,
+				E2D2583D2B73F9FC008B9387 /* CoffeAccessoryType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1195,6 +1198,7 @@
 				02ECB4812B6D0F4600F71974 /* CLLocation+Ext.swift in Sources */,
 				023291192B5EF45B004A2B26 /* SelectedCoffeeAccessoryButton.swift in Sources */,
 				02E54F462B751B5E00F49C5B /* StringManager.swift in Sources */,
+				E2D2583E2B73F9FC008B9387 /* CoffeAccessoryType.swift in Sources */,
 				02B610C42B600FC600844CC3 /* OnboardingPageView.swift in Sources */,
 				0274684D2B30E10B00664A7F /* VisualEffectView.swift in Sources */,
 				02D9BB132B62D2A1009FF2FC /* SessionService.swift in Sources */,
@@ -1432,7 +1436,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CoffeeApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 4G76GHV9RM;
+				DEVELOPMENT_TEAM = 78H32WXMW2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoffeeApp/Info.plist;
@@ -1467,7 +1471,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CoffeeApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 4G76GHV9RM;
+				DEVELOPMENT_TEAM = 78H32WXMW2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoffeeApp/Info.plist;

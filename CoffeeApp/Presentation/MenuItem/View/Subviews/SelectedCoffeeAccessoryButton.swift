@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SelectedCoffeeAccessoryButton: View {
     
-    var accessory: CoffeeAccessoryType
+    var accessory: any CoffeeAccessoryTypeProtocol
     var action: (() -> ())
     
     var body: some View {
@@ -21,11 +21,11 @@ struct SelectedCoffeeAccessoryButton: View {
         .foregroundStyle(Color.init(uiColor: .label))
     }
     
-    private func getExtraPrice(from accessory: CoffeeAccessoryType) -> String {
+    private func getExtraPrice(from accessory: any CoffeeAccessoryTypeProtocol) -> String {
         accessory.extraPrice > 0 ? " (+\(PriceFormatter.formatToPLN(price: accessory.extraPrice)))" : ""
     }
 }
 
-#Preview {
-    SelectedCoffeeAccessoryButton(accessory: .sugar) {}
-}
+//#Preview {
+//    SelectedCoffeeAccessoryButton(accessory: .sugar) {}
+//}
