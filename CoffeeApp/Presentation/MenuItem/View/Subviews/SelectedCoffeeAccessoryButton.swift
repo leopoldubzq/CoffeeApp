@@ -26,6 +26,6 @@ struct SelectedCoffeeAccessoryButton: View {
     }
 }
 
-//#Preview {
-//    SelectedCoffeeAccessoryButton(accessory: .sugar) {}
-//}
+#Preview {
+    SelectedCoffeeAccessoryButton(accessory: MockDataCoffeeAccessories().sugar) {}
+}

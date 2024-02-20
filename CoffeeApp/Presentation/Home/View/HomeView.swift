@@ -84,7 +84,11 @@ struct HomeView: View {
                 .onChange(of: shouldPresentLoginView, { _, _ in
                     viewModel.getUser()
                 })
-                .onLoad { viewModel.getUser() }
+                .onLoad { 
+                    viewModel.getUser()
+                    viewModel.getCafeeAccesory()
+                    viewModel.createCafeeAccesory()
+                }
             }
         }
     }

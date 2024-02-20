@@ -69,11 +69,11 @@ class BaseService {
     }
     
     
-    func create<T: FirestoreProtocol>(_ model: FirestoreProtocol, type: T.Type) -> AnyPublisher<T, CAError> {
+    func create<T: FirestoreProtocol>(_ model: FirestoreProtocol, type: T.Type, reference: FirestoreCollection = .users) -> AnyPublisher<T, CAError> {
         return Future { promise in
             do {
                 try FirestoreUtility
-                    .collectionReference(.users)
+                    .collectionReference(reference)
                     .document(model.uid)
                     .setData(from: model) { error in
                         if let error { promise(.failure(.basicError(error.localizedDescription))) }

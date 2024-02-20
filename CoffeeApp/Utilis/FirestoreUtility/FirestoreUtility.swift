@@ -4,6 +4,7 @@ enum FirestoreCollection: String {
     case users
     case menu
     case cafes
+    case coffeeAccessory
 }
 
 struct FirestoreUtility {

@@ -30,9 +30,9 @@ struct MenuItemPreview: View {
                     LazyVStack(pinnedViews: [.sectionHeaders]) {
                         Section {
                             TagLayout(alignment: .leading) {
-                                ForEach(viewModel.selectedCoffeeAccessories.sorted(by: { $0.title > $1.title }), id: \.id ) { accessory in
+                                ForEach(viewModel.selectedCoffeeAccessories.sorted(by: { $0.title > $1.title }), id: \.uid ) { accessory in
                                     SelectedCoffeeAccessoryButton(accessory: accessory) {
-                                        
+                                        blockUserInteraction()
                                         withAnimation(.snappy(duration: 0.35, extraBounce: 0.1)) {
                                             viewModel.selectedCoffeeAccessories.removeAll(where: { $0.title == accessory.title })
                                         }
@@ -44,7 +44,7 @@ struct MenuItemPreview: View {
                             .allowsHitTesting(userInteractionEnabled)
                             if !getCoffeeAccessories().isEmpty {
                                 SectionText(title: "Dodatki", paddingTop: 0)
-                                ForEach(getCoffeeAccessories(), id: \.self) { accessory in
+                                ForEach(getCoffeeAccessories(), id: \.uid) { accessory in
                                     CoffeeAccessoryButton(title: accessory.title,
                                                           extraPrice: accessory.extraPrice) {
                                         blockUserInteraction()
@@ -53,45 +53,20 @@ struct MenuItemPreview: View {
                                         }
                                     }
                                     .padding(.horizontal)
+                                    .allowsHitTesting(userInteractionEnabled)
                                 }
                             }
                             if !getCoffeeSubstitutes().isEmpty {
                                 SectionText(title: "Zamienniki", paddingTop: 16)
-                                ForEach(getCoffeeSubstitutes(), id: \.self) { substitute in
+                                ForEach(getCoffeeSubstitutes(), id: \.uid) { substitute in
                                     CoffeeAccessoryButton(title: substitute.title,
                                                           extraPrice: substitute.extraPrice) {
                                         withAnimation(.snappy(duration: 0.35, extraBounce: 0.08)) {
                                             viewModel.performCoffeeAccessoryAction(for: substitute)
                                         }
-                                    }
+                                    }.allowsHitTesting(userInteractionEnabled)
                                 }
                             }
-                            .padding(.horizontal)
-                            .padding(.bottom, viewModel.selectedCoffeeAccessories.isEmpty ? 0 : 8)
-//                            if !getCoffeeAccessories().isEmpty {
-//                                SectionText(title: "Dodatki", paddingTop: 0)
-//                                ForEach(getCoffeeAccessories(), id: \.id) { accessory in
-//                                    CoffeeAccessoryButton(title: accessory.title,
-//                                                          extraPrice: accessory.extraPrice) {
-//                                        withAnimation(.snappy(duration: 0.35, extraBounce: 0.08)) {
-//                                            viewModel.performCoffeeAccessoryAction(for: accessory)
-//                                        }
-//                                    }
-//                                    .padding(.horizontal)
-//                                }
-//                            }
-//                            if !getCoffeeSubstitutes().isEmpty {
-//                                SectionText(title: "Zamienniki", paddingTop: 16)
-//                                ForEach(getCoffeeSubstitutes(), id: \.id) { substitute in
-//                                    CoffeeAccessoryButton(title: substitute.title,
-//                                                          extraPrice: substitute.extraPrice) {
-//                                        withAnimation(.snappy(duration: 0.35, extraBounce: 0.08)) {
-//                                            viewModel.performCoffeeAccessoryAction(for: substitute)
-//                                        }
-//                                    }
-//                                                          .padding(.horizontal)
-//                                }
-//                            }
                         } header: {
                             OrderedCoffeeHeader()
                         }

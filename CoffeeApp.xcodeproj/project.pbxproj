@@ -172,6 +172,7 @@
 		02F095412B67CDD2002E5B6A /* ChangeAppearanceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0953F2B67CDD2002E5B6A /* ChangeAppearanceButton.swift */; };
 		02F095442B67DCF4002E5B6A /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F095432B67DCF4002E5B6A /* AppStorageKeys.swift */; };
 		02F095452B67DCF4002E5B6A /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F095432B67DCF4002E5B6A /* AppStorageKeys.swift */; };
+		E23059FD2B77BD8B004B27E4 /* CoffeeAccessoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23059FC2B77BD8B004B27E4 /* CoffeeAccessoryService.swift */; };
 		E2D2583E2B73F9FC008B9387 /* CoffeAccessoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D2583D2B73F9FC008B9387 /* CoffeAccessoryType.swift */; };
 /* End PBXBuildFile section */
 
@@ -263,6 +264,7 @@
 		02ECB4802B6D0F4600F71974 /* CLLocation+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Ext.swift"; sourceTree = "<group>"; };
 		02F0953F2B67CDD2002E5B6A /* ChangeAppearanceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAppearanceButton.swift; sourceTree = "<group>"; };
 		02F095432B67DCF4002E5B6A /* AppStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeys.swift; sourceTree = "<group>"; };
+		E23059FC2B77BD8B004B27E4 /* CoffeeAccessoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeAccessoryService.swift; sourceTree = "<group>"; };
 		E2D2583D2B73F9FC008B9387 /* CoffeAccessoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeAccessoryType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -966,6 +968,7 @@
 				02ECB4732B6D0B2300F71974 /* UserService.swift */,
 				020543992B73CD6F00C3E0CA /* CafeService.swift */,
 				0205439C2B73CE2800C3E0CA /* Base.swift */,
+				E23059FC2B77BD8B004B27E4 /* CoffeeAccessoryService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1147,6 +1150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				027468352B30CEBF00664A7F /* MainViewModel.swift in Sources */,
+				E23059FD2B77BD8B004B27E4 /* CoffeeAccessoryService.swift in Sources */,
 				02F095442B67DCF4002E5B6A /* AppStorageKeys.swift in Sources */,
 				027468432B30CF7400664A7F /* HomeViewModel.swift in Sources */,
 				020543602B6FBE3B00C3E0CA /* CreateUserProfileViewModel.swift in Sources */,

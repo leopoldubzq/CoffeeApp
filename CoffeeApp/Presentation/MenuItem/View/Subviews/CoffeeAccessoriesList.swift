@@ -11,7 +11,7 @@ struct CoffeeAccessoriesList: View {
         List {
             if !coffeeAccessories.isEmpty {
                 Section("Dodatki") {
-                    ForEach(coffeeAccessories, id: \.id) { accessory in
+                    ForEach(coffeeAccessories, id: \.uid) { accessory in
                         CoffeeAccessoryButton(title: accessory.title,
                                               extraPrice: accessory.extraPrice) {
                             withAnimation(.snappy(duration: 0.3, extraBounce: 0.08)) {
@@ -23,7 +23,7 @@ struct CoffeeAccessoriesList: View {
             }
             if !coffeeSubstitutes.isEmpty {
                 Section("Zamienniki") {
-                    ForEach(coffeeSubstitutes, id: \.id) { substitute in
+                    ForEach(coffeeSubstitutes, id: \.uid) { substitute in
                         CoffeeAccessoryButton(title: substitute.title,
                                               extraPrice: substitute.extraPrice) {
                             withAnimation(.snappy(duration: 0.3, extraBounce: 0.08)) {
@@ -40,8 +40,8 @@ struct CoffeeAccessoriesList: View {
     }
 }
 
-//#Preview {
-//    CoffeeAccessoriesList(viewModel: MenuItemPreviewViewModel(),
-//                          coffeeAccessories: CoffeeAccessoryType.allCases.filter { !$0.substitute },
-//                          coffeeSubstitutes: CoffeeAccessoryType.allCases.filter { $0.substitute })
-//}
+#Preview {
+    CoffeeAccessoriesList(viewModel: MenuItemPreviewViewModel(),
+                          coffeeAccessories: MockDataCoffeeAccessories().allcases().filter { !$0.substitute },
+                          coffeeSubstitutes: MockDataCoffeeAccessories().allcases().filter { $0.substitute })
+}
