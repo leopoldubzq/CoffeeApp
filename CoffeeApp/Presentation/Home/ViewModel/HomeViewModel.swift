@@ -113,8 +113,6 @@ final class HomeViewModel: BaseViewModel, AuthProtocol {
         }
         return cafeStamps
     }
-        
-    }
     
     
     //TEMP
@@ -127,10 +125,8 @@ final class HomeViewModel: BaseViewModel, AuthProtocol {
     //MARK: - PUBLIC METHODS
     func getCafeeAccesory() {
         guard selectedCafeeAccesory == nil else { return }
-        isLoading = true
         coffeeAccessoryService.getCoffeeAccessory()
             .sink { [weak self] _ in
-                self?.isLoading = false
             } receiveValue: { [weak self] cafeeAccesory in
                 guard let cafeeAccesory else { return }
                 self?.cafeeAccesory = cafeeAccesory

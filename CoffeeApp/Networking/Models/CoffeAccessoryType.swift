@@ -19,15 +19,15 @@ struct CoffeeAccessoryFireModel: CoffeeAccessoryTypeProtocol {
 }
 
 struct MockDataCoffeeAccessories {
-    var sugar : CoffeeAccessoryFireModel = .init(uid: "Mock", title: "Cukier", extraPrice: 0, substitute: false)
-    var doubleEspresso : CoffeeAccessoryFireModel = .init(uid: "Mock", title: "Podwójne espresso", extraPrice: 3, substitute: false)
-    var lactoseFreeMilk : CoffeeAccessoryFireModel = .init(uid: "Mock", title: "Mleko bez laktozy", extraPrice: 1, substitute: true)
-    var oatMilk : CoffeeAccessoryFireModel = .init(uid: "Mock", title: "Mleko owsiane", extraPrice: 3, substitute: true)
-    var vanillaMilk : CoffeeAccessoryFireModel = .init(uid: "Mock", title: "Mleko waniliowe", extraPrice: 3, substitute: true)
-    var saltCaramelSyrup : CoffeeAccessoryFireModel = .init(uid: "Mock", title: "Syrop słony karmel", extraPrice: 2, substitute: false)
-    var caramelSyrup : CoffeeAccessoryFireModel = .init(uid: "Mock", title: "Syrop karmelowy", extraPrice: 2, substitute: false)
-    var vanillaSyrup : CoffeeAccessoryFireModel = .init(uid: "Mock", title: "Syrop waniliowy", extraPrice: 2, substitute: false)
-    var honey : CoffeeAccessoryFireModel = .init(uid: "Mock", title: "Miód", extraPrice: 1, substitute: false)
+    var sugar : CoffeeAccessoryFireModel = .init(uid: UUID().uuidString, title: "Cukier", extraPrice: 0, substitute: false)
+    var doubleEspresso : CoffeeAccessoryFireModel = .init(uid: UUID().uuidString, title: "Podwójne espresso", extraPrice: 3, substitute: false)
+    var lactoseFreeMilk : CoffeeAccessoryFireModel = .init(uid: UUID().uuidString, title: "Mleko bez laktozy", extraPrice: 1, substitute: true)
+    var oatMilk : CoffeeAccessoryFireModel = .init(uid: UUID().uuidString, title: "Mleko owsiane", extraPrice: 3, substitute: true)
+    var vanillaMilk : CoffeeAccessoryFireModel = .init(uid: UUID().uuidString, title: "Mleko waniliowe", extraPrice: 3, substitute: true)
+    var saltCaramelSyrup : CoffeeAccessoryFireModel = .init(uid: UUID().uuidString, title: "Syrop słony karmel", extraPrice: 2, substitute: false)
+    var caramelSyrup : CoffeeAccessoryFireModel = .init(uid: UUID().uuidString, title: "Syrop karmelowy", extraPrice: 2, substitute: false)
+    var vanillaSyrup : CoffeeAccessoryFireModel = .init(uid: UUID().uuidString, title: "Syrop waniliowy", extraPrice: 2, substitute: false)
+    var honey : CoffeeAccessoryFireModel = .init(uid: UUID().uuidString, title: "Miód", extraPrice: 1, substitute: false)
     func allcases() -> [CoffeeAccessoryFireModel] {
         return [sugar, doubleEspresso, lactoseFreeMilk, oatMilk, vanillaMilk, saltCaramelSyrup,
      caramelSyrup, vanillaSyrup, honey ]

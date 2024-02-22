@@ -29,7 +29,7 @@ struct MenuItemPreview: View {
                     LazyVStack(pinnedViews: [.sectionHeaders]) {
                         Section {
                             TagLayout(alignment: .leading) {
-                                ForEach(viewModel.selectedCoffeeAccessories.sorted(by: { $0.title > $1.title }), id: \.uid ) { accessory in
+                                ForEach(viewModel.selectedCoffeeAccessories, id: \.uid ) { accessory in
                                     SelectedCoffeeAccessoryButton(accessory: accessory) {
                                         blockUserInteraction()
                                         withAnimation(.snappy(duration: 0.35, extraBounce: 0.1)) {
@@ -81,10 +81,9 @@ struct MenuItemPreview: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color("Background"))
-            
-            .onAppear {
-                viewModel.coffeeAccesories = coffee.accessories
-            }
+        }
+        .onAppear {
+            viewModel.coffeeAccesories = coffee.accessories
         }
     }
     
@@ -96,21 +95,24 @@ struct MenuItemPreview: View {
     }
     
     private func getCoffeeAccessories() -> [any CoffeeAccessoryTypeProtocol] {
-        viewModel.coffeeAccesories.filter { accessory in
+        var a = viewModel.coffeeAccesories.filter { accessory in
             !viewModel.selectedCoffeeAccessories
                 .filter({ !$0.substitute })
-                .contains(where: { accessory.title == $0.title })
+                .contains(where: { accessory.title == $0.title})
             && !accessory.substitute
+           
         }
+        return a
     }
     
     private func getCoffeeSubstitutes() -> [any CoffeeAccessoryTypeProtocol] {
-        viewModel.coffeeAccesories.filter { accessory in
+        var a = viewModel.coffeeAccesories.filter { accessory in
             !viewModel.selectedCoffeeAccessories
                 .filter(\.substitute)
                 .contains(where: { accessory.title == $0.title })
             && accessory.substitute
         }
+         return a
     }
     
     private func getCoffeeFullPrice() -> Double {

@@ -11,7 +11,7 @@ final class CoffeeAccessoryService: BaseService {
     }
     
     func createCoffeeAccessory(_ coffeeAccessory: CoffeeAccessoryFireModel) -> AnyPublisher<CoffeeAccessoryFireModel, CAError> {
-        create(coffeeAccessory, type: CoffeeAccessoryFireModel.self, reference: .coffeeAccessory)
+        create(coffeeAccessory, collectionReference: .coffeeAccessory, type: CoffeeAccessoryFireModel.self)
     }
     
 //    func createCoffeeAccessory(coffeeAccessory: GIDGoogleUser?, result: AuthDataResult?) -> AnyPublisher<Void, CAError> {

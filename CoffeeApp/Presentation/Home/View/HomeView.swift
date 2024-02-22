@@ -72,8 +72,8 @@ struct HomeView: View {
                             .showPlaceholder($viewModel.isLoading)
                         VouchersList(size: size)
                             .showPlaceholder($viewModel.isLoading)
-//                        Button("Create coupons") { viewModel.createCoupons() }
-//                            .showPlaceholder($viewModel.isLoading)
+                        //                        Button("Create coupons") { viewModel.createCoupons() }
+                        //                            .showPlaceholder($viewModel.isLoading)
                         Spacer()
                     }
                     .padding(.horizontal, 16)
@@ -137,14 +137,15 @@ struct HomeView: View {
                                         voucherNamespace: claimRewardNamespace,
                                         code: "123456789")
                     }
-                .onLoad { 
-                    viewModel.getUser()
-                    viewModel.getCafeeAccesory()
-                    viewModel.createCafeeAccesory()
+                    
                 }
-                .onLoad { viewModel.getUser() }
             }
+        }.onLoad {
+            viewModel.getUser()
+            viewModel.getCafeeAccesory()
+            viewModel.createCafeeAccesory()
         }
+        
     }
     
     private func getCellWidth(size: CGSize) -> CGFloat {
@@ -232,11 +233,11 @@ struct HomeView: View {
             .scaleEffect(1 + (scrollOffsetY > 0 ? (scrollOffsetY / 2000) : 0))
             .offset(x: scrollOffsetY > 0 ? (scrollOffsetY / 20) : 0)
             Spacer()
-//            Button { stampsAlertIsPresented.toggle() } label: {
-//                Image(systemName: "plus")
-//                    .aspectRatio(contentMode: .fit)
-//                    .foregroundStyle(Color.init(uiColor: .label))
-//            }
+            //            Button { stampsAlertIsPresented.toggle() } label: {
+            //                Image(systemName: "plus")
+            //                    .aspectRatio(contentMode: .fit)
+            //                    .foregroundStyle(Color.init(uiColor: .label))
+            //            }
             if !qrCodeViewIsPresented {
                 QRCodeButton()
             }
@@ -244,7 +245,7 @@ struct HomeView: View {
         .frame(height: 44)
         .showPlaceholder($viewModel.isLoading)
     }
-
+    
     @ViewBuilder
     private func VouchersText() -> some View {
         Text("Kupony")
